@@ -1,26 +1,161 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #8EA97A;
+  --color-primary-light: #A9C193;
+  --color-primary-dark: #6E8960;
+  --color-secondary: #555353;
+  --color-section: #F8FAF8;
+  --color-muted: #666666;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-poppins), system-ui, sans-serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 3rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Keyframes ─────────────────────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes ping-slow {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Base ──────────────────────────────────────────────────────── */
+
+/*
+  Tailwind v4's @import "tailwindcss" already applies Preflight (the
+  modern CSS reset). We only add what Preflight deliberately leaves out.
+*/
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* Prevent mobile browsers from zooming fonts */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: #222222;
+  background: #ffffff;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* overflow-x is intentionally NOT hidden here so real overflow bugs
+     remain visible during development. Set it on specific containers. */
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────── */
+
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #f8faf8; }
+::-webkit-scrollbar-thumb { background: #8EA97A; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #6E8960; }
+
+/* ─── Selection ─────────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(142, 169, 122, 0.3);
+  color: #222222;
+}
+
+/* ─── Focus ──────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid #8EA97A;
+  outline-offset: 2px;
+}
+
+/* ─── Interactive element transitions ───────────────────────────── */
+/*
+  Do NOT use `transition: all` — it intercepts `transform` and fights
+  Framer Motion's inline transform styles, causing jank on animated
+  elements. Only transition visual properties.
+*/
+a,
+button {
+  transition-property: color, background-color, border-color,
+                        text-decoration-color, fill, stroke, opacity,
+                        box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+/* ─── Typography helpers ────────────────────────────────────────── */
+
+.font-heading {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+/* ─── Gradient utilities ────────────────────────────────────────── */
+
+.gradient-text {
+  background: linear-gradient(135deg, #8EA97A 0%, #A9C193 50%, #8EA97A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #8EA97A 0%, #A9C193 100%);
+}
+
+.gradient-bg-dark {
+  background: linear-gradient(135deg, #6E8960 0%, #8EA97A 100%);
+}
+
+/* ─── Glassmorphism ──────────────────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(142, 169, 122, 0.18);
+}
+
+.glass-dark {
+  background: rgba(22, 22, 22, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Shadow utilities ───────────────────────────────────────────── */
+
+.glow-primary {
+  box-shadow: 0 8px 40px rgba(142, 169, 122, 0.28);
+}
+
+/* ─── Animation utilities ────────────────────────────────────────── */
+/*
+  These classes animate ONLY the element they're applied to.
+  Never apply .animate-float directly to a Framer Motion `motion.*`
+  element — both would compete for `transform`. Instead, wrap the
+  content in an inner div and apply the class there.
+*/
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
