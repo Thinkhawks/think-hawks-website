@@ -17,13 +17,6 @@ const iconMap: Record<string, React.ElementType> = {
   TrendingUp, Users, BarChart3,
 };
 
-const categoryColors: Record<string, string> = {
-  "Digital Marketing": "from-emerald-500/10 to-emerald-600/5 border-emerald-200",
-  "Web Development": "from-blue-500/10 to-blue-600/5 border-blue-200",
-  "Creative Services": "from-purple-500/10 to-purple-600/5 border-purple-200",
-  "Paid Advertising": "from-orange-500/10 to-orange-600/5 border-orange-200",
-};
-
 const iconBg: Record<string, string> = {
   "Digital Marketing": "bg-emerald-100 text-emerald-600",
   "Web Development": "bg-blue-100 text-blue-600",
@@ -58,7 +51,7 @@ export function ServicesSection() {
                 transition={{ duration: 0.5, delay: i * 0.05 }}
               >
                 <Link href={`/services/${service.id}`}>
-                  <div className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-primary/20 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                  <div className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
                     <div
                       className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
                         iconBg[service.category] || "bg-primary/10 text-primary"

@@ -8,8 +8,8 @@
   --color-section: #F8FAF8;
   --color-muted: #666666;
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-heading: var(--font-poppins), system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+  --font-heading: var(--font-jakarta), system-ui, sans-serif;
 
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -46,17 +46,24 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  /* Prevent mobile browsers from zooming fonts */
+  overflow-x: hidden;
 }
 
 body {
   color: #222222;
   background: #ffffff;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* overflow-x is intentionally NOT hidden here so real overflow bugs
-     remain visible during development. Set it on specific containers. */
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────── */
@@ -98,7 +105,7 @@ button {
 /* ─── Typography helpers ────────────────────────────────────────── */
 
 .font-heading {
-  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 
 /* ─── Gradient utilities ────────────────────────────────────────── */
@@ -158,4 +165,23 @@ button {
 
 .animate-ping-slow {
   animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────
+   Honor the visitor's system preference. Framer Motion animations are
+   handled by <MotionConfig reducedMotion="user">; this covers CSS-only
+   animations, transitions, and smooth scrolling. */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

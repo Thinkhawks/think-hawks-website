@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 const footerLinks = {
   company: [
@@ -86,6 +89,25 @@ const socials = [
 ];
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      setStatus(res.ok ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <footer className="bg-[#111111] text-white">
       {/* Newsletter Bar */}
@@ -98,20 +120,31 @@ export function Footer() {
                 Get weekly digital marketing insights, tips, and strategies.
               </p>
             </div>
-            <form className="flex gap-2 w-full md:w-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 md:w-64 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary focus:bg-white/15 transition-all"
-              />
-              <button
-                type="submit"
-                className="gradient-bg text-white font-semibold px-5 py-2.5 rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all text-sm flex-shrink-0"
-              >
-                Subscribe
-              </button>
-            </form>
+            {status === "success" ? (
+              <p className="text-primary font-medium text-sm">🎉 You&apos;re subscribed!</p>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex gap-2 w-full md:w-auto">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="flex-1 md:w-64 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary focus:bg-white/15 transition-all"
+                />
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="gradient-bg text-white font-semibold px-5 py-2.5 rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all text-sm flex-shrink-0 disabled:opacity-70"
+                >
+                  {status === "loading" ? "..." : "Subscribe"}
+                </button>
+              </form>
+            )}
           </div>
+          {status === "error" && (
+            <p className="text-red-400 text-xs mt-2 text-right">Something went wrong. Please try again.</p>
+          )}
         </div>
       </div>
 

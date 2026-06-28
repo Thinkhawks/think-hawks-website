@@ -1,52 +1,136 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
+
+const PHONE = "923284580621";
+const MESSAGE = encodeURIComponent(
+  "Hello Think Hawks! I'd like to know more about your digital marketing services."
+);
 
 export function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = "923284580621";
-  const message = encodeURIComponent(
-    "Hello Think Hawks! I'd like to know more about your digital marketing services."
-  );
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  // Auto-open the popup once after 4 s on first visit
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isDismissed) setIsOpen(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleDismiss = () => {
+    setIsOpen(false);
+    setIsDismissed(true);
+  };
+
+  if (isDismissed && !isOpen) {
+    // Show a minimal ghost button so user can re-open
+    return (
+      <motion.button
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        onClick={() => { setIsDismissed(false); setIsOpen(true); }}
+        className="fixed bottom-6 left-6 z-50 w-12 h-12 bg-green-500 hover:bg-green-600 rounded-full shadow-xl flex items-center justify-center transition-colors duration-200 cursor-pointer"
+        aria-label="Open WhatsApp chat"
+      >
+        <WhatsAppIcon className="w-6 h-6 text-white" />
+      </motion.button>
+    );
+  }
 
   return (
     <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3">
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.95 }}
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.22 }}
-            className="glass rounded-2xl shadow-2xl p-4 max-w-[260px] border border-green-200"
+            className="glass rounded-2xl shadow-2xl p-4 w-[270px] border border-green-200"
           >
-            <p className="text-sm font-semibold text-[#222222] mb-1">Think Hawks</p>
-            <p className="text-xs text-[#666666] mb-3">
-              Hi there! 👋 Ready to grow your business? Chat with us on WhatsApp!
-            </p>
+            {/* Header */}
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <WhatsAppIcon className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-[#222222] leading-none">Think Hawks</p>
+                  <p className="text-[11px] text-green-600 mt-0.5 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
+                    Online now
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={handleDismiss}
+                className="w-7 h-7 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
+                aria-label="Close WhatsApp chat"
+              >
+                <X className="w-3.5 h-3.5 text-gray-500" />
+              </button>
+            </div>
+
+            {/* Chat bubble */}
+            <div className="bg-[#DCF8C6] rounded-xl rounded-tl-sm px-3 py-2.5 mb-3">
+              <p className="text-[13px] text-[#333] leading-relaxed">
+                Hi there! 👋 Ready to grow your business? We&apos;re here to help!
+              </p>
+              <p className="text-[10px] text-gray-500 text-right mt-1">Just now</p>
+            </div>
+
             <a
-              href={`https://wa.me/${phoneNumber}?text=${message}`}
+              href={`https://wa.me/${PHONE}?text=${MESSAGE}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all duration-200 hover:shadow-lg"
+              className="flex items-center justify-center gap-2 w-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg"
             >
               <WhatsAppIcon className="w-4 h-4" />
-              Start Chat
+              Start Chat on WhatsApp
             </a>
           </motion.div>
         )}
       </AnimatePresence>
 
+      {/* Trigger button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         className="relative w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl flex items-center justify-center transition-colors duration-200 cursor-pointer"
-        aria-label="Chat on WhatsApp"
+        aria-label={isOpen ? "Close WhatsApp chat" : "Chat on WhatsApp"}
       >
         <span className="absolute inset-0 rounded-full bg-green-400 animate-ping-slow" />
-        <WhatsAppIcon className="w-7 h-7 text-white relative z-10" />
+        <AnimatePresence mode="wait" initial={false}>
+          {isOpen ? (
+            <motion.span
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="relative z-10"
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.span>
+          ) : (
+            <motion.span
+              key="wa"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="relative z-10"
+            >
+              <WhatsAppIcon className="w-7 h-7 text-white" />
+            </motion.span>
+          )}
+        </AnimatePresence>
       </motion.button>
     </div>
   );

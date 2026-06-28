@@ -23,6 +23,9 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    // Intentionally sync menu UI to the external router state: collapse the
+    // mobile drawer and mega menu whenever the route changes after a click.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
     setMegaMenuOpen(false);
   }, [pathname]);
@@ -106,7 +109,7 @@ export function Navbar() {
                           transition={{ duration: 0.2 }}
                           className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[880px] max-w-[95vw]"
                         >
-                          <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6">
+                          <div className="bg-white rounded-xl shadow-2xl p-6">
                             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                               {link.categories?.map((cat) => (
                                 <div key={cat.name}>

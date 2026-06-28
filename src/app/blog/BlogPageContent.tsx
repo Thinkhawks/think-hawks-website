@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Search, ArrowRight, Clock, Calendar, BookOpen } from "lucide-react";
@@ -17,12 +18,12 @@ const categoryColors: Record<string, string> = {
 };
 
 const postBgColors = [
-  "from-emerald-400 to-teal-500",
-  "from-blue-400 to-indigo-500",
-  "from-orange-400 to-amber-500",
-  "from-pink-400 to-rose-500",
-  "from-blue-500 to-cyan-600",
-  "from-purple-400 to-violet-500",
+  "from-emerald-500 to-teal-700",
+  "from-blue-500 to-blue-700",
+  "from-amber-500 to-orange-700",
+  "from-rose-500 to-red-700",
+  "from-sky-500 to-cyan-700",
+  "from-slate-500 to-slate-700",
 ];
 
 export function BlogPageContent() {
@@ -57,7 +58,7 @@ export function BlogPageContent() {
             </span>
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
               Marketing Insights to{" "}
-              <span className="gradient-text">Grow Your Brand</span>
+              <span className="text-primary">Grow Your Brand</span>
             </h1>
             <p className="text-white/65 text-lg leading-relaxed max-w-2xl mx-auto mb-8">
               Actionable strategies, expert insights, and the latest trends in digital marketing
@@ -110,7 +111,10 @@ export function BlogPageContent() {
               animate={{ opacity: 1, y: 0 }}
               className="mb-10 group"
             >
-              <div className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-gray-100 hover:border-primary/10 transition-all duration-300 hover:-translate-y-1">
+              <Link
+                href={`/blog/${featured.slug}`}
+                className="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
                 <div className="grid md:grid-cols-2">
                   <div className={`relative h-64 md:h-auto bg-gradient-to-br ${postBgColors[0]} min-h-[280px]`}>
                     <div className="absolute inset-0 flex items-center justify-center opacity-60">
@@ -127,7 +131,7 @@ export function BlogPageContent() {
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold ${categoryColors[featured.category] || "bg-gray-100 text-gray-700"}`}>
                         {featured.category}
                       </span>
-                      <div className="flex items-center gap-1 text-[#999999] text-xs">
+                      <div className="flex items-center gap-1 text-[#6B6B6B] text-xs">
                         <Clock className="w-3.5 h-3.5" />
                         {featured.readTime}
                       </div>
@@ -139,18 +143,18 @@ export function BlogPageContent() {
                       {featured.excerpt}
                     </p>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-xs text-[#999999]">
+                      <div className="flex items-center gap-2 text-xs text-[#6B6B6B]">
                         <Calendar className="w-3.5 h-3.5" />
                         {featured.date}
                       </div>
-                      <button className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline cursor-pointer">
+                      <span className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold group-hover:underline">
                         Read Article
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </button>
+                      </span>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           )}
 
@@ -162,9 +166,12 @@ export function BlogPageContent() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="group cursor-pointer"
+                className="group"
               >
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary/10 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col"
+                >
                   <div className={`relative h-48 bg-gradient-to-br ${postBgColors[post.id % postBgColors.length]}`}>
                     <div className="absolute inset-0 flex items-center justify-center opacity-50">
                       <BookOpen className="w-12 h-12 text-white" />
@@ -176,7 +183,7 @@ export function BlogPageContent() {
                     </div>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center gap-3 text-xs text-[#999999] mb-3">
+                    <div className="flex items-center gap-3 text-xs text-[#6B6B6B] mb-3">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5" />
                         {post.date}
@@ -197,14 +204,14 @@ export function BlogPageContent() {
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
 
           {filtered.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-[#999999] text-lg">No articles found for your search.</p>
+              <p className="text-[#6B6B6B] text-lg">No articles found for your search.</p>
               <button
                 onClick={() => { setSearch(""); setActiveCategory("All"); }}
                 className="mt-3 text-primary font-medium hover:underline cursor-pointer"
@@ -238,7 +245,7 @@ export function BlogPageContent() {
               Subscribe
             </button>
           </form>
-          <p className="text-xs text-[#999999] mt-3">
+          <p className="text-xs text-[#6B6B6B] mt-3">
             Join 5,000+ marketers and business owners. Unsubscribe any time.
           </p>
         </div>

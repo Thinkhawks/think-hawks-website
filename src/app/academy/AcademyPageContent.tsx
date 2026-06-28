@@ -77,7 +77,7 @@ export function AcademyPageContent() {
               >
                 Build a Profitable
                 <br />
-                <span className="gradient-text">Shopify Business</span>
+                <span className="text-primary">Shopify Business</span>
                 <br />
                 From Scratch
               </motion.h1>
@@ -155,10 +155,10 @@ export function AcademyPageContent() {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="glass-dark rounded-3xl p-8 border border-white/10"
+              className="glass-dark rounded-xl p-8 border border-white/10"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 gradient-bg rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
                   <Award className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -243,7 +243,7 @@ export function AcademyPageContent() {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-[#F8FAF8] rounded-2xl p-6 border border-gray-100">
+              <div className="bg-[#F8FAF8] rounded-xl p-6">
                 <p className="font-heading font-bold text-[#222222] mb-2">Graduate Success Story</p>
                 <p className="text-sm text-[#666666] leading-relaxed italic mb-4">
                   &quot;I enrolled with zero e-commerce knowledge. By Week 6 I had my store live. By Week 14 I was generating Rs. 800K per month. Think Hawks Academy changed my life.&quot;
@@ -260,7 +260,7 @@ export function AcademyPageContent() {
                 </div>
               </div>
 
-              <div className="bg-[#F8FAF8] rounded-2xl p-6 border border-gray-100">
+              <div className="bg-[#F8FAF8] rounded-xl p-6">
                 <p className="font-heading font-bold text-[#222222] mb-2">Another Graduate</p>
                 <p className="text-sm text-[#666666] leading-relaxed italic mb-4">
                   &quot;I was a fresh graduate with no startup capital. Think Hawks Academy taught me how to start with dropshipping, validate products cheaply, and scale only what works. My store now earns more than my corporate job ever did.&quot;
@@ -301,9 +301,9 @@ export function AcademyPageContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/15 transition-all duration-300"
+                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  <div className="w-12 h-12 gradient-bg rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-primary/20">
+                  <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-primary/20">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-heading font-bold text-[#222222] text-lg mb-2">{f.title}</h3>
@@ -317,9 +317,9 @@ export function AcademyPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: academyFeatures.length * 0.1 }}
-              className="bg-[#111111] rounded-2xl p-6 border border-primary/20 shadow-sm sm:col-span-2 lg:col-span-1"
+              className="bg-[#111111] rounded-xl p-6 border border-primary/20 sm:col-span-2 lg:col-span-1"
             >
-              <div className="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center mb-5">
+              <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mb-5">
                 <TrendingUp className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-heading font-bold text-white text-lg mb-2">Alumni Network & Job Board</h3>
@@ -347,7 +347,7 @@ export function AcademyPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.4) }}
-                className={`rounded-2xl border overflow-hidden transition-all ${expandedModule === i ? "border-primary/30 shadow-md" : "border-gray-100"}`}
+                className={`rounded-xl border overflow-hidden transition-all ${expandedModule === i ? "border-primary/30 shadow-md" : "border-gray-100"}`}
               >
                 <button
                   onClick={() => setExpandedModule(expandedModule === i ? null : i)}
@@ -358,7 +358,7 @@ export function AcademyPageContent() {
                   </span>
                   <div className="flex-1 min-w-0">
                     <p className="font-heading font-bold text-[#222222] text-sm">{mod.title}</p>
-                    <p className="text-xs text-[#999999] mt-0.5 flex items-center gap-1.5">
+                    <p className="text-xs text-[#6B6B6B] mt-0.5 flex items-center gap-1.5">
                       <Clock className="w-3 h-3" />
                       {mod.duration}
                     </p>
@@ -430,7 +430,7 @@ export function AcademyPageContent() {
                 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5"
               >
                 Invest in Yourself.{" "}
-                <span className="gradient-text">Build an Income</span>{" "}
+                <span className="text-primary">Build an Income</span>{" "}
                 That Lasts.
               </motion.h2>
 
@@ -490,7 +490,7 @@ export function AcademyPageContent() {
                   initial={{ opacity: 0, x: 30 }}
                   animate={statsInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="glass-dark rounded-2xl p-5 border border-white/10"
+                  className="glass-dark rounded-xl p-5 border border-white/10"
                 >
                   <p className="font-heading font-semibold text-white text-sm mb-2">{item.q}</p>
                   <p className="text-white/55 text-sm leading-relaxed">{item.a}</p>
@@ -518,7 +518,7 @@ export function AcademyPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: i * 0.06 }}
-                className={`bg-[#F8FAF8] rounded-2xl border overflow-hidden transition-all ${openFaq === i ? "border-primary/30" : "border-gray-100"}`}
+                className={`bg-[#F8FAF8] rounded-xl border overflow-hidden transition-all ${openFaq === i ? "border-primary/30" : "border-gray-100"}`}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -549,7 +549,7 @@ export function AcademyPageContent() {
             ))}
           </div>
 
-          <div className="mt-10 p-6 bg-primary/5 border border-primary/15 rounded-2xl text-center">
+          <div className="mt-10 p-6 bg-primary/5 border border-primary/15 rounded-xl text-center">
             <p className="text-[#444444] text-sm mb-3">Still have questions? We&apos;re happy to help.</p>
             <a
               href="https://wa.me/923284580621"

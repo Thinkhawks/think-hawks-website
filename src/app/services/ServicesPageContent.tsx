@@ -8,7 +8,6 @@ import {
   Palette, Sparkles, Target, MousePointer, Image,
   TrendingUp, Users, BarChart3, ArrowRight, Check
 } from "lucide-react";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { services } from "@/lib/data";
 import { CTASection } from "@/components/home/CTASection";
 
@@ -32,8 +31,6 @@ const iconBgMap: Record<string, string> = {
   "Paid Advertising": "bg-orange-100 text-orange-600",
 };
 
-const categories = ["All", "Digital Marketing", "Web Development", "Creative Services", "Paid Advertising"];
-
 export function ServicesPageContent() {
   const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true });
 
@@ -51,7 +48,7 @@ export function ServicesPageContent() {
             </span>
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
               Services That Drive{" "}
-              <span className="gradient-text">Real Business Growth</span>
+              <span className="text-primary">Real Business Growth</span>
             </h1>
             <p className="text-white/65 text-lg leading-relaxed max-w-2xl mx-auto">
               From search engine dominance to social media mastery, web development to paid
@@ -83,9 +80,9 @@ export function ServicesPageContent() {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                 >
                   <Link href={`/services/${service.id}`}>
-                    <div className="group bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary/15 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                    <div className="group bg-white rounded-xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
                       <div className="flex items-start justify-between mb-5">
-                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${iconBg}`}>
+                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${iconBg}`}>
                           <Icon className="w-7 h-7" />
                         </div>
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${cat.bg} ${cat.text} border ${cat.border}`}>

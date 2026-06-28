@@ -40,8 +40,8 @@ export const services = [
       "Craft compelling content that educates your audience, builds authority, and converts visitors into loyal customers.",
     icon: "FileText",
     category: "Digital Marketing",
-    color: "from-purple-500/10 to-purple-600/10",
-    iconColor: "text-purple-600",
+    color: "from-teal-500/10 to-teal-600/10",
+    iconColor: "text-teal-600",
     benefits: [
       "Blog & article writing",
       "Video script production",
@@ -216,8 +216,8 @@ export const services = [
       "Turn more of your existing traffic into customers through data-driven CRO strategies and systematic testing.",
     icon: "BarChart3",
     category: "Digital Marketing",
-    color: "from-violet-500/10 to-violet-600/10",
-    iconColor: "text-violet-600",
+    color: "from-sky-500/10 to-sky-600/10",
+    iconColor: "text-sky-600",
     benefits: [
       "Website audit & analysis",
       "A/B split testing",
@@ -718,7 +718,7 @@ export const industries = [
   { name: "E-commerce", icon: "ShoppingBag", color: "from-blue-500 to-blue-600" },
   { name: "Healthcare", icon: "Heart", color: "from-red-400 to-red-500" },
   { name: "Real Estate", icon: "Building2", color: "from-amber-500 to-amber-600" },
-  { name: "Technology", icon: "Cpu", color: "from-violet-500 to-violet-600" },
+  { name: "Technology", icon: "Cpu", color: "from-slate-500 to-slate-600" },
   { name: "Education", icon: "GraduationCap", color: "from-cyan-500 to-cyan-600" },
   { name: "Finance", icon: "DollarSign", color: "from-green-500 to-green-600" },
   { name: "Fashion", icon: "Scissors", color: "from-pink-500 to-pink-600" },
@@ -1216,7 +1216,7 @@ export const ecommerceServices = [
     title: "E-commerce Marketing",
     description: "Full-funnel marketing strategies combining Meta Ads, Google Shopping, TikTok, email, and SEO to maximize your store's revenue.",
     points: ["Meta & Google Shopping Ads", "TikTok performance campaigns", "Email & SMS automation", "E-commerce SEO"],
-    color: "from-violet-400 to-purple-500",
+    color: "from-sky-500 to-sky-700",
   },
   {
     icon: "Settings",
@@ -1274,3 +1274,207 @@ export const ecommerceFaqs = [
     answer: "Absolutely. We offer marketplace strategy and account management for Daraz (Pakistan's #1 marketplace), Amazon, and eBay alongside Shopify. Many of our clients run both a Shopify store and marketplace accounts simultaneously for maximum reach.",
   },
 ];
+
+// ─── Location / Maps ──────────────────────────────────────────────────────────
+// No API key required — Google Maps "output=embed" + search URLs work directly.
+
+export const OFFICE_ADDRESS = "Office #19, 1st Floor, Al Hafeez Shopping Mall, Gulberg III, Lahore, Pakistan";
+const MAPS_QUERY = "Al+Hafeez+Shopping+Mall+Gulberg+III+Lahore";
+export const MAPS_PLACE_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
+export const MAPS_EMBED_URL = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
+
+// ─── Blog Article Content ─────────────────────────────────────────────────────
+// Keyed by post slug. Section-based so the [slug] page renders consistent layout.
+// NOTE FOR OWNER: these are solid starting drafts — review/expand before launch.
+
+export type BlogSection = {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+};
+
+export const blogContent: Record<string, BlogSection[]> = {
+  "seo-strategies-2025": [
+    {
+      heading: "SEO in 2025 is about intent, not keywords",
+      paragraphs: [
+        "Search engines have shifted from matching keywords to understanding intent. Google's AI-driven results reward pages that genuinely answer the question behind a search, not pages that simply repeat a phrase. The agencies and brands winning organic traffic today build content around problems, not around search volume alone.",
+      ],
+    },
+    {
+      heading: "The strategies driving organic growth right now",
+      bullets: [
+        "Topic clusters: one in-depth pillar page supported by focused articles that link back to it.",
+        "Search-intent mapping: match every page to informational, commercial, or transactional intent.",
+        "Technical health: fast Core Web Vitals, clean crawlability, and mobile-first rendering.",
+        "Entity & schema markup: help Google understand who you are and what you offer.",
+        "Genuine E-E-A-T signals: real authors, citations, and first-hand experience.",
+      ],
+    },
+    {
+      heading: "Where to start this quarter",
+      paragraphs: [
+        "Audit your top 10 landing pages for intent match and page speed, fix the technical issues first, then build one strong pillar page in your highest-value service area. Consistency beats volume — a few authoritative pages outrank dozens of thin ones.",
+      ],
+    },
+  ],
+  "facebook-ad-funnel-guide": [
+    {
+      heading: "Cold traffic doesn't buy on the first click",
+      paragraphs: [
+        "The biggest reason Facebook (Meta) ad budgets get wasted is asking strangers to buy immediately. A funnel warms an audience in stages — awareness, consideration, then conversion — so each ad does one job well.",
+      ],
+    },
+    {
+      heading: "The three-stage funnel that converts",
+      bullets: [
+        "Top of funnel (TOFU): short video or value content to build awareness and audiences.",
+        "Middle of funnel (MOFU): retarget engagers with social proof, testimonials, and offers.",
+        "Bottom of funnel (BOFU): retarget add-to-carts and site visitors with urgency and guarantees.",
+      ],
+    },
+    {
+      heading: "Creative and measurement",
+      paragraphs: [
+        "Test 3–5 creatives per stage and let the algorithm find winners before scaling. Track cost per result at each stage rather than only the final sale — that's how you find the exact step where money leaks.",
+      ],
+    },
+  ],
+  "website-conversion-optimization": [
+    {
+      heading: "Traffic is worthless if the page doesn't convert",
+      paragraphs: [
+        "Most businesses pour money into ads and SEO while sending visitors to a website that quietly loses them. Small friction points — slow loading, unclear offers, weak calls to action — compound into thousands in lost revenue every month.",
+      ],
+    },
+    {
+      heading: "The conversion killers we see most often",
+      bullets: [
+        "Slow load times (every extra second drops conversions measurably).",
+        "No clear primary call to action above the fold.",
+        "Vague value proposition — visitors can't tell what you do in 5 seconds.",
+        "Too many form fields and no trust signals near the button.",
+        "Poor mobile experience where the majority of traffic actually lands.",
+      ],
+    },
+    {
+      heading: "Fix these first",
+      paragraphs: [
+        "Start with speed and clarity: compress images, state your offer in one sentence, and make the main button impossible to miss. Then add proof — reviews, logos, guarantees — right where people decide. These changes routinely lift conversion rates without spending a rupee more on traffic.",
+      ],
+    },
+  ],
+  "social-media-guide-small-business": [
+    {
+      heading: "You don't need every platform — you need the right one",
+      paragraphs: [
+        "Small businesses burn out trying to be everywhere. The smarter play is to pick the one or two platforms where your customers already spend time and show up consistently with content that helps or entertains them.",
+      ],
+    },
+    {
+      heading: "A simple system that works",
+      bullets: [
+        "Choose platforms by audience, not trend (Instagram/Facebook for local B2C, LinkedIn for B2B).",
+        "Batch content weekly so you're not creating under pressure daily.",
+        "Follow a content mix: educate, inspire, entertain, and only then promote.",
+        "Reply to every comment and DM — engagement compounds reach.",
+      ],
+    },
+    {
+      heading: "Measuring what matters",
+      paragraphs: [
+        "Followers are a vanity metric. Track saves, shares, profile visits, and clicks to your site or WhatsApp — those predict real business. Review monthly and double down on the formats that drive action.",
+      ],
+    },
+  ],
+  "google-ads-vs-facebook-ads-2025": [
+    {
+      heading: "Two different jobs, not two rivals",
+      paragraphs: [
+        "Google Ads captures existing demand — people actively searching for what you sell. Meta Ads creates demand — interrupting people with an offer they didn't know they wanted. The right choice depends on whether your customers are already looking.",
+      ],
+    },
+    {
+      heading: "When to choose which",
+      bullets: [
+        "Choose Google Ads when there's clear search demand (services, repairs, urgent needs).",
+        "Choose Meta Ads for visual products, impulse buys, and brand building.",
+        "High-ticket or considered purchases usually need both working together.",
+      ],
+    },
+    {
+      heading: "The honest answer",
+      paragraphs: [
+        "If you can only start with one, start where your customers' intent already lives. For most local service businesses that's Google; for most lifestyle and e-commerce brands that's Meta. As budget grows, combining them — search to capture, social to nurture — almost always beats either alone.",
+      ],
+    },
+  ],
+  "content-marketing-roi-guide": [
+    {
+      heading: "Stop measuring vanity metrics",
+      paragraphs: [
+        "Pageviews and likes feel good but rarely correlate with revenue. Content marketing ROI comes from tracking how content moves people toward becoming customers — and from attributing real pipeline to the pieces that earn it.",
+      ],
+    },
+    {
+      heading: "KPIs that actually predict growth",
+      bullets: [
+        "Organic leads and demo/quote requests from content pages.",
+        "Assisted conversions: content viewed on the path to a sale.",
+        "Email signups and the conversion rate of that list over time.",
+        "Keyword rankings for commercial-intent terms.",
+      ],
+    },
+    {
+      heading: "Build a simple attribution loop",
+      paragraphs: [
+        "Tag your content, connect it to your analytics and CRM, and review which topics generate leads — not just traffic. Reinvest in those topics. Over a few months you'll know your cost per lead from content, which is the number that justifies the budget.",
+      ],
+    },
+  ],
+  "shopify-store-pakistan-guide": [
+    {
+      heading: "Launching a profitable Shopify store from Pakistan",
+      paragraphs: [
+        "Shopify makes it realistic for Pakistani entrepreneurs to run a professional online store and sell locally or internationally. Success comes down to choosing the right products, setting up payments correctly, and driving qualified traffic from day one.",
+      ],
+    },
+    {
+      heading: "The setup checklist",
+      bullets: [
+        "Validate a product with real demand and healthy margins before building.",
+        "Set up local payment options (bank transfer, COD workflows) and international gateways where eligible.",
+        "Configure shipping with local couriers (TCS, Leopards) and clear delivery timelines.",
+        "Build trust: clear policies, real photos, reviews, and a responsive WhatsApp channel.",
+      ],
+    },
+    {
+      heading: "Getting your first sales",
+      paragraphs: [
+        "Don't wait for the store to be perfect. Launch with a focused range, run targeted Meta and Google campaigns, and talk to early buyers to refine the offer. Momentum and feedback in the first weeks matter more than a flawless catalogue.",
+      ],
+    },
+  ],
+  "shopify-vs-woocommerce-vs-daraz-pakistan": [
+    {
+      heading: "Choosing the right platform for Pakistan",
+      paragraphs: [
+        "Each platform serves a different stage and strategy. The best choice depends on how much control you want, your technical comfort, and whether you're building a brand or chasing marketplace traffic.",
+      ],
+    },
+    {
+      heading: "How they compare",
+      bullets: [
+        "Shopify: fastest to launch, fully branded, best for building a long-term store. Monthly fee.",
+        "WooCommerce: maximum control and no platform fee, but needs hosting and maintenance.",
+        "Daraz: instant access to a huge buyer base, but high competition, fees, and no brand ownership.",
+      ],
+    },
+    {
+      heading: "The strategy most sellers win with",
+      paragraphs: [
+        "Use Daraz to tap existing demand and move volume, while building a Shopify store to own your brand, customer data, and margins. Many of our clients run both — the marketplace for reach, their own store for profit and loyalty.",
+      ],
+    },
+  ],
+};

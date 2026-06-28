@@ -52,7 +52,7 @@ export function WhyUsSection() {
                 transition={{ duration: 0.5, delay: i * 0.07 }}
                 className="group"
               >
-                <div className="bg-[#F8FAF8] rounded-2xl p-6 h-full hover:bg-white hover:shadow-lg border border-transparent hover:border-primary/10 transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-[#F8FAF8] rounded-xl p-6 h-full hover:bg-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div
                     className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${colors[i % colors.length]}`}
                   >

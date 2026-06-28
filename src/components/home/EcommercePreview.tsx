@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
-import { ArrowRight, Check, ShoppingBag, TrendingUp, Globe, CreditCard } from "lucide-react";
+import { ArrowRight, ShoppingBag, TrendingUp, Globe, CreditCard } from "lucide-react";
 
 const highlights = [
   { icon: ShoppingBag, text: "Shopify Store Development" },
@@ -38,7 +38,7 @@ export function EcommercePreview() {
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
               We Build Shopify Stores{" "}
-              <span className="gradient-text">That Actually Sell</span>
+              <span className="text-primary">That Actually Sell</span>
             </h2>
 
             <p className="text-white/60 text-lg leading-relaxed mb-8">
@@ -99,7 +99,7 @@ export function EcommercePreview() {
             </div>
 
             {/* Shopify dashboard card */}
-            <div className="glass-dark rounded-3xl p-6 border border-white/10">
+            <div className="glass-dark rounded-xl p-6 border border-white/10">
               <div className="flex items-center justify-between mb-5">
                 <div>
                   <p className="font-heading font-bold text-white text-sm">Store Performance</p>

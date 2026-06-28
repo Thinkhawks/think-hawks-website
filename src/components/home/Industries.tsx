@@ -38,7 +38,7 @@ export function Industries() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 className="group"
               >
-                <div className="flex flex-col items-center gap-3 p-5 bg-[#F8FAF8] rounded-2xl hover:bg-white hover:shadow-md border border-transparent hover:border-gray-100 transition-all duration-300 hover:-translate-y-1 cursor-default text-center">
+                <div className="flex flex-col items-center gap-3 p-5 bg-[#F8FAF8] rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default text-center">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${industry.color} flex items-center justify-center`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>

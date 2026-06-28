@@ -69,7 +69,7 @@ export function AboutPageContent() {
             </span>
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
               We Help Brands{" "}
-              <span className="gradient-text">Soar Higher</span>{" "}
+              <span className="text-primary">Soar Higher</span>{" "}
               Than the Competition
             </h1>
             <p className="text-white/65 text-lg leading-relaxed max-w-2xl mx-auto">
@@ -111,9 +111,9 @@ export function AboutPageContent() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="bg-[#F8FAF8] rounded-3xl p-8 border border-gray-100"
+                className="bg-[#F8FAF8] rounded-xl p-8"
               >
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg`}>
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg`}>
                   <item.icon className="w-7 h-7 text-white" />
                 </div>
                 <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">
@@ -174,11 +174,11 @@ export function AboutPageContent() {
                   className="flex gap-6 sm:gap-8 items-start"
                 >
                   <div className="hidden sm:flex flex-col items-center">
-                    <div className="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md">
+                    <div className="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
                       <span className="font-heading font-bold text-white text-xs">{m.year}</span>
                     </div>
                   </div>
-                  <div className="bg-white rounded-2xl p-5 flex-1 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="bg-white rounded-xl p-5 flex-1 shadow-sm hover:shadow-md transition-shadow">
                     <span className="sm:hidden inline-block px-3 py-1 gradient-bg text-white text-xs font-bold rounded-full mb-2">
                       {m.year}
                     </span>
@@ -209,19 +209,27 @@ export function AboutPageContent() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={teamInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.09 }}
-                className="bg-[#F8FAF8] rounded-2xl p-6 border border-gray-100 hover:border-primary/15 hover:shadow-lg transition-all duration-300 group"
+                className="bg-[#F8FAF8] rounded-xl p-6 hover:shadow-lg transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 gradient-bg rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md text-white font-heading font-bold text-lg">
+                  <div className="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-md text-white font-heading font-bold text-lg">
                     {member.avatar}
                   </div>
                   <div className="min-w-0">
                     <p className="font-heading font-bold text-[#222222] truncate">{member.name}</p>
                     <p className="text-primary text-xs font-semibold mt-0.5">{member.role}</p>
                   </div>
-                  <a href={member.linkedin} className="ml-auto text-[#999999] hover:text-primary transition-colors flex-shrink-0">
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                  {member.linkedin && member.linkedin !== "#" && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on LinkedIn`}
+                      className="ml-auto text-[#888888] hover:text-primary transition-colors flex-shrink-0"
+                    >
+                      <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
                 <p className="text-sm text-[#666666] leading-relaxed mb-4">{member.bio}</p>
                 <div className="flex flex-wrap gap-1.5">
@@ -267,7 +275,7 @@ export function AboutPageContent() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={valuesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group bg-[#F8FAF8] rounded-2xl p-6 hover:bg-white hover:shadow-lg border border-transparent hover:border-primary/10 transition-all duration-300 hover:-translate-y-1"
+                className="group bg-[#F8FAF8] rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                   <value.icon className="w-6 h-6 text-primary" />
@@ -292,7 +300,7 @@ export function AboutPageContent() {
               </span>
               <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#222222] leading-tight mb-5">
                 Strategy + Creativity +{" "}
-                <span className="gradient-text">Data</span> = Growth
+                <span className="text-primary">Data</span> = Growth
               </h2>
               <p className="text-[#666666] leading-relaxed mb-6">
                 We believe the best marketing combines deep strategic thinking with creative
@@ -319,11 +327,11 @@ export function AboutPageContent() {
                 { icon: Globe2, label: "Reach", value: "Multi-Channel", color: "bg-blue-50 text-blue-600" },
                 { icon: Users, label: "Impact", value: "Measurable ROI", color: "bg-emerald-50 text-emerald-600" },
               ].map((item, i) => (
-                <div key={i} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                <div key={i} className="bg-white rounded-xl p-5 shadow-sm">
                   <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center mb-3`}>
                     <item.icon className="w-5 h-5" />
                   </div>
-                  <p className="text-[#999999] text-xs uppercase tracking-widest mb-1">{item.label}</p>
+                  <p className="text-[#6B6B6B] text-xs uppercase tracking-widest mb-1">{item.label}</p>
                   <p className="font-heading font-bold text-[#222222]">{item.value}</p>
                 </div>
               ))}

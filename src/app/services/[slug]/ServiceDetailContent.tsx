@@ -75,7 +75,7 @@ export function ServiceDetailContent({ service }: { service: ServiceType }) {
             </div>
 
             <div className="flex items-start gap-5">
-              <div className="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <div className="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
                 <Icon className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -182,7 +182,7 @@ export function ServiceDetailContent({ service }: { service: ServiceType }) {
                 initial={{ opacity: 0, y: 16 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className={`bg-[#F8FAF8] rounded-2xl border overflow-hidden transition-all ${openFaq === i ? "border-primary/30" : "border-gray-100"}`}
+                className={`bg-[#F8FAF8] rounded-xl border overflow-hidden transition-all ${openFaq === i ? "border-primary/30" : "border-gray-100"}`}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -225,7 +225,7 @@ export function ServiceDetailContent({ service }: { service: ServiceType }) {
                 const SIcon = iconMap[s.icon] || TrendingUp;
                 return (
                   <Link key={s.id} href={`/services/${s.id}`}>
-                    <div className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-primary/15 transition-all duration-300 hover:-translate-y-1">
+                    <div className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                         <SIcon className="w-6 h-6 text-primary" />
                       </div>

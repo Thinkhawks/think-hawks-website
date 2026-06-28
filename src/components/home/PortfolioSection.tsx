@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { portfolioItems } from "@/lib/data";
 
@@ -20,17 +20,17 @@ const categoryColors: Record<string, string> = {
 };
 
 const illustrationColors = [
-  "from-blue-400 to-indigo-500",
-  "from-emerald-400 to-teal-500",
-  "from-purple-400 to-violet-500",
-  "from-pink-400 to-rose-500",
-  "from-orange-400 to-amber-500",
-  "from-teal-400 to-cyan-500",
+  "from-blue-500 to-blue-700",
+  "from-emerald-500 to-teal-700",
+  "from-slate-500 to-slate-700",
+  "from-rose-500 to-red-700",
+  "from-amber-500 to-orange-700",
+  "from-teal-500 to-cyan-700",
 ];
 
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("All");
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { ref } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const filtered =
     activeFilter === "All"
@@ -80,7 +80,7 @@ export function PortfolioSection() {
                 transition={{ duration: 0.4, delay: i * 0.06 }}
                 className="group"
               >
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary/10 transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   {/* Image placeholder */}
                   <div
                     className={`relative h-52 bg-gradient-to-br ${illustrationColors[item.id % illustrationColors.length]} overflow-hidden`}

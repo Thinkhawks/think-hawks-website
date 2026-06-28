@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
-import { Check, X, Zap } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { pricingPlans } from "@/lib/data";
 
@@ -24,7 +24,7 @@ export function PricingSection() {
 
         {/* Billing toggle */}
         <div className="mt-8 flex items-center justify-center gap-4">
-          <span className={`text-sm font-medium ${!isYearly ? "text-[#222222]" : "text-[#999999]"}`}>
+          <span className={`text-sm font-medium ${!isYearly ? "text-[#222222]" : "text-[#6B6B6B]"}`}>
             Monthly
           </span>
           <button
@@ -39,7 +39,7 @@ export function PricingSection() {
               }`}
             />
           </button>
-          <span className={`text-sm font-medium ${isYearly ? "text-[#222222]" : "text-[#999999]"}`}>
+          <span className={`text-sm font-medium ${isYearly ? "text-[#222222]" : "text-[#6B6B6B]"}`}>
             Yearly
           </span>
           {isYearly && (
@@ -59,7 +59,7 @@ export function PricingSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative rounded-2xl overflow-hidden ${
+              className={`relative rounded-xl overflow-hidden ${
                 plan.highlighted
                   ? "shadow-2xl shadow-primary/25 ring-2 ring-primary/40"
                   : "shadow-md"
@@ -114,7 +114,7 @@ export function PricingSection() {
                         </span>
                         <span
                           className={`mb-2 text-sm ${
-                            plan.highlighted ? "text-white/50" : "text-[#999999]"
+                            plan.highlighted ? "text-white/50" : "text-[#6B6B6B]"
                           }`}
                         >
                           /mo
@@ -129,7 +129,7 @@ export function PricingSection() {
                         >
                           Custom
                         </span>
-                        <p className={`text-sm mt-1 ${plan.highlighted ? "text-white/50" : "text-[#999999]"}`}>
+                        <p className={`text-sm mt-1 ${plan.highlighted ? "text-white/50" : "text-[#6B6B6B]"}`}>
                           Tailored to your needs
                         </p>
                       </div>
@@ -158,7 +158,7 @@ export function PricingSection() {
                         <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <X className="w-3 h-3 text-gray-500" />
                         </div>
-                        <span className="text-sm text-[#999999] line-through">{feature}</span>
+                        <span className="text-sm text-[#6B6B6B] line-through">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -184,7 +184,7 @@ export function PricingSection() {
           ))}
         </div>
 
-        <p className="mt-10 text-center text-sm text-[#999999]">
+        <p className="mt-10 text-center text-sm text-[#6B6B6B]">
           All prices in USD. Need something custom?{" "}
           <Link href="/contact" className="text-primary hover:underline font-medium">
             Let&apos;s talk.

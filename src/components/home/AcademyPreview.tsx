@@ -35,7 +35,7 @@ export function AcademyPreview() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="bg-[#111111] rounded-3xl p-8">
+            <div className="bg-[#111111] rounded-xl p-8">
               {/* Header */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 gradient-bg rounded-2xl flex items-center justify-center shadow-lg">
@@ -129,7 +129,7 @@ export function AcademyPreview() {
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#222222] leading-tight mb-5">
               Learn to Build a Profitable{" "}
-              <span className="gradient-text">Shopify Business</span>
+              <span className="text-primary">Shopify Business</span>
             </h2>
 
             <p className="text-[#666666] text-lg leading-relaxed mb-6">
@@ -171,7 +171,7 @@ export function AcademyPreview() {
               </Link>
             </div>
 
-            <p className="mt-4 text-sm text-[#999999]">
+            <p className="mt-4 text-sm text-[#6B6B6B]">
               Next batch enrolling soon — seats are limited.
             </p>
           </motion.div>

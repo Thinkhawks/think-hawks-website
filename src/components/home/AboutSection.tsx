@@ -26,7 +26,7 @@ export function AboutSection() {
             transition={{ duration: 0.7 }}
             className="relative pb-8 pr-4"
           >
-            <div className="relative bg-[#F8FAF8] rounded-3xl p-8 overflow-hidden">
+            <div className="relative bg-[#F8FAF8] rounded-xl p-8 overflow-hidden">
               {/* Abstract visual */}
               <div className="aspect-square max-w-md mx-auto relative">
                 <svg viewBox="0 0 400 400" className="w-full h-full">
@@ -71,7 +71,7 @@ export function AboutSection() {
               </div>
             </div>
 
-            <div className="absolute bottom-0 right-0 glass rounded-2xl px-5 py-3 shadow-xl border border-primary/20">
+            <div className="absolute bottom-0 right-0 glass rounded-xl px-5 py-3 shadow-xl border border-primary/20">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
                   <span className="text-white text-sm font-bold">TH</span>
@@ -97,7 +97,7 @@ export function AboutSection() {
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#222222] leading-tight mb-5">
               Built to Help Brands{" "}
-              <span className="gradient-text">Soar Higher</span>
+              <span className="text-primary">Soar Higher</span>
             </h2>
 
             <p className="text-[#666666] text-lg leading-relaxed mb-4">

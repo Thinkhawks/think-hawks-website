@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-28T00:00:00Z",
+  "title": "Design System: Think Hawks",
+  "extensions": {
+    "colorMeta": {
+      "hawk-green": {
+        "role": "primary",
+        "displayName": "Hawk Green",
+        "canonical": "#8EA97A",
+        "tonalRamp": ["#1a2418", "#2e3f29", "#42593d", "#566f50", "#6E8960", "#8EA97A", "#A9C193", "#c4d9b3", "#e0ecd9", "#f4f9f1"]
+      },
+      "hawk-green-light": {
+        "role": "primary-light",
+        "displayName": "Hawk Green Light",
+        "canonical": "#A9C193",
+        "tonalRamp": ["#1e2b1a", "#2f4029", "#46593f", "#5d7354", "#748d69", "#8EA97A", "#A9C193", "#c2d6af", "#daeacb", "#f0f7eb"]
+      },
+      "hawk-green-dark": {
+        "role": "primary-dark",
+        "displayName": "Hawk Green Dark",
+        "canonical": "#6E8960",
+        "tonalRamp": ["#151e12", "#22301d", "#304429", "#3f5836", "#506b45", "#6E8960", "#8EA97A", "#aabd95", "#c7d4bb", "#e5ede0"]
+      },
+      "charcoal": {
+        "role": "secondary",
+        "displayName": "Charcoal",
+        "canonical": "#555353",
+        "tonalRamp": ["#141313", "#252323", "#363434", "#474545", "#555353", "#6d6b6b", "#878585", "#a8a6a6", "#c9c7c7", "#eae8e8"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#222222",
+        "tonalRamp": ["#0a0a0a", "#141414", "#1e1e1e", "#2a2a2a", "#363636", "#484848", "#636363", "#888888", "#b0b0b0", "#d9d9d9"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#666666",
+        "tonalRamp": ["#161616", "#272727", "#393939", "#4b4b4b", "#585858", "#666666", "#808080", "#9e9e9e", "#bdbdbd", "#e0e0e0"]
+      },
+      "surface-alt": {
+        "role": "neutral",
+        "displayName": "Surface Alt",
+        "canonical": "#F8FAF8",
+        "tonalRamp": ["#c4ccc4", "#cdd5cd", "#d6ded6", "#dfe7df", "#e8f0e8", "#f0f5f0", "#F8FAF8", "#fafcfa", "#fbfcfb", "#ffffff"]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Surface Dark",
+        "canonical": "#111111",
+        "tonalRamp": ["#080808", "#111111", "#1a1a1a", "#242424", "#2e2e2e", "#383838", "#484848", "#646464", "#888888", "#b0b0b0"]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#c8c8c8", "#d1d1d1", "#dcdcdc", "#e5e5e5", "#eeeeee", "#f4f4f4", "#f9f9f9", "#fbfbfb", "#fdfdfd", "#FFFFFF"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page hero headlines only. One instance per route maximum." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings within the body content." },
+      "title": { "displayName": "Title", "purpose": "Card headings, sidebar titles, modal headers." },
+      "body": { "displayName": "Body", "purpose": "All paragraph text. Max line length 65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Button text, form labels, badge text, table headers." }
+    },
+    "shadows": [
+      {
+        "name": "ambient-rest",
+        "value": "0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04)",
+        "purpose": "Cards at rest. Separates card from surface-alt; nearly invisible."
+      },
+      {
+        "name": "hover-lift",
+        "value": "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)",
+        "purpose": "Cards on :hover. Pairs with translateY(-4px)."
+      },
+      {
+        "name": "green-glow",
+        "value": "0 8px 40px rgba(142, 169, 122, 0.28)",
+        "purpose": "CTA buttons and floating accent elements only. Never on cards or inputs."
+      }
+    ],
+    "motion": [
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Standard entrance easing for scroll-reveal animations." },
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "State transitions: hover, focus, active." },
+      { "name": "duration-fast", "value": "150ms", "purpose": "Micro-interactions: button hover, focus ring appearance." },
+      { "name": "duration-base", "value": "300ms", "purpose": "Card hover, nav transitions, menu open/close." },
+      { "name": "duration-enter", "value": "500ms", "purpose": "Scroll-reveal entrance animations." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The primary CTA: gradient fill, white text, hover lift. Use for the single most important action per section.",
+      "html": "<button class=\"ds-btn-primary\">Submit inquiry <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #8EA97A 0%, #A9C193 100%); color: #FFFFFF; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; padding: 10px 24px; height: 44px; border: none; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); cursor: pointer; transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; } .ds-btn-primary:hover { background: linear-gradient(135deg, #6E8960 0%, #8EA97A 100%); transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 0 0 0 transparent; } .ds-btn-primary:focus-visible { outline: 2px solid #8EA97A; outline-offset: 2px; } .ds-btn-primary:active { transform: translateY(0); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action on light backgrounds: border-only, fills on hover.",
+      "html": "<button class=\"ds-btn-outline\">View pricing plans</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #8EA97A; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; padding: 10px 24px; height: 44px; border: 2px solid #8EA97A; border-radius: 12px; cursor: pointer; transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease; } .ds-btn-outline:hover { background: #8EA97A; color: #FFFFFF; transform: translateY(-2px); } .ds-btn-outline:focus-visible { outline: 2px solid #8EA97A; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline White Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary CTA for dark hero sections: white border, converts to white fill on hover.",
+      "html": "<button class=\"ds-btn-outline-white\">Learn more</button>",
+      "css": ".ds-btn-outline-white { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #FFFFFF; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; padding: 10px 24px; height: 44px; border: 2px solid rgba(255,255,255,0.9); border-radius: 12px; cursor: pointer; transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease; } .ds-btn-outline-white:hover { background: #FFFFFF; color: #555353; transform: translateY(-2px); } .ds-btn-outline-white:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The primary content card. Shadow-only (no border) at rest; lifts on hover.",
+      "html": "<div class=\"ds-service-card\"><div class=\"ds-service-card__icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg></div><h3 class=\"ds-service-card__title\">Search Engine Optimization</h3><p class=\"ds-service-card__body\">Dominate search rankings with technical SEO, content optimization, and link building that drive organic traffic.</p><span class=\"ds-service-card__cta\">Learn more <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></span></div>",
+      "css": ".ds-service-card { background: #FFFFFF; border-radius: 12px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 12px; transition: box-shadow 0.3s ease, transform 0.3s ease; } .ds-service-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); transform: translateY(-4px); } .ds-service-card__icon { width: 56px; height: 56px; background: rgba(142,169,122,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #8EA97A; } .ds-service-card__title { font-family: Poppins, system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; color: #222222; line-height: 1.4; } .ds-service-card__body { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; color: #666666; line-height: 1.65; flex: 1; } .ds-service-card__cta { display: inline-flex; align-items: center; gap: 4px; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; color: #8EA97A; transition: gap 0.15s ease; } .ds-service-card:hover .ds-service-card__cta { gap: 8px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "card",
+      "description": "Standard text field with green focus ring and accessible error state.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field__label\" for=\"ds-input-name\">Full name</label><input class=\"ds-input\" id=\"ds-input-name\" type=\"text\" placeholder=\"Your name\" /><span class=\"ds-field__error\" role=\"alert\">This field is required</span></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field__label { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; color: #222222; line-height: 1.4; } .ds-input { background: #FFFFFF; border: 1px solid #d1d5db; border-radius: 12px; padding: 10px 14px; font-family: Inter, system-ui, sans-serif; font-size: 1rem; color: #222222; line-height: 1.5; transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } .ds-input::placeholder { color: #9ca3af; } .ds-input:focus { border-color: #8EA97A; box-shadow: 0 0 0 3px rgba(142,169,122,0.2); } .ds-input[aria-invalid=\"true\"] { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.15); } .ds-field__error { font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; color: #dc2626; display: none; } .ds-input[aria-invalid=\"true\"] ~ .ds-field__error { display: block; }"
+    },
+    {
+      "name": "Hero Category Badge",
+      "kind": "chip",
+      "refersTo": "card",
+      "description": "The pulsing brand badge used once per hero section to establish context. Never repeated as a body-section eyebrow.",
+      "html": "<span class=\"ds-hero-badge\"><span class=\"ds-hero-badge__dot\"></span>Our Services</span>",
+      "css": ".ds-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(142,169,122,0.15); border: 1px solid rgba(142,169,122,0.3); border-radius: 9999px; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; color: #8EA97A; } .ds-hero-badge__dot { width: 6px; height: 6px; background: #8EA97A; border-radius: 50%; animation: ds-pulse 2s cubic-bezier(0,0,0.2,1) infinite; } @keyframes ds-pulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-hero-badge__dot { animation: none; } }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "card",
+      "description": "Site-wide header. Transparent with glass-dark blur at scroll-top; solid dark on scroll. One sanctioned use of glassmorphism.",
+      "html": "<nav class=\"ds-nav ds-nav--scrolled\"><a class=\"ds-nav__logo\" href=\"/\">Think Hawks</a><div class=\"ds-nav__links\"><a class=\"ds-nav__link\" href=\"/services\">Services</a><a class=\"ds-nav__link\" href=\"/about\">About</a><a class=\"ds-nav__link ds-nav__link--active\" href=\"/contact\">Contact</a></div><button class=\"ds-btn-primary\" style=\"height:36px;padding:0 16px;font-size:0.8125rem\">Get a proposal</button></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 24px; padding: 16px 32px; position: sticky; top: 0; z-index: 50; background: rgba(17,17,17,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s ease; } .ds-nav--scrolled { background: #111111; backdrop-filter: none; } .ds-nav__logo { font-family: Poppins, system-ui, sans-serif; font-size: 1.125rem; font-weight: 700; color: #FFFFFF; text-decoration: none; margin-right: auto; } .ds-nav__links { display: flex; gap: 32px; } .ds-nav__link { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.15s ease; } .ds-nav__link:hover { color: #FFFFFF; } .ds-nav__link--active { color: #8EA97A; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Predator's Clarity",
+    "overview": "Think Hawks operates at altitude. The design sees everything below clearly, acts decisively, and wastes nothing. Every element on the page earns its place by moving a visitor closer to making contact. This is not a decorative site; it is a conversion instrument wearing a sharp suit.\n\nThe visual language is anchored in contrast: dark hero sections that command the opening of every page, clean white body for content to breathe, and a single hawk-green accent that fires with purpose. Typography is tight and deliberate — Poppins for display weight and authority, Inter for body legibility. Motion is choreographed around the scroll, not sprinkled for decoration.\n\nThe system explicitly rejects the warm-beige-card-grid-eyebrow-on-every-section aesthetic that AI-generated agency sites have defaulted to in 2026. It also rejects IBM-blue corporate stiffness. Think Hawks is neither generic nor stiff — it is sharp, regional, and operating at a standard its competitors haven't reached.",
+    "keyCharacteristics": [
+      "Dark hero sections open every page; light body sections carry the content",
+      "One accent color (hawk green) used with discipline — never as a body background",
+      "Display type is Poppins at tight letter-spacing; body type is Inter at 1.65 line-height",
+      "Motion reveals content on scroll entry; hover states translate cards -4px on Y",
+      "Glassmorphism used once per page maximum (the nav on scroll), never decoratively"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Hawk Green is the only color that stands out. Every other surface is neutral. The moment a second accent is introduced at full saturation, it competes with the brand signal.", "section": "colors" },
+      { "name": "The Muted Minimum Rule", "body": "No text color lighter than #666666 on white or #F8FAF8 backgrounds. At that value the contrast ratio is ~4.7:1. Below it, WCAG AA fails.", "section": "colors" },
+      { "name": "The Ceiling Rule", "body": "Display headings must stay within clamp(2.25rem, 5vw, 3.75rem). Letter-spacing must stay at or above -0.02em.", "section": "typography" },
+      { "name": "The Balance Rule", "body": "Apply text-wrap: balance to all h1-h3. Apply text-wrap: pretty to body prose.", "section": "typography" },
+      { "name": "The Ghost-Card Ban", "body": "A border: 1px solid plus a box-shadow with blur ≥ 16px on the same element is the ghost-card pattern. Cards have one or the other — never both.", "section": "elevation" },
+      { "name": "The Flat-by-Default Rule", "body": "Sections are flat. Elevation responds to interaction (hover, focus, drag) and hierarchy (card > section), never to decoration.", "section": "elevation" },
+      { "name": "The One-Hero Badge Rule", "body": "The pulsing category badge appears only in the hero. Repeating it in body sections as eyebrows is the AI-grammar scaffold this design explicitly rejects.", "section": "components" }
+    ],
+    "dos": [
+      "Do open every page with a dark hero section (#111111) that transitions to the light body via the SVG wave divider",
+      "Do use Hawk Green as the only accent across the entire interface",
+      "Do use text-wrap: balance on all h1-h3 and text-wrap: pretty on body prose",
+      "Do keep display heading font-size inside the clamp(2.25rem, 5vw, 3.75rem) ceiling",
+      "Do keep letter-spacing on display headings at -0.02em or looser",
+      "Do ensure every text color on white or #F8FAF8 meets WCAG AA (≥4.5:1)",
+      "Do limit card border-radius to rounded-xl (12px). Full-pill is for tags and badges only",
+      "Do translate every button label to verb + object format"
+    ],
+    "donts": [
+      "Don't use the generic 'SaaS cream' palette: warm-beige body backgrounds, soft rounded-card grids, tiny uppercase tracked eyebrows above every section",
+      "Don't use corporate/enterprise visual language: formal blue palettes, stock-photo-heavy layouts, procurement-vendor tone",
+      "Don't use gradient text (background-clip: text with a gradient). Deprecate the .gradient-text utility on new sections",
+      "Don't repeat the pulsing category badge as a body-section eyebrow",
+      "Don't use numbered section markers (01/02/03) as default scaffolding",
+      "Don't pair border: 1px solid with box-shadow blur ≥ 16px on the same card (ghost-card pattern)",
+      "Don't exceed rounded-xl (12px) on card and container surfaces",
+      "Don't introduce a second accent color at full saturation",
+      "Don't use hero-metric templates (big number + small label + gradient) as the primary trust signal"
+    ]
+  }
+}

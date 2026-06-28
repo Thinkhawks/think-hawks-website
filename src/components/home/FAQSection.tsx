@@ -28,7 +28,7 @@ export function FAQSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className={`bg-white rounded-2xl border overflow-hidden transition-all duration-200 ${
+              className={`bg-white rounded-xl border overflow-hidden transition-all duration-200 ${
                 openIndex === i ? "border-primary/30 shadow-md" : "border-gray-100 shadow-sm"
               }`}
             >
@@ -72,7 +72,7 @@ export function FAQSection() {
           ))}
         </div>
 
-        <div className="mt-10 text-center p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+        <div className="mt-10 text-center p-6 bg-white rounded-xl shadow-sm">
           <p className="text-[#666666] text-sm mb-3">
             Still have questions? We&apos;re happy to help.
           </p>

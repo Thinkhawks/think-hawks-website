@@ -17,19 +17,19 @@ type PortfolioItem = typeof portfolioItems[number];
 const categories = ["All", "E-commerce", "Website Development", "SEO", "Performance Marketing", "Social Media", "Lead Generation", "Content Marketing"];
 
 const gradients = [
-  "from-emerald-400 to-teal-500",
-  "from-blue-400 to-indigo-500",
-  "from-primary to-green-600",
-  "from-violet-400 to-purple-500",
-  "from-pink-400 to-rose-500",
-  "from-orange-400 to-amber-500",
-  "from-teal-400 to-cyan-500",
+  "from-emerald-500 to-teal-700",
+  "from-blue-500 to-blue-700",
+  "from-primary to-green-700",
+  "from-slate-500 to-slate-700",
+  "from-rose-500 to-red-700",
+  "from-amber-500 to-orange-700",
+  "from-teal-500 to-cyan-700",
 ];
 
 const avatarColors = [
   "from-primary to-primary-light",
   "from-blue-500 to-blue-600",
-  "from-purple-500 to-purple-600",
+  "from-slate-500 to-slate-600",
   "from-amber-500 to-amber-600",
   "from-rose-500 to-rose-600",
   "from-teal-500 to-teal-600",
@@ -53,11 +53,11 @@ function CaseStudyModal({ item, onClose }: { item: PortfolioItem; onClose: () =>
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40 }}
           transition={{ duration: 0.35 }}
-          className="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full my-auto"
+          className="relative bg-white rounded-xl shadow-2xl max-w-3xl w-full my-auto"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className={`relative bg-gradient-to-br ${gradient} rounded-t-3xl p-8 overflow-hidden`}>
+          <div className={`relative bg-gradient-to-br ${gradient} rounded-t-xl p-8 overflow-hidden`}>
             <div className="absolute inset-0 bg-black/20" />
             <button
               onClick={onClose}
@@ -78,7 +78,7 @@ function CaseStudyModal({ item, onClose }: { item: PortfolioItem; onClose: () =>
             {/* Metrics */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {item.metrics.map((m, i) => (
-                <div key={i} className="bg-[#F8FAF8] rounded-2xl p-4 text-center border border-gray-100">
+                <div key={i} className="bg-[#F8FAF8] rounded-lg p-4 text-center bg-[#F8FAF8]">
                   <p className="font-heading font-bold text-primary text-lg">{m.value}</p>
                   <p className="text-xs text-[#888888] mt-0.5">{m.label}</p>
                   <p className="text-[10px] text-primary/60 mt-0.5">{m.change}</p>
@@ -88,11 +88,11 @@ function CaseStudyModal({ item, onClose }: { item: PortfolioItem; onClose: () =>
 
             {/* Before / After */}
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-red-50 border border-red-100 rounded-2xl p-4">
+              <div className="bg-red-50 border border-red-100 rounded-lg p-4">
                 <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">Before</p>
                 <p className="text-sm text-[#555353] leading-relaxed">{item.beforeAfter.before}</p>
               </div>
-              <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4">
+              <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-4">
                 <p className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-2">After</p>
                 <p className="text-sm text-[#555353] leading-relaxed">{item.beforeAfter.after}</p>
               </div>
@@ -203,7 +203,7 @@ export function PortfolioPageContent() {
             </span>
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
               Results That{" "}
-              <span className="gradient-text">Speak For Themselves</span>
+              <span className="text-primary">Speak For Themselves</span>
             </h1>
             <p className="text-white/65 text-lg leading-relaxed max-w-2xl mx-auto">
               Explore real case studies across digital marketing, e-commerce, SEO, and web development.
@@ -248,7 +248,7 @@ export function PortfolioPageContent() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                  className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                   onClick={() => setSelectedItem(item)}
                 >
                   <div className={`relative h-52 bg-gradient-to-br ${gradients[item.id % gradients.length]} overflow-hidden`}>
@@ -328,7 +328,7 @@ export function PortfolioPageContent() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-[#F8FAF8] rounded-2xl p-6 border border-gray-100"
+                className="bg-[#F8FAF8] rounded-xl p-6"
               >
                 <Quote className="w-6 h-6 text-primary/40 mb-3" />
                 <div className="flex gap-0.5 mb-3">

@@ -1,17 +1,47 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { TawkChat } from "@/components/ui/TawkChat";
+import { MotionProvider } from "@/components/providers/MotionProvider";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Think Hawks",
+  description:
+    "Premium digital marketing agency in Lahore offering SEO, social media marketing, web development, branding, and paid advertising.",
+  url: "https://thinkhawks.com",
+  email: "thinkhawks@gmail.com",
+  telephone: "+92-328-458-0621",
+  image: "https://thinkhawks.com/icon.png",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Office #19, 1st Floor, Al Hafeez Shopping Mall, Gulberg III",
+    addressLocality: "Lahore",
+    addressCountry: "PK",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "10:00",
+      closes: "16:00",
+    },
+  ],
+  sameAs: ["https://linkedin.com/company/thinkhawks"],
+};
 
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700", "800", "900"],
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-poppins",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -43,21 +73,12 @@ export const metadata: Metadata = {
     title: "Think Hawks | Dominate the Digital Sky",
     description:
       "Premium digital marketing agency helping ambitious businesses dominate the digital landscape through strategic marketing, creative design, and data-driven advertising.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Think Hawks Digital Marketing Agency",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Think Hawks | Dominate the Digital Sky",
     description:
       "Premium digital marketing agency helping businesses grow online.",
-    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -70,11 +91,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
   metadataBase: new URL("https://thinkhawks.com"),
 };
 
@@ -84,9 +100,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={plusJakartaSans.variable}>
       <body className="min-h-screen flex flex-col antialiased bg-white text-[#222222]">
-        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <MotionProvider>{children}</MotionProvider>
+        <TawkChat />
       </body>
     </html>
   );

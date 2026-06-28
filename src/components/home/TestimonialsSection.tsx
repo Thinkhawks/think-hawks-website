@@ -9,7 +9,7 @@ import { testimonials } from "@/lib/data";
 const avatarColors = [
   "from-primary to-primary-light",
   "from-blue-500 to-blue-600",
-  "from-purple-500 to-purple-600",
+  "from-slate-500 to-slate-600",
   "from-amber-500 to-amber-600",
   "from-rose-500 to-rose-600",
   "from-teal-500 to-teal-600",
@@ -62,7 +62,7 @@ export function TestimonialsSection() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="glass-dark rounded-3xl p-8 lg:p-12 relative">
+                <div className="glass-dark rounded-xl p-8 lg:p-12 relative">
                   <Quote className="w-10 h-10 text-primary/40 mb-6" />
 
                   <div className="flex gap-1 mb-6">
@@ -135,7 +135,7 @@ export function TestimonialsSection() {
               <button
                 key={t.id}
                 onClick={() => { setIsAutoPlaying(false); setCurrent(i); }}
-                className={`p-3 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
+                className={`p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                   i === current
                     ? "border-primary bg-primary/10"
                     : "border-white/10 bg-white/5 hover:border-white/30"

@@ -43,27 +43,26 @@ export function SectionHeader({
       {badge && (
         <span
           className={cn(
-            "inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold mb-4",
+            "inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide mb-4",
             light
-              ? "bg-white/20 text-white"
+              ? "bg-white/15 text-white/80"
               : "bg-primary/10 text-primary"
           )}
         >
-          <span className={cn("w-1.5 h-1.5 rounded-full", light ? "bg-white" : "bg-primary")} />
           {badge}
         </span>
       )}
 
       <h2
         className={cn(
-          "font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight",
+          "font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight [text-wrap:balance]",
           light ? "text-white" : "text-[#222222]"
         )}
       >
         {highlight ? (
           <>
             {titleParts[0]}
-            <span className="gradient-text">{highlight}</span>
+            <span className={light ? "text-primary-light" : "text-primary"}>{highlight}</span>
             {titleParts[1]}
           </>
         ) : (

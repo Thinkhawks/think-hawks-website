@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import {
-  ArrowRight, Check, ChevronDown, TrendingUp, ShoppingBag,
+  ArrowRight, Check, TrendingUp, ShoppingBag,
   Globe, CreditCard, BarChart3, Settings, Zap, Shield,
   Package, Star, Plus, Minus, Store, DollarSign, Monitor,
 } from "lucide-react";
@@ -50,7 +50,6 @@ const successMetrics = [
 
 export function EcommercePageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.1, triggerOnce: true });
   const { ref: metricsRef, inView: metricsInView } = useInView({ threshold: 0.1, triggerOnce: true });
   const { ref: faqRef, inView: faqInView } = useInView({ threshold: 0.1, triggerOnce: true });
 
@@ -91,7 +90,7 @@ export function EcommercePageContent() {
                 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
               >
                 Build, Manage &{" "}
-                <span className="gradient-text">Scale Your</span>
+                <span className="text-primary">Scale Your</span>
                 <br />
                 E-commerce Store
               </motion.h1>
@@ -199,7 +198,7 @@ export function EcommercePageContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-primary/15 transition-all duration-300 group"
+                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 group"
                 >
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon className="w-6 h-6 text-white" />
@@ -276,7 +275,7 @@ export function EcommercePageContent() {
             </div>
 
             <div className="relative">
-              <div className="bg-[#F8FAF8] rounded-3xl p-8 border border-gray-100">
+              <div className="bg-[#F8FAF8] rounded-xl p-8">
                 <p className="font-heading font-bold text-[#222222] mb-5 text-lg">
                   What We Build For You
                 </p>
@@ -295,7 +294,7 @@ export function EcommercePageContent() {
                     "Mobile Optimization",
                     "Launch Support",
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-white rounded-xl px-3 py-2.5 border border-gray-100 shadow-sm">
+                    <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-3 py-2.5 shadow-sm">
                       <Check className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                       <span className="text-xs font-medium text-[#333333]">{item}</span>
                     </div>
@@ -330,7 +329,7 @@ export function EcommercePageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+                className="bg-white rounded-xl p-6 shadow-sm"
               >
                 <div className="w-11 h-11 gradient-bg rounded-xl flex items-center justify-center mb-5">
                   <card.icon className="w-5 h-5 text-white" />
@@ -367,7 +366,7 @@ export function EcommercePageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-[#F8FAF8] rounded-3xl p-8 border border-gray-100"
+              className="bg-[#F8FAF8] rounded-xl p-8"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
@@ -396,7 +395,7 @@ export function EcommercePageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-[#111111] rounded-3xl p-8"
+              className="bg-[#111111] rounded-xl p-8"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center">
@@ -447,7 +446,7 @@ export function EcommercePageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/15 transition-all duration-300"
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="text-3xl mb-4">{item.icon}</div>
                 <h3 className="font-heading font-bold text-[#222222] mb-3">{item.title}</h3>
@@ -476,7 +475,7 @@ export function EcommercePageContent() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={metricsInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass-dark rounded-2xl p-6 text-center border border-white/10"
+                className="glass-dark rounded-xl p-6 text-center border border-white/10"
               >
                 <p className="font-heading text-3xl lg:text-4xl font-bold text-white mb-1">{m.value}</p>
                 <p className="text-primary font-semibold text-sm mb-1">{m.metric}</p>
@@ -510,7 +509,7 @@ export function EcommercePageContent() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={faqInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className={`bg-[#F8FAF8] rounded-2xl border overflow-hidden transition-all ${openFaq === i ? "border-primary/30" : "border-gray-100"}`}
+                className={`bg-[#F8FAF8] rounded-xl border overflow-hidden transition-all ${openFaq === i ? "border-primary/30" : "border-gray-100"}`}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -558,7 +557,7 @@ export function EcommercePageContent() {
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#222222] leading-tight mb-5">
               Launch Your Profitable Store{" "}
-              <span className="gradient-text">This Month</span>
+              <span className="text-primary">This Month</span>
             </h2>
             <p className="text-[#666666] text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
               Get a free e-commerce strategy session. We&apos;ll audit your current situation (or help you start from zero), identify your biggest opportunities, and give you a clear roadmap to revenue.

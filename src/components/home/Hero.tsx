@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Play, CheckCircle, TrendingUp, Users, Star } from "lucide-react";
+import { ArrowRight, CheckCircle, TrendingUp, Users, Star } from "lucide-react";
 
 const stats = [
   { value: "200+", label: "Happy Clients" },
@@ -83,11 +83,11 @@ export function Hero() {
             >
               Elevate Your{" "}
               <span className="relative inline-block">
-                <span className="gradient-text">Brand</span>
+                <span className="text-primary">Brand</span>
               </span>
               <br />
               Above the{" "}
-              <span className="gradient-text">Competition</span>
+              <span className="text-primary">Competition</span>
             </motion.h1>
 
             <motion.p
@@ -178,7 +178,7 @@ export function Hero() {
                   className={`absolute ${card.position}`}
                 >
                   <div
-                    className="animate-float glass rounded-2xl px-4 py-3 shadow-2xl min-w-[120px]"
+                    className="animate-float glass rounded-xl px-4 py-3 shadow-2xl min-w-[120px]"
                     style={{ animationDelay: `${i * 0.4}s` }}
                   >
                     <div className="flex items-center gap-2 mb-1">
