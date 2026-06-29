@@ -66,6 +66,14 @@ export function ServicesPageContent() {
       {/* Services grid */}
       <section className="py-20 lg:py-28 bg-[#F8FAF8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#222222] mb-3">
+              Our Digital Marketing &amp; Web Development Services
+            </h2>
+            <p className="text-[#666666] max-w-2xl mx-auto leading-relaxed">
+              Explore every service we offer — each one crafted to deliver measurable results for your business.
+            </p>
+          </div>
           <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => {
               const Icon = iconMap[service.icon] || TrendingUp;

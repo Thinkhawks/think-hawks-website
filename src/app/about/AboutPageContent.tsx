@@ -89,6 +89,14 @@ export function AboutPageContent() {
       {/* Mission & Vision */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#222222] mb-3">
+              Our Mission &amp; Vision
+            </h2>
+            <p className="text-[#666666] max-w-xl mx-auto leading-relaxed">
+              What drives us every day and where we&apos;re headed as a company.
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
@@ -182,7 +190,7 @@ export function AboutPageContent() {
                     <span className="sm:hidden inline-block px-3 py-1 gradient-bg text-white text-xs font-bold rounded-full mb-2">
                       {m.year}
                     </span>
-                    <h4 className="font-heading font-bold text-[#222222] mb-2">{m.title}</h4>
+                    <h3 className="font-heading font-bold text-[#222222] mb-2">{m.title}</h3>
                     <p className="text-sm text-[#666666] leading-relaxed">{m.desc}</p>
                   </div>
                 </motion.div>

@@ -29,6 +29,24 @@ const postBgColors = [
 export function BlogPageContent() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    setNewsletterStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+      setNewsletterStatus(res.ok ? "success" : "error");
+    } catch {
+      setNewsletterStatus("error");
+    }
+  };
   const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true });
 
   const filtered = blogPosts.filter((p) => {
@@ -232,19 +250,30 @@ export function BlogPageContent() {
           <p className="text-[#666666] mb-6">
             Get weekly strategies and tactics delivered straight to your inbox. No spam, ever.
           </p>
-          <form className="flex gap-3 max-w-md mx-auto">
+          {newsletterStatus === "success" ? (
+            <p className="text-primary font-semibold">🎉 You&apos;re subscribed — welcome aboard!</p>
+          ) : (
+          <form onSubmit={handleNewsletter} className="flex gap-3 max-w-md mx-auto">
             <input
               type="email"
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
               placeholder="Your email address"
+              required
               className="flex-1 px-4 py-3 bg-[#F8FAF8] border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
             />
             <button
               type="submit"
-              className="gradient-bg text-white font-semibold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all text-sm flex-shrink-0"
+              disabled={newsletterStatus === "loading"}
+              className="gradient-bg text-white font-semibold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all text-sm flex-shrink-0 disabled:opacity-70"
             >
               Subscribe
             </button>
           </form>
+          )}
+          {newsletterStatus === "error" && (
+            <p className="text-red-500 text-xs mt-2">Something went wrong. Please try again.</p>
+          )}
           <p className="text-xs text-[#6B6B6B] mt-3">
             Join 5,000+ marketers and business owners. Unsubscribe any time.
           </p>
