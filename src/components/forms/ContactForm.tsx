@@ -270,7 +270,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full gradient-bg text-white font-semibold py-4 rounded-xl shadow-md hover:shadow-lg hover:shadow-primary/25 transition-[box-shadow,opacity] duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-sm"
+        className="w-full gradient-bg text-white font-semibold py-4 rounded-xl shadow-md hover:shadow-lg hover:shadow-primary/25 transition-[box-shadow,opacity] duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed text-sm"
       >
         {isSubmitting ? (
           <>
