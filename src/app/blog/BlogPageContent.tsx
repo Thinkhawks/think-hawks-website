@@ -267,7 +267,7 @@ export function BlogPageContent() {
               disabled={newsletterStatus === "loading"}
               className="gradient-bg text-white font-semibold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all text-sm flex-shrink-0 disabled:opacity-70"
             >
-              Subscribe
+              {newsletterStatus === "loading" ? "Subscribing..." : "Subscribe"}
             </button>
           </form>
           )}

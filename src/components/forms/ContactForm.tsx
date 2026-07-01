@@ -1,10 +1,10 @@
 "use client";
 
-import { useId } from "react";
+import { useState, useId } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Send, AlertCircle } from "lucide-react";
+import { Send, AlertCircle, RotateCcw } from "lucide-react";
 import { services } from "@/lib/data";
 
 const schema = z.object({
@@ -30,20 +30,21 @@ const budgetRanges = [
 ];
 
 const inputClass =
-  "w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-[#222222] placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all";
+  "w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-[#222222] placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors";
 const labelClass =
   "block text-xs font-semibold text-[#444444] mb-1.5 uppercase tracking-wide";
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const uid = useId();
   const fid = (name: string) => `${uid}-${name}`;
+  const [sent, setSent] = useState(false);
 
   const {
     register,
     handleSubmit,
     reset,
     setError,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: FormData) => {
@@ -63,6 +64,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
       if (!res.ok || result.error) {
         throw new Error(result.error || "Submission failed");
       }
+      setSent(true);
       reset();
     } catch (err) {
       setError("root", {
@@ -74,7 +76,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     }
   };
 
-  if (isSubmitSuccessful) {
+  if (sent) {
     return (
       <div className="text-center py-14" role="status" aria-live="polite">
         <div className="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
@@ -83,10 +85,17 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         <h3 className="font-heading font-bold text-[#222222] text-xl mb-2">
           Message Sent Successfully!
         </h3>
-        <p className="text-[#555353] text-sm max-w-sm mx-auto">
+        <p className="text-[#555353] text-sm max-w-sm mx-auto mb-6">
           Thank you for reaching out. Our team will get back to you within 24 hours —
           and you&apos;ll receive a confirmation email shortly.
         </p>
+        <button
+          onClick={() => setSent(false)}
+          className="inline-flex items-center gap-2 text-sm font-semibold text-primary border-2 border-primary rounded-xl px-6 py-3 hover:bg-primary hover:text-white transition-colors"
+        >
+          <RotateCcw className="w-4 h-4" aria-hidden="true" />
+          Send Another Message
+        </button>
       </div>
     );
   }
@@ -254,7 +263,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full gradient-bg text-white font-semibold py-3.5 rounded-xl shadow-md hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 text-sm"
+        className="w-full gradient-bg text-white font-semibold py-4 rounded-xl shadow-md hover:shadow-lg hover:shadow-primary/25 transition-[box-shadow,opacity] duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-sm"
       >
         {isSubmitting ? (
           <>

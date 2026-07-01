@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
         {
           heading: "Third-party services",
           paragraphs: [
-            "Our contact form is delivered via Web3Forms, and our website chat is provided by Tawk.to. These providers process your submission solely to deliver it to us. We may also use privacy-friendly analytics. Each provider maintains its own privacy policy.",
+            "Our contact form is delivered via Resend, and our website chat is provided by Tawk.to. These providers process your submission solely to deliver it to us. We may also use privacy-friendly analytics. Each provider maintains its own privacy policy.",
           ],
         },
         {

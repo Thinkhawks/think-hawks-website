@@ -36,7 +36,7 @@ const programStats = [
 
 export function AcademyPageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [expandedModule, setExpandedModule] = useState<number | null>(0);
+  const [expandedModule, setExpandedModule] = useState<number | null>(null);
   const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (

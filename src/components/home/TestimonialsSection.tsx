@@ -62,7 +62,11 @@ export function TestimonialsSection() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="glass-dark rounded-xl p-8 lg:p-12 relative">
+                <div
+                  className="glass-dark rounded-xl p-8 lg:p-12 relative"
+                  onMouseEnter={() => setIsAutoPlaying(false)}
+                  onMouseLeave={() => setIsAutoPlaying(true)}
+                >
                   <Quote className="w-10 h-10 text-primary/40 mb-6" />
 
                   <div className="flex gap-1 mb-6">

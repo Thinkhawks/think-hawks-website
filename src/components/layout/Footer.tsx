@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 
 const footerLinks = {
@@ -11,7 +11,6 @@ const footerLinks = {
     { label: "Our Team", href: "/about#team" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Blog", href: "/blog" },
-    { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ],
   services: [
@@ -36,14 +35,14 @@ const footerLinks = {
     { label: "Blog & Insights", href: "/blog" },
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Sitemap", href: "/sitemap.xml" },
+    { label: "Sitemap", href: "/sitemap" },
   ],
 };
 
 const socials = [
   {
     name: "Facebook",
-    href: "https://facebook.com/thinkhawks",
+    href: "https://www.facebook.com/thinkhawks",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -221,14 +220,13 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-5">
               Company
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1.5 group"
+                    className="text-sm text-white/60 hover:text-white active:text-white transition-colors block py-1.5"
                   >
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all duration-200" />
                     {link.label}
                   </Link>
                 </li>
@@ -241,14 +239,13 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-5">
               Services
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1.5 group"
+                    className="text-sm text-white/60 hover:text-white active:text-white transition-colors block py-1.5"
                   >
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all duration-200" />
                     {link.label}
                   </Link>
                 </li>
@@ -261,14 +258,13 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-5">
               Academy
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {footerLinks.academy.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1.5 group"
+                    className="text-sm text-white/60 hover:text-white active:text-white transition-colors block py-1.5"
                   >
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all duration-200" />
                     {link.label}
                   </Link>
                 </li>
@@ -281,14 +277,13 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-5">
               Resources
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1.5 group"
+                    className="text-sm text-white/60 hover:text-white active:text-white transition-colors block py-1.5"
                   >
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all duration-200" />
                     {link.label}
                   </Link>
                 </li>
@@ -311,7 +306,7 @@ export function Footer() {
             <Link href="/terms" className="text-white/40 hover:text-white/70 text-xs transition-colors">
               Terms of Service
             </Link>
-            <Link href="/sitemap.xml" className="text-white/40 hover:text-white/70 text-xs transition-colors">
+            <Link href="/sitemap" className="text-white/40 hover:text-white/70 active:text-white/70 text-xs transition-colors">
               Sitemap
             </Link>
           </div>

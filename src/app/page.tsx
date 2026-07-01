@@ -17,7 +17,6 @@ import { CTASection } from "@/components/home/CTASection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { BackToTop } from "@/components/ui/BackToTop";
-import { CookieNotice } from "@/components/ui/CookieNotice";
 
 export default function HomePage() {
   return (
@@ -43,7 +42,6 @@ export default function HomePage() {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <CookieNotice />
     </>
   );
 }

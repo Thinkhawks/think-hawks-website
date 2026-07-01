@@ -8,12 +8,13 @@ import { ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { portfolioItems } from "@/lib/data";
 
-const categories = ["All", "Performance Marketing", "SEO", "Branding & Web", "Social Media", "Lead Generation", "Content Marketing"];
+const categories = ["All", "E-commerce", "Website Development", "SEO", "Performance Marketing", "Social Media", "Lead Generation", "Content Marketing"];
 
 const categoryColors: Record<string, string> = {
-  "Performance Marketing": "bg-blue-100 text-blue-700",
+  "E-commerce": "bg-amber-100 text-amber-700",
+  "Website Development": "bg-purple-100 text-purple-700",
   "SEO": "bg-emerald-100 text-emerald-700",
-  "Branding & Web": "bg-purple-100 text-purple-700",
+  "Performance Marketing": "bg-blue-100 text-blue-700",
   "Social Media": "bg-pink-100 text-pink-700",
   "Lead Generation": "bg-orange-100 text-orange-700",
   "Content Marketing": "bg-teal-100 text-teal-700",

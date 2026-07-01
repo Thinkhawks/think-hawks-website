@@ -102,6 +102,52 @@ button {
   transition-timing-function: ease;
 }
 
+/* ─── Mobile / Touch fixes ───────────────────────────────────────── */
+
+/*
+  Remove the 300 ms tap delay and prevent double-tap zoom on
+  interactive elements. This alone fixes most "need two taps" issues
+  on iOS Safari and Android Chrome.
+*/
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+  iOS Safari auto-zooms into any form field whose font-size is < 16 px.
+  After the keyboard closes the viewport doesn't zoom back out unless
+  the user pinches manually. Setting 16 px on mobile prevents the zoom
+  from ever happening.
+*/
+@media screen and (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/*
+  On touch-only devices, CSS :hover activates on first tap and the
+  actual click fires only on the second tap for elements where hover
+  changes transform/layout. Disable those hover transforms on touch
+  devices so a single tap always navigates / activates.
+*/
+@media (hover: none) and (pointer: coarse) {
+  a:hover,
+  button:hover {
+    transform: none !important;
+    translate: none !important;
+  }
+}
+
 /* ─── Typography helpers ────────────────────────────────────────── */
 
 .font-heading {

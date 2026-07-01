@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { TawkChat } from "@/components/ui/TawkChat";
+import { CookieNotice } from "@/components/ui/CookieNotice";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 
 const jsonLd = {
@@ -44,6 +45,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -100,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={plusJakartaSans.variable}>
+    <html lang="en" className={plusJakartaSans.variable} data-scroll-behavior="smooth">
       <body className="min-h-screen flex flex-col antialiased bg-white text-[#222222]">
         <script
           type="application/ld+json"
@@ -108,6 +115,7 @@ export default function RootLayout({
         />
         <MotionProvider>{children}</MotionProvider>
         <TawkChat />
+        <CookieNotice />
       </body>
     </html>
   );

@@ -1,27 +1,40 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = "thinkhawks@gmail.com";
 const FROM_EMAIL = "Think Hawks Website <noreply@thinkhawks.com>";
+
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (char) => {
+    switch (char) {
+      case "&": return "&amp;";
+      case "<": return "&lt;";
+      case ">": return "&gt;";
+      case '"': return "&quot;";
+      default: return "&#39;";
+    }
+  });
+}
 
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!email || typeof email !== "string" || !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email)) {
       return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
     }
 
     if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json({ error: "Email service not configured." }, { status: 500 });
+      return NextResponse.json({ error: "Email service not configured." }, { status: 503 });
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       subject: `New Newsletter Subscriber: ${email}`,
-      html: `<p>New newsletter subscriber: <strong>${email}</strong></p>`,
+      html: `<p>New newsletter subscriber: <strong>${escapeHtml(email)}</strong></p>`,
     });
 
     await resend.emails.send({
