@@ -12,11 +12,12 @@ const schema = z.object({
   company: z.string().trim().max(200).optional().or(z.literal("")),
   service: z.string().trim().min(1).max(200),
   budget: z.string().trim().max(100).optional().or(z.literal("")),
-  message: z.string().trim().min(10).max(5000),
+  message: z.string().trim().max(5000).optional().or(z.literal("")),
   botcheck: z.string().optional(),
 });
 
-function escapeHtml(value: string) {
+function esc(value: string | null | undefined): string {
+  if (!value) return "";
   return value.replace(/[&<>"']/g, (char) => {
     switch (char) {
       case "&": return "&amp;";
@@ -31,19 +32,21 @@ function escapeHtml(value: string) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const parsed = schema.safeParse(body);
-
-    if (!parsed.success) {
-      return NextResponse.json({ error: "Please check your input and try again." }, { status: 400 });
-    }
-
-    const { name, email, phone, company, service, budget, message, botcheck } =
-      parsed.data;
 
     // Honeypot — silently succeed if bot filled this field
-    if (botcheck) {
+    if (body?.botcheck) {
       return NextResponse.json({ success: true });
     }
+
+    const parsed = schema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Please check your input and try again." },
+        { status: 400 }
+      );
+    }
+
+    const { name, email, phone, company, service, budget, message } = parsed.data;
 
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json(
@@ -54,11 +57,19 @@ export async function POST(request: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
+    const safeName = esc(name);
+    const safeEmail = esc(email);
+    const safePhone = esc(phone);
+    const safeCompany = esc(company);
+    const safeService = esc(service);
+    const safeBudget = esc(budget);
+    const safeMessage = esc(message).replace(/\n/g, "<br>");
+
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       replyTo: email,
-      subject: `New enquiry from ${escapeHtml(name)} — ${escapeHtml(service)}`,
+      subject: `New enquiry from ${safeName} — ${safeService}`,
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f8faf8; border-radius: 12px;">
           <div style="background: linear-gradient(135deg, #8EA97A, #A9C193); padding: 24px; border-radius: 10px; margin-bottom: 24px; text-align: center;">
@@ -66,16 +77,16 @@ export async function POST(request: Request) {
             <p style="color: rgba(255,255,255,0.85); margin: 6px 0 0; font-size: 14px;">Think Hawks Website</p>
           </div>
           <table style="width: 100%; border-collapse: collapse;">
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px; width: 130px;">Name</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; font-weight: 600; color: #222;">${escapeHtml(name)}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Email</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;"><a href="mailto:${escapeHtml(email)}" style="color: #8EA97A;">${escapeHtml(email)}</a></td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Phone</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${phone ? escapeHtml(phone) : "—"}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Company</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${company ? escapeHtml(company) : "—"}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Service</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${escapeHtml(service)}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Budget</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${budget ? escapeHtml(budget) : "Not specified"}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px; width: 130px;">Name</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; font-weight: 600; color: #222;">${safeName}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Email</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;"><a href="mailto:${safeEmail}" style="color: #8EA97A;">${safeEmail}</a></td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Phone</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${safePhone || "—"}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Company</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${safeCompany || "—"}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Service</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${safeService}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #666; font-size: 13px;">Budget</td><td style="padding: 10px 0; border-bottom: 1px solid #e8ede8; color: #222;">${safeBudget || "Not specified"}</td></tr>
           </table>
           <div style="margin-top: 20px; background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #8EA97A;">
             <p style="color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px;">Message</p>
-            <p style="color: #222; font-size: 14px; line-height: 1.6; margin: 0;">${escapeHtml(message).replace(/\n/g, "<br>")}</p>
+            <p style="color: #222; font-size: 14px; line-height: 1.6; margin: 0;">${safeMessage || "—"}</p>
           </div>
           <p style="text-align: center; color: #aaa; font-size: 11px; margin-top: 24px;">Think Hawks · Lahore, Pakistan · thinkhawks@gmail.com</p>
         </div>
@@ -91,15 +102,15 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [email],
-      subject: `We received your message, ${name}! — Think Hawks`,
+      subject: `We received your message, ${safeName}! — Think Hawks`,
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f8faf8; border-radius: 12px;">
           <div style="background: linear-gradient(135deg, #8EA97A, #A9C193); padding: 24px; border-radius: 10px; margin-bottom: 24px; text-align: center;">
             <h1 style="color: white; margin: 0; font-size: 22px;">Thanks for reaching out!</h1>
             <p style="color: rgba(255,255,255,0.85); margin: 6px 0 0; font-size: 14px;">Think Hawks · Digital Marketing Agency</p>
           </div>
-          <p style="color: #222; font-size: 15px; line-height: 1.6;">Hi <strong>${escapeHtml(name)}</strong>,</p>
-          <p style="color: #555; font-size: 14px; line-height: 1.6;">Thank you for contacting Think Hawks! We've received your enquiry about <strong>${escapeHtml(service)}</strong> and our team will get back to you within <strong>24 hours</strong>.</p>
+          <p style="color: #222; font-size: 15px; line-height: 1.6;">Hi <strong>${safeName}</strong>,</p>
+          <p style="color: #555; font-size: 14px; line-height: 1.6;">Thank you for contacting Think Hawks! We've received your enquiry about <strong>${safeService}</strong> and our team will get back to you within <strong>24 hours</strong>.</p>
           <p style="color: #555; font-size: 14px; line-height: 1.6;">In the meantime, feel free to reach us directly:</p>
           <div style="background: white; padding: 16px; border-radius: 8px; margin: 16px 0;">
             <p style="margin: 0; font-size: 13px; color: #444;">📞 <a href="tel:+923284580621" style="color: #8EA97A;">+92 328 458 0621</a></p>

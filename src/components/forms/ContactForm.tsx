@@ -14,7 +14,7 @@ const schema = z.object({
   company: z.string().optional(),
   service: z.string().min(1, "Please select a service"),
   budget: z.string().optional(),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  message: z.string().max(5000).optional(),
   botcheck: z.string().optional(),
 });
 
@@ -46,6 +46,13 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     setError,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
+
+  const onError = () => {
+    const firstErrorKey = Object.keys(errors)[0];
+    const el = document.getElementById(fid(firstErrorKey));
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+    el?.focus();
+  };
 
   const onSubmit = async (data: FormData) => {
     if (data.botcheck) return;
@@ -101,7 +108,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+    <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-4" noValidate>
       {/* Honeypot — visually hidden, off the tab order */}
       <input
         type="checkbox"
@@ -232,7 +239,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
 
       <div>
         <label htmlFor={fid("message")} className={labelClass}>
-          Your Message *
+          Your Message
         </label>
         <textarea
           id={fid("message")}

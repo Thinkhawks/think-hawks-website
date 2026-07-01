@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { z } from "zod";
 
 const TO_EMAIL = "thinkhawks@gmail.com";
 const FROM_EMAIL = "Think Hawks Website <noreply@thinkhawks.com>";
 
-function escapeHtml(value: string) {
+const schema = z.object({
+  email: z.string().trim().email().max(320),
+});
+
+function esc(value: string): string {
   return value.replace(/[&<>"']/g, (char) => {
     switch (char) {
       case "&": return "&amp;";
@@ -18,11 +23,14 @@ function escapeHtml(value: string) {
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const body = await request.json();
+    const parsed = schema.safeParse(body);
 
-    if (!email || typeof email !== "string" || !/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email)) {
+    if (!parsed.success) {
       return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
     }
+
+    const { email } = parsed.data;
 
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json({ error: "Email service not configured." }, { status: 503 });
@@ -33,8 +41,8 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [TO_EMAIL],
-      subject: `New Newsletter Subscriber: ${email}`,
-      html: `<p>New newsletter subscriber: <strong>${escapeHtml(email)}</strong></p>`,
+      subject: `New Newsletter Subscriber: ${esc(email)}`,
+      html: `<p>New newsletter subscriber: <strong>${esc(email)}</strong></p>`,
     });
 
     await resend.emails.send({
