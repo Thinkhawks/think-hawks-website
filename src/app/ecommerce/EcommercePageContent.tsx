@@ -56,7 +56,6 @@ const storeResults = [
   { src: "/results/trendz-trove/yesterday-growth.jpg", w: 1000, h: 759, stat: "Rs 259,182", label: "Full-day sales", note: "47 orders · +933% day over day" },
   { src: "/results/trendz-trove/daily-sales.jpg", w: 1000, h: 745, stat: "Rs 234,369", label: "Single-day sales", note: "44 orders in one day" },
   { src: "/results/trendz-trove/today-vs-yesterday.jpg", w: 1242, h: 1245, stat: "Rs 93,231", label: "Same-day pace", note: "+65% vs the day before" },
-  { src: "/results/trendz-trove/sales-by-channel.jpg", w: 1242, h: 700, stat: "Rs 234,369", label: "Sales by channel", note: "Single-day channel total" },
 ];
 
 export function EcommercePageContent() {
@@ -514,7 +513,7 @@ export function EcommercePageContent() {
             description="Unedited Shopify reporting from Trendz Trove, a store we build and manage. Figures shown in PKR, exactly as the dashboard reports them."
           />
 
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-14 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
             {storeResults.map((r) => (
               <motion.figure
                 key={r.src}
@@ -524,7 +523,7 @@ export function EcommercePageContent() {
                 transition={{ duration: 0.45 }}
                 className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col"
               >
-                <div className="relative h-52 bg-white border-b border-gray-100">
+                <div className="relative h-64 bg-white border-b border-gray-100">
                   <Image
                     src={r.src}
                     alt={`Trendz Trove Shopify dashboard — ${r.stat}, ${r.label}`}
