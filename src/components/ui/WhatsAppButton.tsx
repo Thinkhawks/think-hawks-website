@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X } from "lucide-react";
+import { COOKIE_CONSENT_KEY, COOKIE_CONSENT_EVENT } from "./CookieNotice";
 
 const PHONE = "923284580621";
 const MESSAGE = encodeURIComponent(
@@ -12,19 +13,45 @@ const MESSAGE = encodeURIComponent(
 export function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const dismissedRef = useRef(false);
 
-  // Auto-open the popup once after 4 s on first visit
+  // Auto-open the popup once after 4 s on first visit — but never while the
+  // cookie notice is still up. On narrow screens that notice spans the full
+  // width and lands on top of this card, burying the "Start Chat" CTA.
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!isDismissed) setIsOpen(true);
-    }, 4000);
-    return () => clearTimeout(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    let timer: ReturnType<typeof setTimeout>;
+
+    const openLater = () => {
+      timer = setTimeout(() => {
+        if (!dismissedRef.current) setIsOpen(true);
+      }, 4000);
+    };
+
+    // localStorage throws when storage is blocked (private mode, blocked
+    // cookies). Treat that as "no choice recorded" rather than breaking.
+    let consent: string | null = null;
+    try {
+      consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+    } catch {
+      consent = null;
+    }
+
+    if (consent) {
+      openLater();
+    } else {
+      window.addEventListener(COOKIE_CONSENT_EVENT, openLater, { once: true });
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener(COOKIE_CONSENT_EVENT, openLater);
+    };
   }, []);
 
   const handleDismiss = () => {
     setIsOpen(false);
     setIsDismissed(true);
+    dismissedRef.current = true;
   };
 
   if (isDismissed && !isOpen) {
@@ -33,7 +60,7 @@ export function WhatsAppButton() {
       <motion.button
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        onClick={() => { setIsDismissed(false); setIsOpen(true); }}
+        onClick={() => { setIsDismissed(false); dismissedRef.current = false; setIsOpen(true); }}
         className="fixed bottom-6 left-6 z-50 w-12 h-12 bg-green-500 hover:bg-green-600 rounded-full shadow-xl flex items-center justify-center transition-colors duration-200 cursor-pointer"
         aria-label="Open WhatsApp chat"
       >

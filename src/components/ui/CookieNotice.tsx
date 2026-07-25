@@ -4,12 +4,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
+/** Where the visitor's choice is stored. */
+export const COOKIE_CONSENT_KEY = "th-cookie-consent";
+/** Fired on `window` once the visitor accepts or declines. */
+export const COOKIE_CONSENT_EVENT = "th:cookie-consent";
+
 export function CookieNotice() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     // Only show until the visitor has made a choice (accept OR decline).
-    const choice = localStorage.getItem("th-cookie-consent");
+    const choice = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!choice) {
       const timer = setTimeout(() => setVisible(true), 2000);
       return () => clearTimeout(timer);
@@ -19,8 +24,10 @@ export function CookieNotice() {
   // Persist the choice. Analytics scripts should check this value
   // (`localStorage.getItem("th-cookie-consent") === "accepted"`) before loading.
   const choose = (consent: "accepted" | "declined") => {
-    localStorage.setItem("th-cookie-consent", consent);
+    localStorage.setItem(COOKIE_CONSENT_KEY, consent);
     setVisible(false);
+    // Let the WhatsApp popup know it can surface now without colliding.
+    window.dispatchEvent(new CustomEvent(COOKIE_CONSENT_EVENT));
   };
 
   return (
