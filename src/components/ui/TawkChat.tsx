@@ -20,32 +20,6 @@ export function TawkChat() {
         Tawk_API.onLoad = function() {
           Tawk_API.showWidget();
         };
-
-        // Tawk flips document.title to "1 new message" once a second, forever —
-        // even for visitors who never opened the chat, because the automated
-        // greeting counts as unread. That leaves every tab flashing. Hold our own
-        // title until the visitor actually engages, then stop interfering so a
-        // real conversation still gets its notification.
-        (function () {
-          var titleEl = document.getElementsByTagName("title")[0];
-          if (!titleEl || typeof MutationObserver === "undefined") return;
-
-          var canonical = document.title;
-          var observer = new MutationObserver(function () {
-            if (document.title.indexOf("new message") !== -1) {
-              if (document.title !== canonical) document.title = canonical;
-            } else {
-              // A real navigation changed the title — adopt it as the new baseline.
-              canonical = document.title;
-            }
-          });
-          observer.observe(titleEl, { childList: true, characterData: true, subtree: true });
-
-          Tawk_API.onChatMaximized = function () {
-            observer.disconnect();
-          };
-        })();
-
         var Tawk_LoadStart = new Date();
         (function () {
           var s1 = document.createElement("script"),
