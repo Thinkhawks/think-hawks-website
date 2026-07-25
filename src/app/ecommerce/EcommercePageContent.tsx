@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight, Check, TrendingUp, ShoppingBag,
   Globe, CreditCard, BarChart3, Settings, Zap, Shield,
@@ -46,6 +47,16 @@ const successMetrics = [
   { metric: "Client Retention", value: "96%", note: "renew within 3 months" },
   { metric: "Avg Order Value Lift", value: "+38%", note: "after store optimization" },
   { metric: "Cart Abandonment Drop", value: "-44%", note: "with email flows" },
+];
+
+// Shopify dashboard captures from a client store. Figures are in PKR, exactly
+// as the dashboard reports them.
+const storeResults = [
+  { src: "/results/trendz-trove/weekly-sales.jpg", w: 950, h: 1065, stat: "Rs 426,709", label: "8-day window", note: "125 orders · Jul 17–24" },
+  { src: "/results/trendz-trove/yesterday-growth.jpg", w: 1000, h: 759, stat: "Rs 259,182", label: "Full-day sales", note: "47 orders · +933% day over day" },
+  { src: "/results/trendz-trove/daily-sales.jpg", w: 1000, h: 745, stat: "Rs 234,369", label: "Single-day sales", note: "44 orders in one day" },
+  { src: "/results/trendz-trove/today-vs-yesterday.jpg", w: 1242, h: 1245, stat: "Rs 93,231", label: "Same-day pace", note: "+65% vs the day before" },
+  { src: "/results/trendz-trove/sales-by-channel.jpg", w: 1242, h: 700, stat: "Rs 234,369", label: "Sales by channel", note: "Single-day channel total" },
 ];
 
 export function EcommercePageContent() {
@@ -490,6 +501,52 @@ export function EcommercePageContent() {
             </div>
             <p className="text-white/60 text-sm">Rated 5.0 by 50+ clients across Pakistan and globally</p>
           </div>
+        </div>
+      </section>
+
+      {/* ── Client Store Results ─────────────────────────────────────────── */}
+      <section className="py-20 lg:py-28 bg-[#F8FAF8]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            badge="Client Results"
+            title="Straight From the "
+            highlight="Store Dashboard"
+            description="Unedited Shopify reporting from Trendz Trove, a store we build and manage. Figures shown in PKR, exactly as the dashboard reports them."
+          />
+
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {storeResults.map((r) => (
+              <motion.figure
+                key={r.src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45 }}
+                className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col"
+              >
+                <div className="relative h-52 bg-white border-b border-gray-100">
+                  <Image
+                    src={r.src}
+                    alt={`Trendz Trove Shopify dashboard — ${r.stat}, ${r.label}`}
+                    width={r.w}
+                    height={r.h}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-full object-contain object-top p-3"
+                  />
+                </div>
+                <figcaption className="p-5">
+                  <p className="font-heading text-2xl font-bold text-[#222222]">{r.stat}</p>
+                  <p className="text-primary font-semibold text-sm mt-0.5">{r.label}</p>
+                  <p className="text-[#666666] text-xs mt-1">{r.note}</p>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-[#666666] text-xs">
+            Screenshots cropped to the sales and order figures. Results vary by product,
+            budget, and market.
+          </p>
         </div>
       </section>
 
