@@ -94,12 +94,16 @@ export function WhatsAppButton() {
                   </p>
                 </div>
               </div>
+              {/* 44x44 tap target; the negative margins keep the visible
+                  28px circle in exactly the same spot. */}
               <button
                 onClick={handleDismiss}
-                className="w-7 h-7 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer flex-shrink-0"
+                className="group w-11 h-11 -my-2 -mr-2 flex items-center justify-center cursor-pointer flex-shrink-0"
                 aria-label="Close WhatsApp chat"
               >
-                <X className="w-3.5 h-3.5 text-gray-500" />
+                <span className="w-7 h-7 rounded-full bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center transition-colors">
+                  <X className="w-3.5 h-3.5 text-gray-500" />
+                </span>
               </button>
             </div>
 

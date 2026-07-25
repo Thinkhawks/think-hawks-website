@@ -40,15 +40,17 @@ export function CookieNotice() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="fixed inset-x-4 bottom-24 z-50 mx-auto max-w-md glass rounded-2xl shadow-2xl p-5 border border-primary/20 sm:bottom-6"
         >
+          {/* 44x44 tap target. The paragraph below clears its full width
+              (pr-11) so a tap on the copy can't silently decline. */}
           <button
             onClick={() => choose("declined")}
-            className="absolute top-3 right-3 text-[#666666] hover:text-[#222222] transition-colors cursor-pointer"
+            className="absolute top-0 right-0 w-11 h-11 flex items-center justify-center text-[#666666] hover:text-[#222222] transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X className="w-4 h-4" />
           </button>
 
-          <p className="text-[13px] text-[#444444] leading-relaxed mb-4 pr-4">
+          <p className="text-[13px] text-[#444444] leading-relaxed mb-4 pr-11">
             🍪 We use cookies to enhance your experience, analyze traffic, and serve
             personalized content. By continuing you agree to our{" "}
             <a href="/privacy-policy" className="text-primary underline hover:text-primary-dark">
