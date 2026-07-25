@@ -35,7 +35,7 @@ export function WhyUsSection() {
           badge="Why Choose Us"
           title="The Think Hawks "
           highlight="Advantage"
-          description="We don't just run campaigns — we become invested in your success. Here's why 200+ businesses trust us to grow their brand."
+          description="We don't just run campaigns — we become invested in your success. Here's why 50+ businesses trust us to grow their brand."
         />
 
         <div

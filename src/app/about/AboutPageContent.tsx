@@ -22,20 +22,19 @@ const values = [
 ];
 
 const teamStats = [
-  { value: 200, suffix: "+", label: "Happy Clients" },
-  { value: 350, suffix: "+", label: "Projects Delivered" },
-  { value: 5, suffix: "+", label: "Years of Experience" },
+  { value: 50, suffix: "+", label: "Happy Clients" },
+  { value: 25, suffix: "+", label: "Projects Delivered" },
+  { value: 2, suffix: "+", label: "Years of Experience" },
   { value: 15, suffix: "+", label: "Team Members" },
 ];
 
 const milestones = [
-  { year: "2019", title: "Think Hawks Founded", desc: "Started as a small digital marketing consultancy in Lahore with a vision to help local businesses grow online." },
-  { year: "2020", title: "First 50 Clients", desc: "Expanded our services to include web development and branding, growing our client base to 50+ businesses." },
-  { year: "2021", title: "International Expansion", desc: "Began serving international clients across UK, Canada, and Australia, bringing global expertise to every project." },
-  { year: "2022", title: "Team Growth", desc: "Grew our team to 10+ dedicated specialists across SEO, paid advertising, design, and development." },
-  { year: "2023", title: "200+ Clients Milestone", desc: "Reached the milestone of 200+ happy clients and launched our premium Enterprise service tier." },
-  { year: "2024", title: "E-commerce Division Launched", desc: "Launched Think Hawks E-commerce Growth Solutions and Think Hawks Academy — expanding into Shopify development, store management, and Pakistan's first dedicated e-commerce training program." },
-  { year: "2025+", title: "The Future", desc: "Continuing to innovate with AI-assisted marketing, international e-commerce expansion, and building the largest alumni network of e-commerce entrepreneurs in Pakistan." },
+  { year: "2024", title: "Think Hawks Founded", desc: "Started as a small digital marketing consultancy in Lahore with a vision to help local businesses grow online." },
+  { year: "2024", title: "Services Expanded", desc: "Added web development and branding to our offering, delivering our first full-scale projects for local businesses." },
+  { year: "2025", title: "International Expansion", desc: "Began serving international clients across UK, Canada, and Australia, bringing global expertise to every project." },
+  { year: "2025", title: "E-commerce Division Launched", desc: "Launched Think Hawks E-commerce Growth Solutions and Think Hawks Academy — expanding into Shopify development, store management, and Pakistan's first dedicated e-commerce training program." },
+  { year: "2026", title: "50+ Clients Milestone", desc: "Reached the milestone of 50+ happy clients and grew our team of dedicated specialists across SEO, paid advertising, design, and development." },
+  { year: "2026+", title: "The Future", desc: "Continuing to innovate with AI-assisted marketing, international e-commerce expansion, and building the largest alumni network of e-commerce entrepreneurs in Pakistan." },
 ];
 
 export function AboutPageContent() {
@@ -167,7 +166,7 @@ export function AboutPageContent() {
             badge="Our Journey"
             title="From Startup to "
             highlight="Trusted Partner"
-            description="Our journey from a small consultancy to a full-service agency trusted by 200+ businesses worldwide."
+            description="Our journey from a small consultancy to a full-service agency trusted by 50+ businesses worldwide."
           />
 
           <div ref={timelineRef} className="mt-14 relative">

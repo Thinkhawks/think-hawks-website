@@ -136,7 +136,7 @@ export function ContactPageContent() {
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
               {[
                 { icon: Zap, label: "Responds in 4 hrs" },
-                { icon: Users, label: "200+ businesses served" },
+                { icon: Users, label: "50+ businesses served" },
                 { icon: Star, label: "5.0 ★ client rating" },
               ].map((t, i) => (
                 <div key={i} className="flex items-center gap-2 text-white/60 text-sm">

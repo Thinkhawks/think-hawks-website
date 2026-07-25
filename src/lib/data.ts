@@ -706,9 +706,9 @@ export const faqs = [
 // ─── Stats ────────────────────────────────────────────────────────────────────
 
 export const stats = [
-  { value: 200, suffix: "+", label: "Happy Clients", icon: "Users" },
-  { value: 350, suffix: "+", label: "Projects Completed", icon: "CheckCircle" },
-  { value: 5, suffix: "+", label: "Years Experience", icon: "Award" },
+  { value: 50, suffix: "+", label: "Happy Clients", icon: "Users" },
+  { value: 25, suffix: "+", label: "Projects Completed", icon: "CheckCircle" },
+  { value: 2, suffix: "+", label: "Years Experience", icon: "Award" },
   { value: 97, suffix: "%", label: "Client Retention", icon: "TrendingUp" },
 ];
 
@@ -736,7 +736,7 @@ export const whyUsReasons = [
     icon: "Award",
     title: "Experienced Team",
     description:
-      "Our senior team brings 5+ years of digital marketing expertise across diverse industries and markets.",
+      "Our senior team brings 2+ years of digital marketing expertise across diverse industries and markets.",
   },
   {
     icon: "DollarSign",

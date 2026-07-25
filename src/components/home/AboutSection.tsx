@@ -48,12 +48,12 @@ export function AboutSection() {
 
                   {/* Stats cards overlay */}
                   <rect x="30" y="250" width="140" height="80" rx="16" fill="white" filter="url(#shadow1)" />
-                  <text x="55" y="280" fill="#8EA97A" fontSize="20" fontWeight="bold" fontFamily="system-ui">5+</text>
+                  <text x="55" y="280" fill="#8EA97A" fontSize="20" fontWeight="bold" fontFamily="system-ui">2+</text>
                   <text x="55" y="298" fill="#666666" fontSize="12" fontFamily="system-ui">Years of Experience</text>
                   <rect x="55" y="308" width="80" height="5" rx="2.5" fill="#8EA97A" fillOpacity="0.3" />
 
                   <rect x="230" y="50" width="140" height="80" rx="16" fill="white" filter="url(#shadow1)" />
-                  <text x="255" y="80" fill="#8EA97A" fontSize="20" fontWeight="bold" fontFamily="system-ui">350+</text>
+                  <text x="255" y="80" fill="#8EA97A" fontSize="20" fontWeight="bold" fontFamily="system-ui">25+</text>
                   <text x="255" y="98" fill="#666666" fontSize="12" fontFamily="system-ui">Projects Delivered</text>
                   <rect x="255" y="108" width="90" height="5" rx="2.5" fill="#8EA97A" fillOpacity="0.5" />
 

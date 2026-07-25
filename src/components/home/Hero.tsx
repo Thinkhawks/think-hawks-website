@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle, TrendingUp, Users, Star } from "lucide-react";
 
 const stats = [
-  { value: "200+", label: "Happy Clients" },
-  { value: "350+", label: "Projects Done" },
+  { value: "50+", label: "Happy Clients" },
+  { value: "25+", label: "Projects Done" },
   { value: "97%", label: "Retention Rate" },
 ];
 
@@ -72,7 +72,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-primary text-sm font-medium mb-6"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Trusted by 200+ businesses worldwide
+              Trusted by 50+ businesses worldwide
             </motion.div>
 
             <motion.h1

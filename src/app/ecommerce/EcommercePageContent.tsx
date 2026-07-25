@@ -488,7 +488,7 @@ export function EcommercePageContent() {
             <div className="flex items-center gap-2">
               {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="w-5 h-5 text-amber-400 fill-amber-400" />)}
             </div>
-            <p className="text-white/60 text-sm">Rated 5.0 by 200+ clients across Pakistan and globally</p>
+            <p className="text-white/60 text-sm">Rated 5.0 by 50+ clients across Pakistan and globally</p>
           </div>
         </div>
       </section>
