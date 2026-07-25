@@ -15,7 +15,8 @@ const schema = z.object({
   service: z.string().min(1, "Please select a service"),
   budget: z.string().optional(),
   message: z.string().max(5000).optional(),
-  botcheck: z.string().optional(),
+  // Registered on a checkbox input, so react-hook-form yields a boolean.
+  botcheck: z.boolean().optional(),
 });
 
 type FormData = z.infer<typeof schema>;

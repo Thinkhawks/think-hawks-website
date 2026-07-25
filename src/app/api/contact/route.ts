@@ -13,7 +13,8 @@ const schema = z.object({
   service: z.string().trim().min(1).max(200),
   budget: z.string().trim().max(100).optional().or(z.literal("")),
   message: z.string().trim().max(5000).optional().or(z.literal("")),
-  botcheck: z.string().optional(),
+  // botcheck is deliberately not validated here: the honeypot is checked
+  // before parsing, and the client sends a boolean. z.object() strips it.
 });
 
 function esc(value: string | null | undefined): string {
