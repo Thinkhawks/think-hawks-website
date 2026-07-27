@@ -10,6 +10,18 @@ const MESSAGE = encodeURIComponent(
   "Hello Think Hawks! I'd like to know more about your digital marketing services."
 );
 
+declare global {
+  interface Window {
+    Tawk_API?: { hideWidget?: () => void; showWidget?: () => void };
+  }
+}
+
+/** Below Tailwind's `sm` breakpoint there isn't room for this card and the
+ *  Tawk widget side by side: the card runs to x=294 while Tawk's greeting
+ *  bubble starts at x=251 on a 375px screen. */
+const isNarrowScreen = () =>
+  typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches;
+
 export function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
@@ -20,6 +32,11 @@ export function WhatsAppButton() {
   // width and lands on top of this card, burying the "Start Chat" CTA.
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
+
+    // On phones the card is left to sit closed: auto-opening it would land on
+    // top of the Tawk widget. The floating trigger stays, so chat is one tap
+    // away and both launchers coexist without colliding.
+    if (isNarrowScreen()) return;
 
     const openLater = () => {
       timer = setTimeout(() => {
@@ -47,6 +64,28 @@ export function WhatsAppButton() {
       window.removeEventListener(COOKIE_CONSENT_EVENT, openLater);
     };
   }, []);
+
+  // If the visitor does open this card on a phone, step the Tawk widget aside
+  // for as long as it's up, then bring it back. Uses Tawk's own documented
+  // API rather than fighting its iframe's z-index.
+  useEffect(() => {
+    if (!isNarrowScreen()) return;
+
+    try {
+      if (isOpen) window.Tawk_API?.hideWidget?.();
+      else window.Tawk_API?.showWidget?.();
+    } catch {
+      // Tawk not loaded yet, or not configured — nothing to step aside.
+    }
+
+    return () => {
+      try {
+        window.Tawk_API?.showWidget?.();
+      } catch {
+        /* no-op */
+      }
+    };
+  }, [isOpen]);
 
   const handleDismiss = () => {
     setIsOpen(false);
