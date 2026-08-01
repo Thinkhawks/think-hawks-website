@@ -15,8 +15,20 @@ const PAN_HOLD_SEC = 1.2;
 const PAN_MIN_TRAVEL_SEC = 6;
 const PAN_MAX_TRAVEL_SEC = 18;
 
+const CARD_SIZES = "(max-width: 640px) 78vw, (max-width: 1024px) 62vw, 640px";
+
 /** Long full-page captures pan slowly top-to-bottom instead of cropping to the top. */
-function ScrollingScreenshot({ image, alt, animate }: { image: WebsiteScreen; alt: string; animate: boolean }) {
+function ScrollingScreenshot({
+  image,
+  alt,
+  animate,
+  priority,
+}: {
+  image: WebsiteScreen;
+  alt: string;
+  animate: boolean;
+  priority: boolean;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [maxScroll, setMaxScroll] = useState(0);
 
@@ -63,7 +75,15 @@ function ScrollingScreenshot({ image, alt, animate }: { image: WebsiteScreen; al
             : { duration: 0.3 }
         }
       >
-        <Image src={image.src} alt={alt} width={image.w} height={image.h} className="w-full h-auto" />
+        <Image
+          src={image.src}
+          alt={alt}
+          width={image.w}
+          height={image.h}
+          sizes={CARD_SIZES}
+          priority={priority}
+          className="w-full h-auto"
+        />
       </motion.div>
     </div>
   );
@@ -120,6 +140,7 @@ function BrowserFrame({
                 image={current}
                 alt={`${item.name} screen ${screen + 1}`}
                 animate={playing}
+                priority={isActive}
               />
             </motion.div>
           </AnimatePresence>
@@ -215,7 +236,7 @@ export function WebsiteShowcase() {
 
             const isActive = offset === 0;
             const abs = Math.abs(offset);
-            if (abs > 2) return null;
+            if (abs > 1) return null;
 
             return (
               <motion.div
@@ -225,7 +246,7 @@ export function WebsiteShowcase() {
                 animate={{
                   x: `${offset * 62}%`,
                   scale: isActive ? 1 : 0.82,
-                  opacity: abs > 2 ? 0 : isActive ? 1 : 0.45,
+                  opacity: isActive ? 1 : 0.45,
                   rotateY: offset * -8,
                 }}
                 transition={{ type: "spring", stiffness: 260, damping: 30 }}

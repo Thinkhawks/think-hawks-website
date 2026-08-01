@@ -1,11 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { websiteShowcase } from "@/lib/data";
 
-const clients = [
-  "TechPulse", "Bloom Retail", "Apex Group", "StyleBox", "PrimeCare",
-  "GreenTech", "Nexus Corp", "UrbanMart", "VisionX", "PeakBrands",
-];
+const clients = websiteShowcase.map((item) => item.name);
 
 export function ClientLogos() {
   return (

@@ -24,10 +24,10 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <WebsiteShowcase />
         <ClientLogos />
         <ServicesSection />
         <StatsSection />
-        <WebsiteShowcase />
         <WhyUsSection />
         <HowWeWork />
         <EcommercePreview />
