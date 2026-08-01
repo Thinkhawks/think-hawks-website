@@ -197,6 +197,13 @@ export function WebsiteShowcase() {
   const next = useCallback(() => goTo(active + 1), [active, goTo]);
   const prev = useCallback(() => goTo(active - 1), [active, goTo]);
 
+  const togglePause = useCallback(() => {
+    // The button sits inside the hover-to-pause zone, so clicking "Play" while still
+    // hovering must also clear the hover suppression or playback never resumes.
+    setHoverPaused(false);
+    setManualPaused((p) => !p);
+  }, []);
+
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   useEffect(() => {
     if (paused || count <= 1) return;
@@ -261,7 +268,7 @@ export function WebsiteShowcase() {
                   item={item}
                   isActive={isActive}
                   paused={paused}
-                  onTogglePause={() => setManualPaused((p) => !p)}
+                  onTogglePause={togglePause}
                 />
               </motion.div>
             );
