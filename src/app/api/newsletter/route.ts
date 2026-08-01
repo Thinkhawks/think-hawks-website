@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
+import { clientKey, rateLimit, tooManyRequests } from "@/lib/rate-limit";
 
 const TO_EMAIL = "thinkhawks@gmail.com";
 const FROM_EMAIL = "Think Hawks Website <noreply@thinkhawks.com>";
+
+// Subscribing is a one-off action; the extra headroom covers someone
+// correcting a typo. The form appears in both the footer and the blog page.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
 
 const schema = z.object({
   email: z.string().trim().email().max(320),
@@ -23,6 +29,19 @@ function esc(value: string): string {
 
 export async function POST(request: Request) {
   try {
+    // Checked before parsing so malformed floods are cheap to reject too.
+    const limit = rateLimit(
+      clientKey(request, "newsletter"),
+      RATE_LIMIT,
+      RATE_WINDOW_MS
+    );
+    if (!limit.ok) {
+      return tooManyRequests(
+        limit.retryAfterSec,
+        "Too many requests — please try again in a few minutes."
+      );
+    }
+
     const body = await request.json();
     const parsed = schema.safeParse(body);
 

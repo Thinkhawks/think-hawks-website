@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
+import { clientKey, rateLimit, tooManyRequests } from "@/lib/rate-limit";
 
 const TO_EMAIL = "thinkhawks@gmail.com";
 const FROM_EMAIL = "Think Hawks Website <noreply@thinkhawks.com>";
+
+// A real enquirer sends once, twice if they spot a typo. Three in ten minutes
+// leaves genuine users plenty of room while capping what a script can cost us.
+const RATE_LIMIT = 3;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
 
 const schema = z.object({
   name: z.string().trim().min(2).max(200),
@@ -32,6 +38,19 @@ function esc(value: string | null | undefined): string {
 
 export async function POST(request: Request) {
   try {
+    // Checked before parsing so malformed floods are cheap to reject too.
+    const limit = rateLimit(
+      clientKey(request, "contact"),
+      RATE_LIMIT,
+      RATE_WINDOW_MS
+    );
+    if (!limit.ok) {
+      return tooManyRequests(
+        limit.retryAfterSec,
+        "You've sent a few messages already — please wait a few minutes, or email us directly at thinkhawks@gmail.com."
+      );
+    }
+
     const body = await request.json();
 
     // Honeypot — silently succeed if bot filled this field
