@@ -36,12 +36,20 @@ const categoryGroups: Record<string, string> = {
 
 const tabs = ["Digital Marketing", "E-commerce", "Paid Advertising", "Web & Creative"];
 
+/** Cut on a word boundary so the compact cards don't end mid-word ("link buil..."). */
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const clipped = text.slice(0, max);
+  const lastSpace = clipped.lastIndexOf(" ");
+  return `${(lastSpace > 0 ? clipped.slice(0, lastSpace) : clipped).replace(/[,;:.\s]+$/, "")}…`;
+}
+
 export function ServicesSection() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const filteredServices = useMemo(
-    () => services.filter((service) => categoryGroups[service.category] === activeTab),
+    () => services.filter((service) => categoryGroups[service.category] === activeTab).slice(0, 3),
     [activeTab]
   );
 
@@ -80,7 +88,7 @@ export function ServicesSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.3 }}
-            className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+            className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {filteredServices.map((service, i) => {
               const Icon = iconMap[service.icon] || TrendingUp;
@@ -92,23 +100,23 @@ export function ServicesSection() {
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                 >
                   <Link href={`/services/${service.id}`}>
-                    <div className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                    <div className="group bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
                       <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                        className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 ${
                           iconBg[service.category] || "bg-primary/10 text-primary"
                         }`}
                       >
-                        <Icon className="w-6 h-6" />
+                        <Icon className="w-[18px] h-[18px]" />
                       </div>
 
-                      <h3 className="font-heading font-semibold text-[#222222] text-base mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="font-heading font-semibold text-[#222222] text-sm mb-1.5 group-hover:text-primary transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-sm text-[#666666] leading-relaxed flex-1">
-                        {service.description.substring(0, 80)}...
+                      <p className="text-[13px] text-[#666666] leading-snug flex-1">
+                        {truncate(service.description, 64)}
                       </p>
 
-                      <div className="mt-4 flex items-center gap-1 text-primary text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="mt-3 flex items-center gap-1 text-primary text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                         Learn more
                         <ArrowRight className="w-3.5 h-3.5" />
                       </div>
