@@ -18,6 +18,11 @@ export function Navbar() {
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
+    // Read the position immediately: browsers restore scroll on reload and
+    // back-navigation, so without this the bar keeps its over-the-dark-hero
+    // styling (white links, blown-out logo) on top of white page content
+    // until the visitor happens to scroll again.
+    handler();
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);

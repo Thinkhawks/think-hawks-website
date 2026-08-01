@@ -11,10 +11,19 @@ export function proxy(request: NextRequest) {
   if (pathname === "/sitemap.xml") {
     const accept = request.headers.get("accept") ?? "";
     if (accept.includes("text/html")) {
-      return NextResponse.redirect(new URL("/sitemap", request.url), {
-        status: 301,
+      // 307, not 301: a permanent redirect is cached against the URL alone,
+      // so a browser or CDN that stored the human redirect could replay it
+      // for a crawler's XML fetch and hide the sitemap. Vary tells caches the
+      // response depends on Accept.
+      const res = NextResponse.redirect(new URL("/sitemap", request.url), {
+        status: 307,
       });
+      res.headers.set("Vary", "Accept");
+      return res;
     }
+    const res = NextResponse.next();
+    res.headers.set("Vary", "Accept");
+    return res;
   }
 
   return NextResponse.next();

@@ -9,6 +9,9 @@ export function BackToTop() {
 
   useEffect(() => {
     const toggle = () => setVisible(window.scrollY > 400);
+    // Restored scroll positions (reload / back-navigation) fire no scroll
+    // event, so check once on mount or the button stays hidden.
+    toggle();
     window.addEventListener("scroll", toggle, { passive: true });
     return () => window.removeEventListener("scroll", toggle);
   }, []);

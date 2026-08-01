@@ -70,7 +70,9 @@ export async function POST(request: Request) {
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       replyTo: email,
-      subject: `New enquiry from ${safeName} — ${safeService}`,
+      // Subjects are plain text, not HTML — use the raw values here or a name
+      // like "O'Brien" arrives as "O&#39;Brien".
+      subject: `New enquiry from ${name} — ${service}`,
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f8faf8; border-radius: 12px;">
           <div style="background: linear-gradient(135deg, #8EA97A, #A9C193); padding: 24px; border-radius: 10px; margin-bottom: 24px; text-align: center;">
@@ -99,12 +101,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    // Auto-reply to the client
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: [email],
-      subject: `We received your message, ${safeName}! — Think Hawks`,
-      html: `
+    // Auto-reply to the client. The enquiry above already reached us, so a
+    // failure here must not surface as an error — otherwise the visitor sees
+    // "something went wrong", resubmits, and we get the same lead twice.
+    try {
+      const { error: replyError } = await resend.emails.send({
+        from: FROM_EMAIL,
+        to: [email],
+        subject: `We received your message, ${name}! — Think Hawks`,
+        html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f8faf8; border-radius: 12px;">
           <div style="background: linear-gradient(135deg, #8EA97A, #A9C193); padding: 24px; border-radius: 10px; margin-bottom: 24px; text-align: center;">
             <h1 style="color: white; margin: 0; font-size: 22px;">Thanks for reaching out!</h1>
@@ -120,7 +125,11 @@ export async function POST(request: Request) {
           <p style="color: #aaa; font-size: 12px; margin-top: 24px; text-align: center;">Think Hawks · Office #19, Al Hafeez Shopping Mall, Gulberg III, Lahore</p>
         </div>
       `,
-    });
+      });
+      if (replyError) console.error("Auto-reply failed:", replyError);
+    } catch (replyErr) {
+      console.error("Auto-reply threw:", replyErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

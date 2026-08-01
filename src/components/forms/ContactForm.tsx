@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useId } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Send, AlertCircle, RotateCcw } from "lucide-react";
@@ -48,8 +48,12 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     formState: { errors, isSubmitting },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onError = () => {
-    const firstErrorKey = Object.keys(errors)[0];
+  // Use the errors react-hook-form hands to the invalid handler, not the
+  // `errors` from formState: that one is still the previous render's value
+  // here, so on the first failed submit it is empty and nothing gets focused.
+  const onError = (invalid: FieldErrors<FormData>) => {
+    const firstErrorKey = Object.keys(invalid)[0];
+    if (!firstErrorKey) return;
     const el = document.getElementById(fid(firstErrorKey));
     el?.scrollIntoView({ behavior: "smooth", block: "center" });
     el?.focus();
