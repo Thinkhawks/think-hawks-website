@@ -4,7 +4,7 @@ import { Hero } from "@/components/home/Hero";
 import { ClientLogos } from "@/components/home/ClientLogos";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { StatsSection } from "@/components/home/StatsSection";
-import { AboutSection } from "@/components/home/AboutSection";
+import { WebsiteShowcase } from "@/components/home/WebsiteShowcase";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
 import { HowWeWork } from "@/components/home/HowWeWork";
 import { EcommercePreview } from "@/components/home/EcommercePreview";
@@ -27,7 +27,7 @@ export default function HomePage() {
         <ClientLogos />
         <ServicesSection />
         <StatsSection />
-        <AboutSection />
+        <WebsiteShowcase />
         <WhyUsSection />
         <HowWeWork />
         <EcommercePreview />

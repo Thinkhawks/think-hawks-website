@@ -348,231 +348,118 @@ export const testimonials = [
 ];
 
 // ─── Portfolio ────────────────────────────────────────────────────────────────
+// Real, verifiable client work only. Each case study's `proof` images are
+// actual screenshots — no invented metrics, no fabricated clients.
+// To add a new case study: drop assets in public/results/<slug>/ and add
+// an entry below with the real numbers those assets show.
 
-export const portfolioItems = [
+export type ProofImage = {
+  src: string;
+  w: number;
+  h: number;
+  stat: string;
+  label: string;
+  note: string;
+};
+
+export type CaseStudy = {
+  id: number;
+  slug: string;
+  title: string;
+  client: string;
+  category: string;
+  description: string;
+  whatWeDid: string;
+  results: string[];
+  proof: ProofImage[];
+  tags: string[];
+};
+
+export const portfolioItems: CaseStudy[] = [
   {
     id: 1,
-    title: "Shopify Fashion Store: $0 to $45K/Month",
-    client: "FashionForward PK",
+    slug: "trendz-trove",
+    title: "Trendz Trove: Real Shopify Sales, Straight From the Dashboard",
+    client: "Trendz Trove",
     category: "E-commerce",
     description:
-      "Built and scaled a Shopify fashion store from zero to $45,000 monthly revenue in 8 months through store development, creative Meta Ads, and e-commerce SEO.",
-    challenge:
-      "The client had quality products but no online presence, no store, and no marketing infrastructure. They needed a complete end-to-end solution on a lean budget.",
-    strategy:
-      "We designed a conversion-optimized Shopify store, developed a 60-image product library, researched winning products using competitor intelligence, and systematically tested Meta Ads creatives starting with micro-budgets before scaling winners.",
-    solution:
-      "Custom Shopify theme development, JazzCash and card payment integration, automated abandoned cart and post-purchase email sequences, Facebook & Instagram ad campaigns scaled from $5/day to $200/day based on ROAS data.",
+      "A Shopify store we built and manage end-to-end — store setup, product listings, order operations, and ongoing growth. The numbers below are unedited screenshots from the client's own Shopify dashboard.",
+    whatWeDid:
+      "Store development and management, order and inventory operations, and day-to-day performance monitoring — the same Complete Store Management service we run for other e-commerce clients.",
     results: [
-      "Store launched in 5 weeks from zero",
-      "First $10,000 month achieved at month 3",
-      "Scaled to $45,000/month revenue by month 8",
-      "28% of revenue from automated email flows",
+      "Rs 426,709 in sales across 125 orders in an 8-day window (Jul 17–24)",
+      "Rs 259,182 in a single day (47 orders) — a 933% jump day-over-day",
+      "Rs 234,369 in sales from 44 orders in one day",
+      "Same-day pace up 65% versus the day before on another tracked day",
     ],
-    metrics: [
-      { label: "Monthly Revenue", value: "$45K+", change: "+4,400%" },
-      { label: "ROAS", value: "6.8x", change: "vs 0" },
-      { label: "Email Revenue Share", value: "28%", change: "automated" },
-      { label: "Ad Spend Scale", value: "40x", change: "$5 to $200/day" },
+    proof: [
+      { src: "/results/trendz-trove/weekly-sales.jpg", w: 950, h: 1065, stat: "Rs 426,709", label: "8-day window", note: "125 orders · Jul 17–24" },
+      { src: "/results/trendz-trove/yesterday-growth.jpg", w: 1000, h: 759, stat: "Rs 259,182", label: "Full-day sales", note: "47 orders · +933% day over day" },
+      { src: "/results/trendz-trove/daily-sales.jpg", w: 1000, h: 745, stat: "Rs 234,369", label: "Single-day sales", note: "44 orders in one day" },
+      { src: "/results/trendz-trove/today-vs-yesterday.jpg", w: 1242, h: 1245, stat: "Rs 93,231", label: "Same-day pace", note: "+65% vs the day before" },
     ],
-    beforeAfter: {
-      before: "No store, no revenue, no online presence",
-      after: "$45K/month, 22K email subscribers, 6.8x ROAS",
-    },
-    tags: ["Shopify", "Meta Ads", "E-commerce SEO", "Email Marketing"],
-    image: "/portfolio/ecommerce-store.jpg",
+    tags: ["Shopify", "Store Management", "E-commerce"],
   },
+];
+
+// ─── Website Showcase Carousel ─────────────────────────────────────────────────
+// Homepage carousel of real websites we've built. To add one: drop screenshots
+// in public/websites/<slug>/ and list them under `images` — one image for a
+// single-page site, several for a multi-screen app (they auto-cycle while
+// that card is active). Entries with no images render as an open placeholder
+// slot so the carousel never shows a broken image.
+
+export type WebsiteScreen = { src: string; w: number; h: number };
+
+export type WebsiteShowcaseItem = {
+  id: number;
+  name: string;
+  category: string;
+  images: WebsiteScreen[];
+};
+
+export const websiteShowcase: WebsiteShowcaseItem[] = [
   {
-    id: 2,
-    title: "SaaS Brand Identity & Website: +380% Demo Bookings",
-    client: "TechPulse Solutions",
-    category: "Website Development",
-    description:
-      "Complete brand overhaul and website rebuild for a B2B SaaS company — from logo to live site — resulting in 380% more demo bookings in 60 days.",
-    challenge:
-      "The client's existing website was outdated, slow (5.8s load time), and had a 74% bounce rate. Their brand looked untrustworthy, directly causing lost enterprise deals.",
-    strategy:
-      "We audited the existing site, redesigned the information architecture around the buyer journey, created a new brand identity system, and rebuilt the website as a fast, SEO-ready Next.js application.",
-    solution:
-      "New brand guidelines, logo, color system, and typography. Next.js website with sub-1s load time, SEO-optimized service pages, case study templates, and a Calendly-integrated demo booking system with heatmap tracking.",
-    results: [
-      "Bounce rate dropped from 74% to 31%",
-      "Page load time improved from 5.8s to 0.9s",
-      "Demo bookings increased 380% in 60 days",
-      "Google Core Web Vitals: all green",
-    ],
-    metrics: [
-      { label: "Demo Bookings", value: "+380%", change: "in 60 days" },
-      { label: "Bounce Rate", value: "31%", change: "from 74%" },
-      { label: "Load Time", value: "0.9s", change: "from 5.8s" },
-      { label: "Conversion Rate", value: "+156%", change: "MoM" },
-    ],
-    beforeAfter: {
-      before: "5.8s load time, 74% bounce rate, outdated brand",
-      after: "0.9s load time, 31% bounce rate, +380% demo bookings",
-    },
-    tags: ["Branding", "Web Dev", "UI/UX", "Next.js"],
-    image: "/portfolio/branding.jpg",
+    id: 1,
+    name: "Tradeido",
+    category: "Web Development",
+    images: [{ src: "/websites/tradeido/home.png", w: 2474, h: 16384 }],
   },
   {
     id: 3,
-    title: "Local SEO Domination: #1 Rankings in 90 Days",
-    client: "PrimeCare Clinics",
-    category: "SEO",
-    description:
-      "Comprehensive local SEO campaign achieving top-3 rankings for 47 target keywords and 200% increase in new patient inquiries.",
-    challenge:
-      "Despite excellent service quality, the clinic was invisible online. Competitors with inferior care were consistently outranking them for high-intent local keywords like 'best clinic Gulberg' and 'doctor near me Lahore'.",
-    strategy:
-      "Full technical SEO audit, Google Business Profile optimization, local citation building across 40+ directories, targeted content creation for each medical specialty, and a structured review acquisition strategy.",
-    solution:
-      "Fixed 87 technical SEO issues, rebuilt site architecture with location and specialty pages, published 24 medically-reviewed blog articles, acquired 120+ verified Google reviews, and optimized for Google Maps visibility across 3 clinic locations.",
-    results: [
-      "47 keywords in top 3 Google results",
-      "Google Maps Pack position 1 for 12 keywords",
-      "Monthly organic visitors: 340 → 5,800",
-      "New patient inquiries up 200% month-over-month",
-    ],
-    metrics: [
-      { label: "Organic Traffic", value: "+1,600%", change: "340 to 5,800/month" },
-      { label: "Keyword Rankings", value: "#1–3", change: "47 keywords" },
-      { label: "Lead Increase", value: "+200%", change: "MoM" },
-      { label: "Google Reviews", value: "120+", change: "acquired" },
-    ],
-    beforeAfter: {
-      before: "No page-1 rankings, 340 monthly visitors, minimal inquiries",
-      after: "47 top-3 keywords, 5,800 monthly visitors, 200% more patients",
-    },
-    tags: ["SEO", "Local SEO", "Content", "Google Business"],
-    image: "/portfolio/seo.jpg",
+    name: "Ember & Oak",
+    category: "Landing Page",
+    images: [{ src: "/websites/ember-oak/home.png", w: 2490, h: 12110 }],
   },
   {
     id: 4,
-    title: "E-commerce Performance Marketing: 8.4x ROAS",
-    client: "StyleBox International",
-    category: "Performance Marketing",
-    description:
-      "Multi-channel paid advertising strategy that drove 847% revenue growth and an 8.4x return on ad spend for a fashion e-commerce brand.",
-    challenge:
-      "The client was running Google and Facebook Ads in-house with a 2.1x ROAS and bleeding money. Creative fatigue, poor audience segmentation, and no attribution model were killing profitability.",
-    strategy:
-      "Full account audit and restructure, new creative testing framework, consolidated attribution modeling, Meta Advantage+ Shopping campaigns, Google Performance Max, and a retargeting architecture across the entire funnel.",
-    solution:
-      "Rebuilt Google Ads from scratch with Smart Shopping + PMAX, launched Meta Advantage+ with 40+ creative variations tested, implemented Northbeam for unified attribution, added TikTok as a new acquisition channel, and systematized weekly creative refreshes.",
-    results: [
-      "ROAS increased from 2.1x to 8.4x in 90 days",
-      "Monthly revenue grew 847%",
-      "12,400 new customers acquired",
-      "TikTok became 22% of total acquisition",
-    ],
-    metrics: [
-      { label: "Revenue Growth", value: "+847%", change: "in 6 months" },
-      { label: "ROAS", value: "8.4x", change: "from 2.1x" },
-      { label: "New Customers", value: "12,400+", change: "acquired" },
-      { label: "CPA Reduction", value: "-58%", change: "cost per customer" },
-    ],
-    beforeAfter: {
-      before: "2.1x ROAS, declining revenue, creative fatigue",
-      after: "8.4x ROAS, 847% revenue growth, profitable scaling",
-    },
-    tags: ["Google Ads", "Meta Ads", "TikTok Ads", "Attribution"],
-    image: "/portfolio/ecommerce.jpg",
+    name: "FlowStack",
+    category: "Web Development",
+    images: [{ src: "/websites/flowstack/home.png", w: 1588, h: 3709 }],
   },
   {
     id: 5,
-    title: "Social Media Growth: 85K Followers in 6 Months",
-    client: "Bloom Retail Co.",
-    category: "Social Media",
-    description:
-      "Full social media management that built an engaged community of 85,000+ followers and drove 190% increase in social-attributed sales.",
-    challenge:
-      "The brand had fewer than 2,000 followers across all platforms, inconsistent posting, no brand voice, and zero social-attributed sales. Social was treated as an afterthought.",
-    strategy:
-      "Developed a comprehensive social media brand playbook, built a 30-day content calendar, recruited and managed micro-influencer partnerships, and launched Instagram and TikTok Reels series aligned to trending audio.",
-    solution:
-      "Created 120+ pieces of branded content monthly, executed 18 micro-influencer collaborations, launched a UGC (User-Generated Content) reposting system, ran weekly Reels that averaged 200K+ organic views, and implemented social commerce on Instagram.",
-    results: [
-      "Grew from 2,000 to 87,000 followers in 6 months",
-      "Average Reel views: 200,000+ organic",
-      "Instagram Shop generating 30% of website traffic",
-      "Social-attributed sales up 190%",
-    ],
-    metrics: [
-      { label: "Followers Gained", value: "85K+", change: "from 2K" },
-      { label: "Engagement Rate", value: "7.2%", change: "vs 1.1% before" },
-      { label: "Sales via Social", value: "+190%", change: "MoM" },
-      { label: "Avg Reel Views", value: "200K+", change: "organic" },
-    ],
-    beforeAfter: {
-      before: "2,000 followers, 1.1% engagement, zero social sales",
-      after: "87,000 followers, 7.2% engagement, 190% social sales increase",
-    },
-    tags: ["Social Media", "Content", "Influencer", "TikTok"],
-    image: "/portfolio/social.jpg",
+    name: "GlowLab Skincare",
+    category: "Landing Page",
+    images: [{ src: "/websites/glowlab-skincare/home.png", w: 2490, h: 8464 }],
   },
   {
     id: 6,
-    title: "Lead Generation System: 450+ Leads/Month at 28% CVR",
-    client: "Apex Consultants",
-    category: "Lead Generation",
-    description:
-      "Automated lead generation funnel delivering 450+ qualified leads monthly with a 28% conversion rate and 64% lower cost-per-lead.",
-    challenge:
-      "The consulting firm relied entirely on referrals, had no digital lead system, and their sales pipeline frequently ran dry. They needed a predictable, scalable source of qualified inbound leads.",
-    strategy:
-      "Built a full-funnel lead generation system combining Google Ads for high-intent search traffic, a gated lead magnet (industry report), automated email nurture sequences, and a dedicated high-converting landing page.",
-    solution:
-      "Designed and developed a dedicated landing page with 3 A/B variants, created a 28-page industry report as the lead magnet, set up a 7-email nurture sequence in Klaviyo, launched targeted Google Search campaigns, and integrated Calendly for direct booking.",
-    results: [
-      "From 0 to 450+ qualified leads per month",
-      "28% lead-to-consultation conversion rate",
-      "Cost per lead reduced 64% over 90 days",
-      "3 enterprise contracts closed in month 2",
-    ],
-    metrics: [
-      { label: "Monthly Leads", value: "450+", change: "from 0" },
-      { label: "CVR", value: "28%", change: "lead to consultation" },
-      { label: "Cost Per Lead", value: "-64%", change: "vs paid search avg" },
-      { label: "Revenue from Funnel", value: "$180K+", change: "in 6 months" },
-    ],
-    beforeAfter: {
-      before: "0 digital leads, referral-only pipeline, unpredictable revenue",
-      after: "450+ leads/month, 28% CVR, predictable $180K pipeline",
-    },
-    tags: ["Lead Gen", "Google Ads", "Landing Page", "Email Automation"],
-    image: "/portfolio/leads.jpg",
+    name: "Nestly",
+    category: "E-commerce",
+    images: [{ src: "/websites/nestly/home.png", w: 2490, h: 9780 }],
   },
   {
     id: 7,
-    title: "Content Authority: 120K Monthly Readers",
-    client: "GreenTech Ventures",
-    category: "Content Marketing",
-    description:
-      "A 12-month content marketing strategy that turned a startup into the #1 industry thought leader with 120,000 monthly readers and 18,000 email subscribers.",
-    challenge:
-      "GreenTech was unknown in a competitive space dominated by established players with years of content history. They needed to establish authority and generate inbound leads without a massive ad budget.",
-    strategy:
-      "Built a pillar-cluster content architecture, targeted high-opportunity long-tail keywords, launched a weekly email newsletter, pitched guest posts to industry publications, and developed a systematic link acquisition program.",
-    solution:
-      "Published 48 long-form articles (avg 2,400 words), created 8 comprehensive pillar pages, launched weekly newsletter 'GreenTech Insider', secured 22 guest posts on domain authority 50+ sites, and built 1,200+ referring domains over 12 months.",
-    results: [
-      "Monthly organic readers grew from 800 to 120,000",
-      "18,000 email newsletter subscribers",
-      "1,200+ quality backlinks acquired",
-      "Ranked #1 for 6 industry head-terms",
-    ],
-    metrics: [
-      { label: "Monthly Readers", value: "120K+", change: "from 800" },
-      { label: "Email Subscribers", value: "18,000", change: "organic" },
-      { label: "Backlinks Earned", value: "1,200+", change: "referring domains" },
-      { label: "Inbound Leads", value: "+320%", change: "from content" },
-    ],
-    beforeAfter: {
-      before: "800 monthly visitors, 0 subscribers, unknown brand",
-      after: "120K readers, 18K subscribers, industry thought leader",
-    },
-    tags: ["Content", "SEO", "Email", "Link Building"],
-    image: "/portfolio/content.jpg",
+    name: "Pulse",
+    category: "Landing Page",
+    images: [{ src: "/websites/pulse/home.png", w: 1588, h: 7120 }],
+  },
+  {
+    id: 8,
+    name: "MentalMate",
+    category: "Web App",
+    images: [{ src: "/websites/mental-mate/dashboard-full.jpeg", w: 2480, h: 3566 }],
   },
 ];
 
