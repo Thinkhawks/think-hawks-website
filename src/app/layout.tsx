@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { TawkChat } from "@/components/ui/TawkChat";
 import { CookieNotice } from "@/components/ui/CookieNotice";
@@ -113,6 +114,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZYMFXXVK0P"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZYMFXXVK0P');
+          `}
+        </Script>
         <MotionProvider>{children}</MotionProvider>
         <TawkChat />
         <CookieNotice />
