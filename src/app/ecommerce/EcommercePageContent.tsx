@@ -52,9 +52,11 @@ const successMetrics = [
 // Shopify dashboard captures from a client store. Figures are in PKR, exactly
 // as the dashboard reports them.
 const storeResults = [
+  { src: "/results/trendz-trove/eleven-day-sales.jpg", w: 1242, h: 1054, stat: "Rs 692,413", label: "11-day window", note: "152 orders · Jul 17–27 · Rs 4,545 AOV" },
   { src: "/results/trendz-trove/weekly-sales.jpg", w: 950, h: 1065, stat: "Rs 426,709", label: "8-day window", note: "125 orders · Jul 17–24" },
   { src: "/results/trendz-trove/yesterday-growth.jpg", w: 1000, h: 759, stat: "Rs 259,182", label: "Full-day sales", note: "47 orders · +933% day over day" },
   { src: "/results/trendz-trove/daily-sales.jpg", w: 1000, h: 745, stat: "Rs 234,369", label: "Single-day sales", note: "44 orders in one day" },
+  { src: "/results/trendz-trove/sales-by-channel.jpg", w: 1242, h: 1068, stat: "Rs 234,369", label: "Sales by channel", note: "Same-day total verified across sales channels" },
   { src: "/results/trendz-trove/today-vs-yesterday.jpg", w: 1242, h: 1245, stat: "Rs 93,231", label: "Same-day pace", note: "+65% vs the day before" },
 ];
 
