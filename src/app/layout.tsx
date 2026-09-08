@@ -19,24 +19,10 @@ const jsonLd = {
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Office #19, 1st Floor, Al Hafeez Shopping Mall, Gulberg III",
+    streetAddress: "Al Hafeez Shopping Mall, Gulberg III",
     addressLocality: "Lahore",
     addressCountry: "PK",
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "19:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Saturday",
-      opens: "10:00",
-      closes: "16:00",
-    },
-  ],
   sameAs: ["https://linkedin.com/company/thinkhawks"],
 };
 

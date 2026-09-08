@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { MAPS_PLACE_URL, MAPS_EMBED_URL } from "@/lib/data";
@@ -23,14 +23,8 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    lines: ["Office #19, 1st Floor", "Al Hafeez Shopping Mall", "Gulberg III, Lahore"],
+    lines: ["Al Hafeez Shopping Mall", "Gulberg III, Lahore"],
     href: MAPS_PLACE_URL,
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    lines: ["Mon–Fri: 9am – 7pm", "Sat: 10am – 4pm", "Sun: Closed"],
-    href: null,
   },
 ];
 

@@ -1165,7 +1165,7 @@ export const ecommerceFaqs = [
 // ─── Location / Maps ──────────────────────────────────────────────────────────
 // No API key required — Google Maps "output=embed" + search URLs work directly.
 
-export const OFFICE_ADDRESS = "Office #19, 1st Floor, Al Hafeez Shopping Mall, Gulberg III, Lahore, Pakistan";
+export const OFFICE_ADDRESS = "Al Hafeez Shopping Mall, Gulberg III, Lahore, Pakistan";
 const MAPS_QUERY = "Al+Hafeez+Shopping+Mall+Gulberg+III+Lahore";
 export const MAPS_PLACE_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
 export const MAPS_EMBED_URL = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;

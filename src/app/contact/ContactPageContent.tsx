@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
-  Phone, Mail, MapPin, Clock, MessageSquare,
+  Phone, Mail, MapPin, MessageSquare,
   CheckCircle, ArrowRight, Star, Users, Zap,
 } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -44,7 +44,7 @@ const contactMethods = [
     icon: MapPin,
     heading: "Visit Us",
     sub: "Gulberg III, Lahore",
-    detail: "Office #19, Al Hafeez Mall",
+    detail: "Al Hafeez Mall",
     href: MAPS_PLACE_URL,
     color: "from-orange-500 to-orange-600",
     bg: "bg-orange-50",
@@ -252,29 +252,6 @@ export function ContactPageContent() {
                 </ul>
               </div>
 
-              {/* Business Hours */}
-              <div className="bg-[#F8FAF8] rounded-2xl p-6 border border-gray-100">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-4 h-4 text-white" />
-                  </div>
-                  <h2 className="font-heading font-bold text-[#222222]">Business Hours</h2>
-                </div>
-                <dl className="space-y-2">
-                  {[
-                    { day: "Monday – Friday", hours: "9:00 AM – 7:00 PM" },
-                    { day: "Saturday", hours: "10:00 AM – 4:00 PM" },
-                    { day: "Sunday", hours: "Closed" },
-                  ].map((r) => (
-                    <div key={r.day} className="flex justify-between items-center py-1.5 border-b border-gray-100 last:border-0">
-                      <dt className="text-sm text-[#555353]">{r.day}</dt>
-                      <dd className="text-sm font-semibold text-[#222222]">{r.hours}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <p className="text-xs text-[#6B6B6B] mt-3">Pakistan Standard Time (PKT / GMT+5)</p>
-              </div>
-
               {/* Map */}
               <div className="rounded-2xl overflow-hidden border border-gray-100 bg-[#F8FAF8]">
                 <h2 className="sr-only">Our Office Location</h2>
@@ -289,7 +266,7 @@ export function ContactPageContent() {
                 <div className="flex items-center justify-between gap-2 p-4">
                   <div>
                     <p className="font-semibold text-[#222222] text-sm">Al Hafeez Shopping Mall</p>
-                    <p className="text-xs text-[#6B6B6B]">Office #19, Gulberg III, Lahore</p>
+                    <p className="text-xs text-[#6B6B6B]">Gulberg III, Lahore</p>
                   </div>
                   <a
                     href={MAPS_PLACE_URL}

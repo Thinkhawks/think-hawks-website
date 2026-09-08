@@ -141,7 +141,7 @@ export async function POST(request: Request) {
             <p style="margin: 0; font-size: 13px; color: #444;">📞 <a href="tel:+923284580621" style="color: #8EA97A;">+92 328 458 0621</a></p>
             <p style="margin: 8px 0 0; font-size: 13px; color: #444;">💬 <a href="https://wa.me/923284580621" style="color: #8EA97A;">Chat on WhatsApp</a></p>
           </div>
-          <p style="color: #aaa; font-size: 12px; margin-top: 24px; text-align: center;">Think Hawks · Office #19, Al Hafeez Shopping Mall, Gulberg III, Lahore</p>
+          <p style="color: #aaa; font-size: 12px; margin-top: 24px; text-align: center;">Think Hawks · Al Hafeez Shopping Mall, Gulberg III, Lahore</p>
         </div>
       `,
       });

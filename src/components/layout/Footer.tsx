@@ -192,7 +192,7 @@ export function Footer() {
               <div className="flex items-start gap-2.5 text-sm text-white/60">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>
-                  Office #19, 1st Floor, Al Hafeez Shopping Mall,
+                  Al Hafeez Shopping Mall,
                   <br />
                   Gulberg III, Lahore, Pakistan
                 </span>

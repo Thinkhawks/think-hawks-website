@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
         {
           heading: "Contact us",
           paragraphs: [
-            "Questions about this policy? Email thinkhawks@gmail.com or call +92 328 458 0621. Think Hawks, Office #19, 1st Floor, Al Hafeez Shopping Mall, Gulberg III, Lahore, Pakistan.",
+            "Questions about this policy? Email thinkhawks@gmail.com or call +92 328 458 0621. Think Hawks, Al Hafeez Shopping Mall, Gulberg III, Lahore, Pakistan.",
           ],
         },
       ]}
