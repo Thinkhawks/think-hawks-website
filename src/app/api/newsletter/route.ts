@@ -3,7 +3,7 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { clientKey, rateLimit, tooManyRequests } from "@/lib/rate-limit";
 
-const TO_EMAIL = "thinkhawks@gmail.com";
+const TO_EMAIL = "info@thinkhawks.com";
 const FROM_EMAIL = "Think Hawks Website <noreply@thinkhawks.com>";
 
 // Subscribing is a one-off action; the extra headroom covers someone

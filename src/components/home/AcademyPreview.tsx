@@ -129,19 +129,20 @@ export function AcademyPreview() {
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#222222] leading-tight mb-5">
               Learn to Build a Profitable{" "}
-              <span className="text-primary">Shopify Business</span>
+              <span className="text-primary">E-commerce Business</span>
             </h2>
 
             <p className="text-[#666666] text-lg leading-relaxed mb-6">
-              Pakistan&apos;s most practical e-commerce training program. In 16 weeks, you&apos;ll go from
-              absolute beginner to owning a live, revenue-generating Shopify store — with
+              Pakistan&apos;s most practical e-commerce training. In 8 weeks, you&apos;ll go from
+              absolute beginner to owning a live, revenue-generating store — with
               real mentorship and real support at every step.
             </p>
 
             <div className="space-y-3 mb-8">
               {[
-                "16 weeks, 12 modules — built for complete beginners",
-                "Build your real Shopify store during the program",
+                "8 weeks — built for complete beginners",
+                "Separate programs for Shopify, Amazon, eBay & Etsy",
+                "Build your real store during the program",
                 "1-on-1 mentorship from 6-figure store owners",
                 "Flexible online sessions with recorded replays",
                 "Industry certification on completion",

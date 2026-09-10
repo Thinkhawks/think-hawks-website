@@ -13,8 +13,8 @@ const jsonLd = {
   description:
     "Premium digital marketing agency in Lahore offering SEO, social media marketing, web development, branding, and paid advertising.",
   url: "https://thinkhawks.com",
-  email: "thinkhawks@gmail.com",
-  telephone: "+92-328-458-0621",
+  email: "info@thinkhawks.com",
+  telephone: ["+1-936-930-0119", "+92-328-458-0621"],
   image: "https://thinkhawks.com/icon.png",
   priceRange: "$$",
   address: {

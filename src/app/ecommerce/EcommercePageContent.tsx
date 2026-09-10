@@ -8,14 +8,19 @@ import Image from "next/image";
 import {
   ArrowRight, Check, TrendingUp, ShoppingBag,
   Globe, CreditCard, BarChart3, Settings, Zap, Shield,
-  Package, Star, Plus, Minus, Store, DollarSign, Monitor,
+  Package, Star, Plus, Minus, Store, DollarSign, Monitor, Gift,
+  Truck, Headphones, MessageCircle,
 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ecommerceServices, ecommerceStats, ecommerceFaqs } from "@/lib/data";
+import {
+  ecommerceServices, ecommerceStats, ecommerceFaqs, ecommercePlatforms,
+  marketplaceServices, marketplaceProcess,
+} from "@/lib/data";
 
 const iconMap: Record<string, React.ElementType> = {
   Store, Package, BarChart3, Settings, CreditCard, Globe,
-  TrendingUp, ShoppingBag, Zap, DollarSign, Monitor,
+  TrendingUp, ShoppingBag, Zap, DollarSign, Monitor, Gift,
+  Truck, Headphones,
 };
 
 const localServices = [
@@ -33,7 +38,9 @@ const internationalServices = [
   "Shopify Markets & Multi-Currency Setup",
   "Stripe, PayPal & 2Checkout Integration",
   "International Shipping & DHL/FedEx Setup",
-  "Amazon & eBay Marketplace Strategy",
+  "Amazon Seller Central & FBA Setup",
+  "eBay Seller Account & Listing Optimization",
+  "Etsy Shop Setup & Etsy SEO",
   "VAT/GST Compliance Configuration",
   "Cross-Border SEO & Google Shopping",
   "Currency-Specific Pricing Rules",
@@ -113,8 +120,9 @@ export function EcommercePageContent() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mt-6 text-white/65 text-lg leading-relaxed max-w-xl"
               >
-                From Shopify store development and product research to multi-channel marketing
-                and complete store management — we handle every layer of your e-commerce growth.
+                Shopify, Amazon, eBay, and Etsy — from store development and product research to
+                multi-channel marketing and complete store management, we handle every layer of
+                your e-commerce growth.
               </motion.p>
 
               <motion.div
@@ -123,7 +131,7 @@ export function EcommercePageContent() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mt-5 flex flex-wrap gap-3"
               >
-                {["Shopify Development", "Local Payments", "Meta & TikTok Ads", "Store Management"].map((t) => (
+                {["Shopify Development", "Amazon, eBay & Etsy", "Meta & TikTok Ads", "Store Management"].map((t) => (
                   <span key={t} className="flex items-center gap-1.5 text-sm text-white/60">
                     <Check className="w-4 h-4 text-primary flex-shrink-0" />
                     {t}
@@ -236,6 +244,39 @@ export function EcommercePageContent() {
         </div>
       </section>
 
+      {/* ── Platforms strip ──────────────────────────────────────────────── */}
+      <section id="platforms" className="pt-16 pb-6 lg:pt-20 lg:pb-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-xs font-semibold tracking-[0.18em] uppercase text-[#6B6B6B]">
+            Platforms we build on and manage
+          </p>
+
+          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {ecommercePlatforms.map((platform, i) => {
+              const Icon = iconMap[platform.icon] || ShoppingBag;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  className="flex items-center gap-3 bg-[#F8FAF8] rounded-2xl px-4 py-4 sm:px-5"
+                >
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${platform.color} flex items-center justify-center flex-shrink-0 shadow-sm`}>
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-heading font-bold text-[#222222] text-sm">{platform.name}</p>
+                    <p className="text-xs text-[#6B6B6B] leading-snug">{platform.tagline}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ── E-commerce Business Development ─────────────────────────────── */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -314,6 +355,159 @@ export function EcommercePageContent() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Marketplace Management ───────────────────────────────────────── */}
+      <section id="marketplaces" className="relative py-20 lg:py-28 bg-[#111111] overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[420px] max-w-full bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(142,169,122,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(142,169,122,0.5) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            light
+            badge="Marketplace Management"
+            title="Amazon, eBay & Etsy — "
+            highlight="Built and Run For You"
+            description="We create your marketplace stores from scratch and then run them day to day. Setup, listings, optimization, orders, customer support, and growth — the complete process, handled by one team."
+          />
+
+          {/* Platform services */}
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {marketplaceServices.map((service, i) => {
+              const Icon = iconMap[service.icon] || ShoppingBag;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group flex flex-col glass-dark rounded-2xl p-7 border border-white/10 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className="w-7 h-7 text-white" />
+                  </div>
+
+                  <p className={`text-xs font-bold tracking-[0.14em] uppercase mb-2 ${service.accent}`}>
+                    {service.platform}
+                  </p>
+                  <h3 className="font-heading font-bold text-white text-xl leading-snug mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-white/60 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+
+                  <ul className="space-y-2.5 mb-7">
+                    {service.highlights.map((h, j) => (
+                      <li key={j} className="flex items-start gap-2.5 text-sm text-white/75">
+                        <Check className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-1" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href="/contact"
+                    className="mt-auto inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold py-3 rounded-xl text-sm hover:bg-white/10 transition-all duration-300"
+                  >
+                    Get Started
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* End-to-end process */}
+          <div className="mt-16 lg:mt-20">
+            <div className="text-center max-w-2xl mx-auto">
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white leading-tight">
+                One team handles the <span className="text-primary-light">entire process</span>
+              </h3>
+              <p className="mt-3 text-white/60 leading-relaxed">
+                You never have to stitch together freelancers for listings, ads, and support. Every
+                step below is included on every marketplace account we manage.
+              </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {marketplaceProcess.map((step, i) => {
+                const Icon = iconMap[step.icon] || Settings;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: Math.min(i * 0.06, 0.4) }}
+                    className="rounded-2xl p-5 bg-white/[0.04] border border-white/10 hover:bg-white/[0.07] transition-colors duration-300"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-9 h-9 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <p className="font-heading font-bold text-white text-sm leading-snug">
+                        {step.title}
+                      </p>
+                    </div>
+                    <p className="text-sm text-white/55 leading-relaxed">{step.description}</p>
+                  </motion.div>
+                );
+              })}
+
+              {/* CTA tile fills the final grid cell */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.42 }}
+                className="rounded-2xl p-5 gradient-bg flex flex-col justify-center"
+              >
+                <p className="font-heading font-bold text-white text-base leading-snug mb-1">
+                  Ready to sell on marketplaces?
+                </p>
+                <p className="text-sm text-white/80 leading-relaxed mb-4">
+                  Tell us your product. We&apos;ll tell you which marketplace fits and what it takes.
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-secondary font-bold py-2.5 rounded-xl text-sm hover:shadow-lg transition-all duration-300"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Section CTAs */}
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 gradient-bg text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm"
+            >
+              Get Started
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a
+              href="https://wa.me/923284580621"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/25 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 text-sm"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Contact Us on WhatsApp
+            </a>
           </div>
         </div>
       </section>

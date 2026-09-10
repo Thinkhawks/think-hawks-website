@@ -57,13 +57,13 @@ export default function PrivacyPolicyPage() {
         {
           heading: "Your rights",
           paragraphs: [
-            "You can ask us to access, correct, or delete the personal information we hold about you. To make a request, email thinkhawks@gmail.com.",
+            "You can ask us to access, correct, or delete the personal information we hold about you. To make a request, email info@thinkhawks.com.",
           ],
         },
         {
           heading: "Contact us",
           paragraphs: [
-            "Questions about this policy? Email thinkhawks@gmail.com or call +92 328 458 0621. Think Hawks, Al Hafeez Shopping Mall, Gulberg III, Lahore, Pakistan.",
+            "Questions about this policy? Email info@thinkhawks.com or call +1 936 930 0119 (US) or +92 328 458 0621 (PK). Think Hawks, Al Hafeez Shopping Mall, Gulberg III, Lahore, Pakistan.",
           ],
         },
       ]}

@@ -3,7 +3,7 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { clientKey, rateLimit, tooManyRequests } from "@/lib/rate-limit";
 
-const TO_EMAIL = "thinkhawks@gmail.com";
+const TO_EMAIL = "info@thinkhawks.com";
 const FROM_EMAIL = "Think Hawks Website <noreply@thinkhawks.com>";
 
 // A real enquirer sends once, twice if they spot a typo. Three in ten minutes
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     if (!limit.ok) {
       return tooManyRequests(
         limit.retryAfterSec,
-        "You've sent a few messages already — please wait a few minutes, or email us directly at thinkhawks@gmail.com."
+        "You've sent a few messages already — please wait a few minutes, or email us directly at info@thinkhawks.com."
       );
     }
 
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
 
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json(
-        { error: "Email service not configured. Please contact us directly at thinkhawks@gmail.com" },
+        { error: "Email service not configured. Please contact us directly at info@thinkhawks.com" },
         { status: 503 }
       );
     }
@@ -110,7 +110,7 @@ export async function POST(request: Request) {
             <p style="color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px;">Message</p>
             <p style="color: #222; font-size: 14px; line-height: 1.6; margin: 0;">${safeMessage || "—"}</p>
           </div>
-          <p style="text-align: center; color: #aaa; font-size: 11px; margin-top: 24px;">Think Hawks · Lahore, Pakistan · thinkhawks@gmail.com</p>
+          <p style="text-align: center; color: #aaa; font-size: 11px; margin-top: 24px;">Think Hawks · Lahore, Pakistan · info@thinkhawks.com</p>
         </div>
       `,
     });
@@ -138,7 +138,8 @@ export async function POST(request: Request) {
           <p style="color: #555; font-size: 14px; line-height: 1.6;">Thank you for contacting Think Hawks! We've received your enquiry about <strong>${safeService}</strong> and our team will get back to you within <strong>24 hours</strong>.</p>
           <p style="color: #555; font-size: 14px; line-height: 1.6;">In the meantime, feel free to reach us directly:</p>
           <div style="background: white; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <p style="margin: 0; font-size: 13px; color: #444;">📞 <a href="tel:+923284580621" style="color: #8EA97A;">+92 328 458 0621</a></p>
+            <p style="margin: 0; font-size: 13px; color: #444;">📞 <a href="tel:+19369300119" style="color: #8EA97A;">+1 936 930 0119</a> (US)</p>
+            <p style="margin: 8px 0 0; font-size: 13px; color: #444;">📞 <a href="tel:+923284580621" style="color: #8EA97A;">+92 328 458 0621</a> (PK)</p>
             <p style="margin: 8px 0 0; font-size: 13px; color: #444;">💬 <a href="https://wa.me/923284580621" style="color: #8EA97A;">Chat on WhatsApp</a></p>
           </div>
           <p style="color: #aaa; font-size: 12px; margin-top: 24px; text-align: center;">Think Hawks · Al Hafeez Shopping Mall, Gulberg III, Lahore</p>

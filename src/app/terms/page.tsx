@@ -55,7 +55,7 @@ export default function TermsPage() {
         {
           heading: "Contact us",
           paragraphs: [
-            "Questions about these terms? Email thinkhawks@gmail.com or call +92 328 458 0621.",
+            "Questions about these terms? Email info@thinkhawks.com or call +1 936 930 0119 (US) or +92 328 458 0621 (PK).",
           ],
         },
       ]}

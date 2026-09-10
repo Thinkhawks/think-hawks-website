@@ -11,14 +11,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+92 328 458 0621", "+92 326 212 4461"],
-    href: "tel:+923284580621",
+    lines: ["+1 936 930 0119 (US)", "+92 328 458 0621 (PK)", "+92 326 212 4461 (PK)"],
+    href: "tel:+19369300119",
   },
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["thinkhawks@gmail.com"],
-    href: "mailto:thinkhawks@gmail.com",
+    lines: ["info@thinkhawks.com"],
+    href: "mailto:info@thinkhawks.com",
   },
   {
     icon: MapPin,

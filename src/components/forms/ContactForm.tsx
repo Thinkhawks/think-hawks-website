@@ -83,7 +83,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         message:
           err instanceof Error && err.message !== "Internal server error"
             ? err.message
-            : "Something went wrong. Please try again or email thinkhawks@gmail.com.",
+            : "Something went wrong. Please try again or email info@thinkhawks.com.",
       });
     }
   };

@@ -77,7 +77,7 @@ export function FAQSection() {
             Still have questions? We&apos;re happy to help.
           </p>
           <a
-            href="mailto:thinkhawks@gmail.com"
+            href="mailto:info@thinkhawks.com"
             className="inline-flex items-center gap-2 gradient-bg text-white font-semibold px-6 py-2.5 rounded-xl text-sm hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300"
           >
             Email Us Directly

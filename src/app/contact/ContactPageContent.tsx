@@ -13,9 +13,10 @@ const contactMethods = [
     icon: Phone,
     heading: "Call Us",
     sub: "Mon–Fri 9am–7pm PKT",
-    detail: "+92 328 458 0621",
-    detail2: "+92 326 212 4461",
-    href: "tel:+923284580621",
+    detail: "+1 936 930 0119 (US)",
+    detail2: "+92 328 458 0621 (PK)",
+    detail3: "+92 326 212 4461 (PK)",
+    href: "tel:+19369300119",
     color: "from-primary to-primary-light",
     bg: "bg-primary/10",
     text: "text-primary",
@@ -24,8 +25,8 @@ const contactMethods = [
     icon: Mail,
     heading: "Email Us",
     sub: "Reply within 24 hours",
-    detail: "thinkhawks@gmail.com",
-    href: "mailto:thinkhawks@gmail.com",
+    detail: "info@thinkhawks.com",
+    href: "mailto:info@thinkhawks.com",
     color: "from-blue-500 to-blue-600",
     bg: "bg-blue-50",
     text: "text-blue-600",
@@ -181,6 +182,9 @@ export function ContactPageContent() {
                   <p className="text-sm font-medium text-[#222222] leading-snug">{m.detail}</p>
                   {m.detail2 && (
                     <p className="text-sm text-[#666666]">{m.detail2}</p>
+                  )}
+                  {m.detail3 && (
+                    <p className="text-sm text-[#666666]">{m.detail3}</p>
                   )}
                 </div>
                 <ArrowRight className="w-3.5 h-3.5 text-[#CCCCCC] group-hover:text-primary group-hover:translate-x-0.5 transition-all absolute top-4 right-4" />

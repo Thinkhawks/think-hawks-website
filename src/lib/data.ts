@@ -252,6 +252,31 @@ export const services = [
       "Store Maintenance & Updates",
     ],
   },
+  {
+    id: "marketplace-management",
+    title: "Marketplace Management",
+    description:
+      "Complete Amazon, eBay, and Etsy store creation and management — account setup, product listings, listing optimization, order handling, customer support, and ongoing growth, all handled by one team.",
+    icon: "Store",
+    category: "E-commerce",
+    color: "from-amber-500/10 to-orange-600/10",
+    iconColor: "text-amber-600",
+    benefits: [
+      "Amazon Store Creation & Management",
+      "eBay Store Creation & Management",
+      "Etsy Store Creation & Management",
+      "Seller Account Setup & Verification",
+      "Product Listing Creation & Cataloguing",
+      "Listing Optimization & Marketplace SEO",
+      "Account Health & Policy Compliance",
+      "Inventory & Pricing Management",
+      "Order Handling & Courier Coordination",
+      "Returns, Refunds & Dispute Resolution",
+      "Customer Support & Review Management",
+      "Marketplace Advertising (Sponsored Ads, Etsy Ads)",
+      "Ongoing Growth & Monthly Reporting",
+    ],
+  },
 ];
 
 // ─── Testimonials ─────────────────────────────────────────────────────────────
@@ -838,6 +863,8 @@ export const navLinks = [
           { label: "E-commerce Growth Solutions", href: "/services/ecommerce-growth" },
           { label: "E-commerce Landing Page", href: "/ecommerce" },
           { label: "Shopify Development", href: "/ecommerce#development" },
+          { label: "Marketplace Management", href: "/services/marketplace-management" },
+          { label: "Amazon, eBay & Etsy", href: "/ecommerce#marketplaces" },
           { label: "Store Management", href: "/ecommerce#management" },
           { label: "Think Hawks Academy", href: "/academy" },
         ],
@@ -936,77 +963,154 @@ export const academyModules = [
     title: "Shopify Basics",
     description: "Learn the Shopify platform from the ground up — navigation, dashboard, plans, and the Shopify ecosystem.",
     topics: ["Shopify plans & pricing", "Dashboard walkthrough", "Shopify apps ecosystem", "Shopify vs WooCommerce vs other platforms"],
-    duration: "Week 2",
+    duration: "Week 1",
   },
   {
     number: "03",
     title: "Store Setup & Configuration",
     description: "Build a professional, fully functional Shopify store ready to receive orders and payments.",
     topics: ["Domain setup", "Theme selection & customization", "Navigation & collections", "Local & international payment gateway integration"],
-    duration: "Week 3–4",
+    duration: "Week 2",
   },
   {
     number: "04",
     title: "Branding Your Store",
     description: "Create a memorable brand identity that builds trust, drives loyalty, and sets your store apart from the competition.",
     topics: ["Logo & color palette creation", "Brand voice & tone", "Photography & visual guidelines", "Product packaging design basics"],
-    duration: "Week 5",
+    duration: "Week 2",
   },
   {
     number: "05",
     title: "Product Research",
     description: "Learn proven frameworks to find winning products with strong demand, healthy margins, and low competition.",
     topics: ["Product research tools (Minea, AdSpy, EcomHunt)", "Trend analysis", "Demand validation methods", "Margin & profitability calculation"],
-    duration: "Week 6",
+    duration: "Week 3",
   },
   {
     number: "06",
     title: "Supplier Research & Sourcing",
     description: "Find reliable suppliers locally and internationally to ensure product quality, fast shipping, and healthy margins.",
     topics: ["Alibaba, 1688, and local supplier directories", "Supplier vetting & quality control", "MOQ negotiation", "Dropshipping vs inventory model"],
-    duration: "Week 7",
+    duration: "Week 3",
   },
   {
     number: "07",
     title: "Product Listings & Optimization",
     description: "Write and design product pages that convince, convert, and rank in search results.",
     topics: ["Conversion-focused product descriptions", "Professional product photography tips", "SEO for Shopify product pages", "Variant setup and pricing strategy"],
-    duration: "Week 8",
+    duration: "Week 4",
   },
   {
     number: "08",
     title: "Meta Ads (Facebook & Instagram)",
     description: "Launch and scale profitable Facebook and Instagram advertising campaigns to drive consistent store sales.",
     topics: ["Business Manager & Pixel setup", "Campaign structure (TOF/MOF/BOF)", "Creative strategy & ad formats", "Audience research, testing & scaling"],
-    duration: "Week 9–10",
+    duration: "Week 5",
   },
   {
     number: "09",
     title: "TikTok Ads",
     description: "Master TikTok's advertising platform — one of the highest-ROAS channels for e-commerce in 2025.",
     topics: ["TikTok Business Center setup", "TikTok Pixel integration", "Creative formats for e-commerce", "Audience targeting & budget scaling"],
-    duration: "Week 11",
+    duration: "Week 6",
   },
   {
     number: "10",
     title: "Order Management & Fulfillment",
     description: "Build smooth, professional order management systems that delight customers and reduce refunds.",
     topics: ["Shopify Orders dashboard", "Fulfillment workflows", "Shipping & courier integration (TCS, Leopards, DHL)", "Returns & refund management"],
-    duration: "Week 12",
+    duration: "Week 6",
   },
   {
     number: "11",
     title: "Scaling Your Store",
     description: "Apply advanced strategies to multiply revenue without multiplying your workload.",
     topics: ["Scaling Meta & TikTok Ads", "Email & SMS marketing with Klaviyo", "Upsell & cross-sell optimization", "International expansion strategies"],
-    duration: "Week 13–14",
+    duration: "Week 7",
   },
   {
     number: "12",
     title: "Automation & Systems",
     description: "Build automations and SOPs that free your time so your business runs profitably with minimal manual work.",
     topics: ["Shopify Flow automations", "Zapier & Make integrations", "VA hiring & management", "Creating SOPs for your e-commerce team"],
-    duration: "Week 15–16",
+    duration: "Week 8",
+  },
+];
+
+// Each platform is taught as its own program. Shopify Mastery is the flagship —
+// its full module breakdown is `academyModules` above.
+export const academyTracks = [
+  {
+    icon: "Store",
+    platform: "Shopify",
+    title: "Shopify Mastery Program",
+    duration: "8 weeks",
+    modules: "12 modules",
+    summary: "Our flagship program. Build, launch, and scale your own branded store from zero to consistent monthly revenue.",
+    topics: [
+      "Store setup, theme & branding",
+      "Product and supplier research",
+      "Local & international payment gateways",
+      "Meta and TikTok ads",
+      "Order fulfilment & customer support",
+      "Scaling, automation & SOPs",
+    ],
+    color: "from-emerald-400 to-teal-500",
+    flagship: true,
+  },
+  {
+    icon: "Package",
+    platform: "Amazon",
+    title: "Amazon Seller & FBA Program",
+    duration: "8 weeks",
+    modules: "8 modules",
+    summary: "Learn to run a profitable Amazon business — from account creation and product sourcing to FBA logistics and Sponsored Ads.",
+    topics: [
+      "Seller Central account setup",
+      "Product hunting & profitability analysis",
+      "Sourcing, shipping plans & FBA logistics",
+      "Keyword research and listing optimization",
+      "A+ Content & brand registry",
+      "Sponsored Products, Brands & Display",
+    ],
+    color: "from-orange-400 to-amber-500",
+    flagship: false,
+  },
+  {
+    icon: "ShoppingBag",
+    platform: "eBay",
+    title: "eBay Seller Program",
+    duration: "8 weeks",
+    modules: "6 modules",
+    summary: "The fastest, lowest-cost route to international buyers. Start selling with minimal capital and build a strong seller rating.",
+    topics: [
+      "Account setup & seller policies",
+      "Listing titles, item specifics & search",
+      "Pricing, auctions vs fixed price",
+      "International shipping from Pakistan",
+      "Feedback and seller rating management",
+      "Scaling to a full eBay store",
+    ],
+    color: "from-blue-400 to-indigo-500",
+    flagship: false,
+  },
+  {
+    icon: "Gift",
+    platform: "Etsy",
+    title: "Etsy Shop Program",
+    duration: "8 weeks",
+    modules: "6 modules",
+    summary: "Built for handmade, custom, vintage, and digital products. Learn to rank in Etsy search and turn browsers into repeat buyers.",
+    topics: [
+      "Shop setup, branding & policies",
+      "Choosing a profitable Etsy niche",
+      "Etsy SEO — tags, titles & attributes",
+      "Product photography that sells",
+      "Etsy Ads and promotions",
+      "Reviews, repeat buyers & digital products",
+    ],
+    color: "from-rose-400 to-pink-500",
+    flagship: false,
   },
 ];
 
@@ -1045,6 +1149,16 @@ export const academyFaqs = [
       "This course is designed for beginners who want to start an e-commerce or Shopify business, existing store owners who want to scale, and professionals looking to add e-commerce skills to their career. No prior experience is required.",
   },
   {
+    question: "Do you only teach Shopify, or other platforms too?",
+    answer:
+      "We teach four platforms as separate programs: Shopify, Amazon, eBay, and Etsy. Each one runs for 8 weeks. Shopify Mastery is our flagship program and covers building your own branded store. The Amazon, eBay, and Etsy programs focus on selling through those marketplaces — account setup, listing optimization, platform search, and platform advertising. You can enroll in one program or combine several.",
+  },
+  {
+    question: "Which program should I enroll in?",
+    answer:
+      "If you want your own brand and are willing to run ads, start with Shopify. If you want to sell products with existing search demand, start with Amazon. If you have limited starting capital, eBay is the cheapest way in. If your products are handmade, custom, vintage, or digital, choose Etsy. Message us and we will recommend the right program for your situation before you pay anything.",
+  },
+  {
     question: "Do I need a laptop or prior technical knowledge?",
     answer:
       "All you need is a laptop and a willingness to learn. No coding, design, or technical background is needed. We start from absolute zero and build up your skills step by step with practical, hands-on sessions.",
@@ -1052,7 +1166,7 @@ export const academyFaqs = [
   {
     question: "What is the total duration of the program?",
     answer:
-      "The Complete Shopify & E-commerce Mastery Program runs for 16 weeks (4 months). Sessions are held twice a week (live + recorded), and each week includes one practical assignment tied to your real Shopify store.",
+      "Every program — Shopify, Amazon, eBay, and Etsy — runs for 8 weeks (2 months). Sessions are held twice a week (live + recorded), and each week includes one practical assignment tied to your real store or marketplace shop.",
   },
   {
     question: "Will I have a real Shopify store by the end?",
@@ -1108,8 +1222,8 @@ export const ecommerceServices = [
   {
     icon: "Settings",
     title: "Complete Store Management",
-    description: "Let us handle the day-to-day operations of your Shopify store so you can focus on growing your business.",
-    points: ["Inventory & order management", "Customer support handling", "Product listing updates", "Performance monitoring"],
+    description: "Let us handle the day-to-day operations of your Shopify store and marketplace accounts so you can focus on growing your business.",
+    points: ["Inventory & order management", "Customer support handling", "Amazon, eBay & Etsy listing updates", "Performance monitoring"],
     color: "from-orange-400 to-amber-500",
   },
   {
@@ -1122,9 +1236,127 @@ export const ecommerceServices = [
   {
     icon: "Globe",
     title: "International E-commerce",
-    description: "Expand your Shopify store beyond Pakistan to reach buyers in the UK, USA, Canada, UAE, and beyond.",
-    points: ["International shipping setup", "Currency & tax configuration", "Cross-border SEO strategy", "Marketplace strategy (Amazon, eBay)"],
+    description: "Expand beyond Pakistan to reach buyers in the UK, USA, Canada, UAE, and beyond — on your own store and on global marketplaces.",
+    points: ["International shipping setup", "Currency & tax configuration", "Cross-border SEO strategy", "Amazon, eBay & Etsy marketplace strategy"],
     color: "from-teal-400 to-cyan-500",
+  },
+];
+
+// Compact "platforms at a glance" strip on the e-commerce page. Depth for the
+// three marketplaces lives in `marketplaceServices` below.
+export const ecommercePlatforms = [
+  {
+    icon: "Store",
+    name: "Shopify",
+    tagline: "Your own branded storefront",
+    color: "from-emerald-400 to-teal-500",
+  },
+  {
+    icon: "Package",
+    name: "Amazon",
+    tagline: "The world's largest marketplace",
+    color: "from-orange-400 to-amber-500",
+  },
+  {
+    icon: "ShoppingBag",
+    name: "eBay",
+    tagline: "Global buyers, low barrier to entry",
+    color: "from-blue-400 to-indigo-500",
+  },
+  {
+    icon: "Gift",
+    name: "Etsy",
+    tagline: "Where handmade and niche products win",
+    color: "from-rose-400 to-pink-500",
+  },
+];
+
+// ─── Marketplace Management ───────────────────────────────────────────────────
+
+export const marketplaceServices = [
+  {
+    icon: "Package",
+    platform: "Amazon",
+    title: "Amazon Store Creation & Management",
+    description:
+      "From a brand-new Seller Central account to a store that ranks and sells. We build your catalogue, win the Buy Box, and run the ads that keep orders coming.",
+    highlights: [
+      "Seller Central & FBA account setup",
+      "Keyword-driven listings and A+ Content",
+      "Buy Box, pricing & inventory strategy",
+      "Sponsored Products, Brands & Display",
+    ],
+    color: "from-orange-400 to-amber-500",
+    accent: "text-amber-500",
+  },
+  {
+    icon: "ShoppingBag",
+    platform: "eBay",
+    title: "eBay Store Creation & Management",
+    description:
+      "The fastest, lowest-cost route to international buyers. We set up your seller account, publish listings that surface in eBay search, and protect your seller rating.",
+    highlights: [
+      "Seller account, policies & store subscription",
+      "Titles, item specifics & eBay SEO",
+      "Auction and fixed-price pricing strategy",
+      "Feedback, disputes & seller rating care",
+    ],
+    color: "from-blue-400 to-indigo-500",
+    accent: "text-indigo-500",
+  },
+  {
+    icon: "Gift",
+    platform: "Etsy",
+    title: "Etsy Store Creation & Management",
+    description:
+      "Built for handmade, custom, vintage, and digital products. We launch a shop with a clear brand, rank it in Etsy search, and turn first-time buyers into repeat ones.",
+    highlights: [
+      "Shop setup, branding, banners & policies",
+      "Etsy SEO — tags, titles & attributes",
+      "Product photography direction",
+      "Etsy Ads, promotions & review growth",
+    ],
+    color: "from-rose-400 to-pink-500",
+    accent: "text-rose-500",
+  },
+];
+
+// The end-to-end process applied to every marketplace account we run.
+export const marketplaceProcess = [
+  {
+    icon: "Store",
+    title: "Store Setup",
+    description: "Account registration, verification, branding, policies, and every setting configured correctly the first time.",
+  },
+  {
+    icon: "Package",
+    title: "Product Listings",
+    description: "Full catalogue creation with clean titles, bullet points, descriptions, variants, and compliant category data.",
+  },
+  {
+    icon: "TrendingUp",
+    title: "Listing Optimization",
+    description: "Keyword research and ongoing testing of titles, images, and pricing so your products rank and convert.",
+  },
+  {
+    icon: "Settings",
+    title: "Account Management",
+    description: "Daily health monitoring, policy compliance, inventory levels, and fast resolution of account issues.",
+  },
+  {
+    icon: "Truck",
+    title: "Order Handling",
+    description: "Order processing, courier bookings, tracking updates, returns, and refunds handled without you lifting a finger.",
+  },
+  {
+    icon: "Headphones",
+    title: "Customer Support",
+    description: "Buyer messages answered in your brand voice, disputes managed, and reviews earned rather than chased.",
+  },
+  {
+    icon: "BarChart3",
+    title: "Ongoing Growth",
+    description: "Advertising, new product launches, seasonal pushes, and a monthly report showing exactly what earned what.",
   },
 ];
 
@@ -1157,8 +1389,16 @@ export const ecommerceFaqs = [
     answer: "Yes — our Complete Store Management service handles everything ongoing: inventory updates, new product listings, order processing, customer queries, promotional campaign setup, and monthly performance reporting. You get a professional e-commerce operations team at a fraction of the cost of in-house staff.",
   },
   {
-    question: "Can you help with Daraz or Amazon in addition to Shopify?",
-    answer: "Absolutely. We offer marketplace strategy and account management for Daraz (Pakistan's #1 marketplace), Amazon, and eBay alongside Shopify. Many of our clients run both a Shopify store and marketplace accounts simultaneously for maximum reach.",
+    question: "Can you help with Amazon, eBay, Etsy or Daraz in addition to Shopify?",
+    answer: "Absolutely. We offer full account setup, listing optimization, and ongoing management for Amazon, eBay, Etsy, and Daraz alongside Shopify. Many of our clients run a Shopify store and marketplace accounts at the same time for maximum reach.",
+  },
+  {
+    question: "Which platform should I start with — Shopify, Amazon, eBay or Etsy?",
+    answer: "It depends on your product and budget. Shopify suits brands that want full control and plan to run their own ads. Amazon suits products with proven search demand and room for FBA margins. eBay is the fastest, lowest-cost way to reach international buyers. Etsy is best for handmade, custom, vintage, and digital products. On your free consultation call we recommend the right starting platform and a realistic path to adding the others.",
+  },
+  {
+    question: "Can you manage more than one platform at the same time?",
+    answer: "Yes. Multi-channel selling is what we do best. We keep inventory, pricing, and product data consistent across your Shopify store and your Amazon, eBay, and Etsy accounts, and give you one monthly report covering every channel so you can see which one earns you the most.",
   },
 ];
 

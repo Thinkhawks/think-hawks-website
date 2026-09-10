@@ -6,14 +6,17 @@ import { BackToTop } from "@/components/ui/BackToTop";
 import { EcommercePageContent } from "./EcommercePageContent";
 
 export const metadata: Metadata = {
-  title: "E-commerce Growth Solutions | Shopify Development Pakistan | Think Hawks",
+  title: "E-commerce Growth | Shopify, Amazon, eBay & Etsy | Think Hawks",
   description:
-    "Pakistan's leading Shopify development and e-commerce growth agency. We build, manage, and scale Shopify stores — from local payment integration to international expansion. Get a free consultation.",
+    "Pakistan's leading e-commerce growth agency. We build, manage, and scale Shopify stores plus Amazon, eBay, and Etsy accounts — from local payment integration to international expansion. Get a free consultation.",
   keywords: [
     "Shopify development Pakistan",
+    "Amazon seller services Pakistan",
+    "eBay account management Pakistan",
+    "Etsy shop setup Pakistan",
     "e-commerce agency Pakistan",
     "Shopify experts Lahore",
-    "Shopify store management",
+    "marketplace management Pakistan",
     "e-commerce growth Pakistan",
     "JazzCash Shopify integration",
     "online store Pakistan",
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "E-commerce Growth Solutions | Think Hawks",
     description:
-      "Build, manage, and scale your Shopify store with Pakistan's leading e-commerce growth agency.",
+      "Build, manage, and scale on Shopify, Amazon, eBay, and Etsy with Pakistan's leading e-commerce growth agency.",
     type: "website",
   },
 };

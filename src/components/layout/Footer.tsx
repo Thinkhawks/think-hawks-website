@@ -19,6 +19,7 @@ const footerLinks = {
     { label: "Google Ads", href: "/services/google-ads" },
     { label: "E-commerce Growth", href: "/ecommerce" },
     { label: "Shopify Development", href: "/services/ecommerce-growth" },
+    { label: "Marketplace Management", href: "/services/marketplace-management" },
     { label: "Website Development", href: "/services/website-development" },
     { label: "Graphic Design", href: "/services/graphic-design" },
     { label: "Branding", href: "/services/branding" },
@@ -26,7 +27,9 @@ const footerLinks = {
   academy: [
     { label: "Think Hawks Academy", href: "/academy" },
     { label: "Shopify Mastery Program", href: "/academy#curriculum" },
-    { label: "E-commerce Courses", href: "/academy" },
+    { label: "Amazon Seller & FBA Program", href: "/academy#programs" },
+    { label: "eBay Seller Program", href: "/academy#programs" },
+    { label: "Etsy Shop Program", href: "/academy#programs" },
     { label: "Enroll Now", href: "/contact" },
   ],
   resources: [
@@ -169,25 +172,32 @@ export function Footer() {
 
             <div className="space-y-3">
               <a
+                href="tel:+19369300119"
+                className="flex items-center gap-2.5 text-sm text-white/60 hover:text-primary transition-colors"
+              >
+                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
+                +1 936 930 0119 (US)
+              </a>
+              <a
                 href="tel:+923284580621"
                 className="flex items-center gap-2.5 text-sm text-white/60 hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                +92 328 458 0621
+                +92 328 458 0621 (PK)
               </a>
               <a
                 href="tel:+923262124461"
                 className="flex items-center gap-2.5 text-sm text-white/60 hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                +92 326 212 4461
+                +92 326 212 4461 (PK)
               </a>
               <a
-                href="mailto:thinkhawks@gmail.com"
+                href="mailto:info@thinkhawks.com"
                 className="flex items-center gap-2.5 text-sm text-white/60 hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                thinkhawks@gmail.com
+                info@thinkhawks.com
               </a>
               <div className="flex items-start gap-2.5 text-sm text-white/60">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />

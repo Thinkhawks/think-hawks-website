@@ -7,28 +7,31 @@ import Link from "next/link";
 import {
   ArrowRight, Check, Award, BookOpen, Monitor, Users,
   MessageSquare, Star, Plus, Minus, Play, Clock,
-  ChevronRight, Zap, Shield, TrendingUp,
+  ChevronRight, Zap, Shield, TrendingUp, Store, Package, ShoppingBag, Gift,
 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { academyModules, academyFeatures, academyFaqs } from "@/lib/data";
+import { academyModules, academyFeatures, academyFaqs, academyTracks } from "@/lib/data";
 
 const iconMap: Record<string, React.ElementType> = {
   Users, BookOpen, Monitor, Award, MessageSquare, Zap, Shield, TrendingUp,
+  Store, Package, ShoppingBag, Gift,
 };
 
 const outcomes = [
-  "Launch a live, revenue-generating Shopify store",
+  "Launch a live, revenue-generating store or marketplace shop",
+  "Sell on Shopify, Amazon, eBay, or Etsy with confidence",
   "Run profitable Meta and TikTok Ads independently",
   "Source winning products from local and international suppliers",
   "Build a brand customers trust and return to",
   "Set up JazzCash, EasyPaisa, and card payment gateways",
-  "Automate key operations with email flows and Shopify apps",
+  "Rank your listings in Amazon, eBay, and Etsy search",
+  "Automate key operations with email flows and store apps",
   "Understand analytics and make data-driven growth decisions",
   "Scale from Rs. 0 to Rs. 500K+ monthly revenue",
 ];
 
 const programStats = [
-  { value: "16", label: "Weeks", sub: "comprehensive program" },
+  { value: "8", label: "Weeks", sub: "per program" },
   { value: "12", label: "Modules", sub: "structured curriculum" },
   { value: "30+", label: "Hours", sub: "of live instruction" },
   { value: "100%", label: "Practical", sub: "build while you learn" },
@@ -77,7 +80,7 @@ export function AcademyPageContent() {
               >
                 Build a Profitable
                 <br />
-                <span className="text-primary">Shopify Business</span>
+                <span className="text-primary">E-commerce Business</span>
                 <br />
                 From Scratch
               </motion.h1>
@@ -88,8 +91,9 @@ export function AcademyPageContent() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mt-6 text-white/65 text-lg leading-relaxed max-w-xl"
               >
-                Pakistan&apos;s most practical Shopify & e-commerce training program. No fluff, no theory.
-                You build a real store, run real ads, and generate real revenue — before you graduate.
+                Pakistan&apos;s most practical e-commerce training. Separate programs for Shopify,
+                Amazon, eBay, and Etsy. No fluff, no theory. You build a real store, run real ads,
+                and generate real revenue — before you graduate.
               </motion.p>
 
               <motion.div
@@ -98,7 +102,7 @@ export function AcademyPageContent() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mt-5 grid grid-cols-2 gap-2"
               >
-                {["16-Week Program", "12 Structured Modules", "1-on-1 Mentorship", "Industry Certificate"].map((t) => (
+                {["Shopify, Amazon, eBay & Etsy", "Structured Modules", "1-on-1 Mentorship", "Industry Certificate"].map((t) => (
                   <span key={t} className="flex items-center gap-1.5 text-sm text-white/60">
                     <Check className="w-4 h-4 text-primary flex-shrink-0" />
                     {t}
@@ -162,8 +166,8 @@ export function AcademyPageContent() {
                   <Award className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-white text-sm">Complete Program</p>
-                  <p className="text-white/50 text-xs">Shopify & E-commerce Mastery</p>
+                  <p className="font-heading font-bold text-white text-sm">Flagship Program</p>
+                  <p className="text-white/50 text-xs">Shopify Mastery · Amazon, eBay & Etsy also taught</p>
                 </div>
               </div>
 
@@ -221,7 +225,7 @@ export function AcademyPageContent() {
                 title="What You'll Be Able to Do After "
                 highlight="Graduating"
                 centered={false}
-                description="This isn't a passive video course. By graduation day, you will have built and launched a real Shopify store — with real products, real marketing, and real revenue."
+                description="This isn't a passive video course. By graduation day, you will have built and launched a real store or marketplace shop — with real products, real marketing, and real revenue."
               />
               <div className="mt-8 space-y-3">
                 {outcomes.map((o, i) => (
@@ -246,7 +250,7 @@ export function AcademyPageContent() {
               <div className="bg-[#F8FAF8] rounded-xl p-6">
                 <p className="font-heading font-bold text-[#222222] mb-2">Graduate Success Story</p>
                 <p className="text-sm text-[#666666] leading-relaxed italic mb-4">
-                  &quot;I enrolled with zero e-commerce knowledge. By Week 6 I had my store live. By Week 14 I was generating Rs. 800K per month. Think Hawks Academy changed my life.&quot;
+                  &quot;I enrolled with zero e-commerce knowledge. By Week 4 I had my store live. Within four months I was generating Rs. 800K per month. Think Hawks Academy changed my life.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-sm">OS</div>
@@ -288,7 +292,7 @@ export function AcademyPageContent() {
             badge="Why Our Academy"
             title="More Than a Course."
             highlight=" A Complete Launch System."
-            description="Every feature of the Think Hawks Academy is designed to get you to one outcome: a profitable, running Shopify business."
+            description="Every feature of the Think Hawks Academy is designed to get you to one outcome: a profitable, running e-commerce business — whichever platform you choose."
           />
 
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -329,14 +333,82 @@ export function AcademyPageContent() {
         </div>
       </section>
 
+      {/* ── Programs ─────────────────────────────────────────────────────── */}
+      <section id="programs" className="py-20 lg:py-28 bg-[#111111]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            light
+            badge="Our Programs"
+            title="Four Platforms. "
+            highlight="Four Programs."
+            description="Shopify, Amazon, eBay, and Etsy are each taught as a separate program with their own modules and live sessions. Take one, or combine several."
+          />
+
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {academyTracks.map((track, i) => {
+              const Icon = iconMap[track.icon] || Store;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.09 }}
+                  className={`relative flex flex-col glass-dark rounded-xl p-6 border transition-all duration-300 ${track.flagship ? "border-primary/40" : "border-white/10 hover:border-primary/30"}`}
+                >
+                  {track.flagship && (
+                    <span className="absolute -top-2.5 right-5 px-2.5 py-0.5 rounded-full bg-amber-400 text-[#111111] text-[10px] font-bold tracking-wide">
+                      MOST POPULAR
+                    </span>
+                  )}
+
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-5 shadow-sm`}>
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  <h3 className="font-heading font-bold text-white text-lg leading-snug">{track.title}</h3>
+                  <p className="flex items-center gap-3 text-xs text-primary font-semibold mt-1.5 mb-3">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {track.duration}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <BookOpen className="w-3 h-3" />
+                      {track.modules}
+                    </span>
+                  </p>
+                  <p className="text-sm text-white/60 leading-relaxed mb-4">{track.summary}</p>
+
+                  <ul className="space-y-2 mb-6">
+                    {track.topics.map((t, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-white/75">
+                        <ChevronRight className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href="/contact"
+                    className="mt-auto block text-center border border-white/20 text-white font-semibold py-2.5 rounded-xl text-sm hover:bg-white/10 transition-all duration-300"
+                  >
+                    Enroll in {track.platform}
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ── Curriculum ───────────────────────────────────────────────────── */}
       <section id="curriculum" className="py-20 lg:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Full Curriculum"
+            badge="Shopify Mastery Curriculum"
             title="12 Modules to "
             highlight="E-commerce Mastery"
-            description="A structured 16-week journey from complete beginner to confident, profitable Shopify store owner."
+            description="The full module breakdown of our flagship Shopify program — a structured 8-week journey from complete beginner to confident, profitable store owner. Ask us for the Amazon, eBay, or Etsy outlines."
           />
 
           <div className="mt-10 space-y-3">

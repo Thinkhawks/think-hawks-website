@@ -35,6 +35,7 @@ const sections = [
       { label: "Content Marketing", href: "/services/content-marketing" },
       { label: "Website Development", href: "/services/website-development" },
       { label: "Shopify & E-commerce Growth", href: "/services/ecommerce-growth" },
+      { label: "Marketplace Management (Amazon, eBay, Etsy)", href: "/services/marketplace-management" },
       { label: "Graphic Design", href: "/services/graphic-design" },
       { label: "Branding", href: "/services/branding" },
     ],
@@ -44,7 +45,9 @@ const sections = [
     links: [
       { label: "Think Hawks Academy", href: "/academy" },
       { label: "Shopify Mastery Program", href: "/academy#curriculum" },
-      { label: "E-commerce Courses", href: "/academy" },
+      { label: "Amazon Seller & FBA Program", href: "/academy#programs" },
+      { label: "eBay Seller Program", href: "/academy#programs" },
+      { label: "Etsy Shop Program", href: "/academy#programs" },
       { label: "Enroll Now", href: "/contact" },
     ],
   },

@@ -7,7 +7,7 @@ import {
   ArrowRight, Check, ArrowLeft,
   Share2, Search, FileText, Code2, Globe, Layout,
   Palette, Sparkles, Target, MousePointer, Image,
-  TrendingUp, Users, BarChart3
+  TrendingUp, Users, BarChart3, Store, ShoppingBag
 } from "lucide-react";
 import { services, faqs } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -19,7 +19,7 @@ import { AnimatePresence } from "framer-motion";
 const iconMap: Record<string, React.ElementType> = {
   Share2, Search, FileText, Code2, Globe, Layout,
   Palette, Sparkles, Target, MousePointer, Image,
-  TrendingUp, Users, BarChart3,
+  TrendingUp, Users, BarChart3, Store, ShoppingBag,
 };
 
 const processSteps = [
