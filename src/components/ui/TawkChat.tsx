@@ -2,13 +2,14 @@
 
 import Script from "next/script";
 
-const PROPERTY_ID = process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID;
-const WIDGET_ID = process.env.NEXT_PUBLIC_TAWK_WIDGET_ID || "default";
+// Public embed IDs (visible in any page source). The env vars override them,
+// but the fallback keeps the widget alive when a host build lacks the vars.
+const PROPERTY_ID =
+  process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID || "6a405bb58719f21d5abdec32";
+const WIDGET_ID = process.env.NEXT_PUBLIC_TAWK_WIDGET_ID || "1js5mcg17";
 
 /**
  * Embeds the Tawk.to live-chat / AI assistant widget site-wide.
- * Renders nothing until NEXT_PUBLIC_TAWK_PROPERTY_ID is configured,
- * so local/dev builds without the key stay clean.
  */
 export function TawkChat() {
   if (!PROPERTY_ID) return null;

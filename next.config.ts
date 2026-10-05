@@ -22,15 +22,15 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       // Next.js inline scripts + Tawk.to
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://embed.tawk.to https://va.tawk.to",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.tawk.to https://cdn.jsdelivr.net",
       // Styles: inline (Tailwind) + Google Fonts
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.tawk.to https://cdn.jsdelivr.net",
       // Fonts
-      "font-src 'self' https://fonts.gstatic.com",
+      "font-src 'self' data: https://fonts.gstatic.com https://*.tawk.to https://cdn.jsdelivr.net",
       // Images: self + data URIs
       "img-src 'self' data: https:",
       // API calls + Tawk.to websocket
-      "connect-src 'self' https://api.resend.com https://*.tawk.to wss://*.tawk.to",
+      "connect-src 'self' https://api.resend.com https://*.tawk.to wss://*.tawk.to https://cdn.jsdelivr.net",
       // Tawk.to iframe
       "frame-src https://tawk.to https://*.tawk.to",
       // Worker scripts (Tawk.to)
